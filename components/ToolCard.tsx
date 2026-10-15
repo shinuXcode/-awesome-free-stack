@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Check, ExternalLink, Github, ShieldCheck, Star } from "lucide-react";
 import type { DetailedDevTool } from "../lib/types";
 
@@ -10,19 +10,6 @@ type Props = { tool: DetailedDevTool; index: number; onDetails: (tool: DetailedD
 export default function ToolCard({ tool, index, onDetails }: Props) {
   const [logoFailed, setLogoFailed] = useState(false);
   const [copied, setCopied] = useState(false);
-  const reduceMotion = useReducedMotion();
-  const pointerX = useMotionValue(0);
-  const pointerY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(pointerY, [0, 1], [5.5, -5.5]), { stiffness: 230, damping: 25, mass: 0.5 });
-  const rotateY = useSpring(useTransform(pointerX, [0, 1], [-5.5, 5.5]), { stiffness: 230, damping: 25, mass: 0.5 });
-
-  const handlePointerMove = (event: React.MouseEvent<HTMLElement>) => {
-    if (reduceMotion || window.matchMedia("(hover: none)").matches) return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    pointerX.set((event.clientX - bounds.left) / bounds.width);
-    pointerY.set((event.clientY - bounds.top) / bounds.height);
-  };
-  const resetTilt = () => { pointerX.set(0.5); pointerY.set(0.5); };
 
   async function copyUrl() {
     try {
@@ -43,10 +30,7 @@ export default function ToolCard({ tool, index, onDetails }: Props) {
       initial={{ opacity: 0, y: 18, scale: 0.98 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10, scale: 0.97 }}
-      transition={{ layout: { type: "spring", stiffness: 270, damping: 26 }, delay: Math.min(index % 9, 8) * 0.025 }}
-      style={reduceMotion ? undefined : { rotateX, rotateY, transformPerspective: 1000 }}
-      onMouseMove={handlePointerMove}
-      onMouseLeave={resetTilt}
+      transition={{ layout: { type: "spring", stiffness: 320, damping: 32 }, opacity: { duration: 0.22 }, y: { duration: 0.28 }, delay: Math.min(index % 6, 5) * 0.018 }}
       className="tool-card"
     >
       <div className="card-topline"><span className="card-id">STACK / {String(index + 1).padStart(2, "0")}</span>
