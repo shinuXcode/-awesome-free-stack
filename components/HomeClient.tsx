@@ -14,7 +14,7 @@ type HomeClientProps = { featured: DetailedDevTool[]; recentlyAdded: DetailedDev
 
 export default function HomeClient({ featured, recentlyAdded, categoryCounts, totalTools, openSourceCount, noCardCount }: HomeClientProps) {
   return (
-    <main>
+    <main id="main-content">
       <section className="hero home-hero">
         <div className="hero-noise" aria-hidden="true" /><div className="hero-glow hero-glow-a" aria-hidden="true" /><div className="hero-glow hero-glow-b" aria-hidden="true" /><div className="hero-grid" aria-hidden="true" />
         <motion.div className="hero-content" initial="hidden" animate="show" variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.06 } } }}>
