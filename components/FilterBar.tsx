@@ -56,7 +56,7 @@ export default function FilterBar(props: Props) {
       <div className="filter-control-row">
         <div className="sort-control"><SlidersHorizontal size={14} /><label htmlFor="tool-sort">SORT</label>
           <select id="tool-sort" value={props.sort} onChange={(event) => props.setSort(event.target.value as SortMode)}>
-            <option>Highest Rated</option><option>Most Starred</option><option>Safety Score</option><option>Alphabetical</option>
+            <option>Recently Added</option><option>Highest Rated</option><option>Most Starred</option><option>Safety Score</option><option>Alphabetical</option>
           </select>
         </div>
         <span className="filter-hint">Filter by</span>
