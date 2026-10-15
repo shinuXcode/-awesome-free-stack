@@ -14,7 +14,7 @@
 
 **Explore the tools. Read the trade-offs. Build with intent.**
 
-[Browse the directory](https://awesome-free-stack-q4rs8so5q-mohammad-sadabs-projects.vercel.app) · [Open an issue](https://github.com/shinuXcode/-awesome-free-stack/issues) · [Contribute](CONTRIBUTING.md)
+[Browse the directory](https://awesome-free-stack.vercel.app) · [Open an issue](https://github.com/shinuXcode/-awesome-free-stack/issues) · [Contribute](CONTRIBUTING.md)
 
 </div>
 
@@ -30,26 +30,59 @@ The project is intentionally cautious: **“free” is not a promise of permanen
 
 | Experience | What it does |
 |---|---|
-| Rich tool profiles | Architecture notes, beginner quickstarts, official docs, pricing caveats, and privacy review prompts |
-| IMDb-style discovery | Pricing, credit-card, skill-level, category, and safety-signal filters |
-| Multiple sort modes | Highest rated, most GitHub stars, safety signal, and alphabetical |
-| Real-time search | Search as you type; press `/` or `Cmd/Ctrl + K` to focus search |
-| Motion-first UI | Spring layout transitions, motion-graphic hero, 3D-tilt cards, and an animated detail sheet |
-| Mobile gestures | Horizontal chip scrolling and a swipe-to-dismiss details sheet |
-| Founder showcase | Portfolio preview cards, creator links, and a one-tap share action |
-| Community quality gate | Strict JSON validation runs on pull requests via GitHub Actions |
-| Responsive by design | Mobile-first layouts, accessible controls, and reduced-motion support |
+| Rich tool profiles | Setup notes, official docs, pricing caveats, privacy prompts and permanent profile URLs |
+| Broad catalog | 1,800+ resources across 38 developer, creative, security, operating-system and productivity categories |
+| Search and filters | Search as you type; filter by category, pricing label, card-at-signup signal and skill level |
+| Keyboard access | Press `/` or `Cmd/Ctrl + K` to focus search; `Escape` closes the details dialog |
+| Fast tool directory | Server-rendered first batch, server-side filtering and 48-at-a-time pagination keep the full dataset out of the main client bundle |
+| Native sharing | Every tool card can share its canonical profile plus summary, category, pricing label and source links |
+| Search and AI discovery | Canonical metadata, Open Graph/Twitter previews, structured data, robots policy, XML sitemap and `llms.txt` feeds |
+| Automatic catalog updates | A daily GitHub Actions job discovers active, licensed projects from curated topics, de-duplicates them, validates the data and builds the site before committing new entries |
+| Responsive and accessible | Mobile-first UI, visible keyboard focus, skip-to-content link and reduced-motion support |
+| Community quality gate | Strict schema validation and a Next.js production build run in pull request CI |
 
 ## Categories
 
-- **Databases & BaaS** — hosted SQL, app backends, and data platforms
-- **Hosting & PaaS** — deployment, app runtimes, and edge/static hosting
-- **Auth & Security** — identity, sessions, and application access
-- **AI APIs** — inference and model APIs
-- **Storage & CDN** — object storage, file flows, and media delivery
-- **Dev Tools** — API clients, automation, email, and workflow utilities
-- **CMS** — structured content systems and headless publishing
-- **Analytics** — product events, logs, and application monitoring
+The directory supports every category below. Counts are generated from the current catalog, not hard-coded in the UI.
+
+- **Databases & BaaS** — SQL, databases, app backends and managed data
+- **Hosting & PaaS** — application, edge and static hosting
+- **Auth & Security** — identity, sessions and access controls
+- **AI APIs** — model inference and AI endpoints
+- **Storage & CDN** — object storage, file handling and content delivery
+- **Dev Tools** — CLI utilities, API clients, terminals and build tools
+- **CMS** — traditional and headless content management
+- **Analytics** — product metrics, telemetry and data dashboards
+- **Frontend & Web Dev** — UI frameworks, styling and web application tools
+- **Backend & APIs** — server frameworks, API tooling and gateways
+- **Programming Languages** — languages, compilers and runtime tooling
+- **Mobile & Desktop Apps** — cross-platform and native app frameworks
+- **AI & Machine Learning** — models, ML frameworks and AI development
+- **Data Science & Analytics** — notebooks, visualization, data quality and BI
+- **Design & UI/UX** — interface design, wireframes, icons and motion
+- **Video Editing & Motion** — video tools, editing and animation
+- **3D & VFX** — modeling, rendering and visual effects
+- **Audio & Music** — DAWs, audio utilities and music creation
+- **Game Development** — game engines, frameworks and game-dev utilities
+- **Cybersecurity & Ethical Hacking** — defensive security and authorized testing tools
+- **Reverse Engineering** — binary analysis and software inspection
+- **Operating Systems** — Linux distributions and alternative operating systems
+- **Office & Productivity** — office suites, document and reading tools
+- **Open Source Apps** — privacy-friendly and community-developed apps
+- **Creator & Social Media** — publishing, fediverse and social creator tools
+- **Communities & Forums** — developer communities and discussion platforms
+- **Freelancing & Client Management** — proposals, invoices, CRM and time tracking
+- **Project & Idea Management** — task planning, notes and ideation
+- **DevOps & Cloud** — deployment pipelines, infrastructure and observability
+- **Testing & QA** — browser, API, accessibility and performance testing
+- **Documentation & Knowledge** — docs sites, wikis and knowledge tools
+- **Privacy & Utilities** — privacy, password management and secure utilities
+- **Collaboration & Communication** — chat, calls, boards and forms
+- **Education & Learning** — courses, practice tools and learning references
+- **Automation & No-Code** — workflow automation and visual app builders
+- **Blockchain & Web3** — chain tooling, wallets and smart-contract development
+- **Hardware & IoT** — embedded development, electronics and home automation
+- **Accessibility** — screen readers, contrast checks and a11y testing
 
 ## Tool comparison snapshot
 
@@ -72,6 +105,23 @@ The catalog begins without fabricated community reviews. A rating of **0.0 means
 - **Data privacy score** is explicitly marked unrated until a documented methodology and evidence review exists.
 - **GitHub stars** are shown only when a count has been verified for the linked repository. Missing counts are not treated as zero-star projects in user-facing content.
 - **Pricing labels** are a directory classification, not a replacement for provider terms.
+
+## Search, AI discovery and automatic updates
+
+The site publishes these generated endpoints:
+
+- `/robots.txt` — crawler policy with site-map discovery and explicit access for major AI crawlers.
+- `/sitemap.xml` — canonical directory pages and every individual tool profile, generated from `data/tools.json`.
+- `/llms.txt` — a concise guide to the catalog and editorial caveats.
+- `/llms-full.txt` — machine-readable summaries with each tool's canonical profile, official site, documentation, pricing label and source-model label.
+
+Tool profiles emit canonical URLs, Open Graph/Twitter metadata and WebPage/Breadcrumb structured data. The homepage emits WebSite/SearchAction and Organization data; the guide page includes a visible FAQ and FAQ structured data. Each card's **Share** control uses the canonical directory profile and includes the tool's summary, category, pricing label and official/source links in the share text.
+
+### How scheduled refresh works
+
+A GitHub Actions job runs daily at **04:23 UTC** (and can also be started manually from the Actions tab). It searches curated GitHub topics for active public repositories with a declared license, filters duplicates, adds a small bounded batch, validates the complete JSON schema, and runs a production build before committing any change to `main`. When a catalog update is published, the deployment rebuilds the tool detail pages, category counts, XML sitemap and AI-readable feeds from the same source data.
+
+The scheduled importer covers the configured GitHub topics and license-bearing public repositories; it is not a crawler for every paid product, marketplace or website. New pull requests are still validated and built in CI. No implementation can guarantee Google rankings, indexing, or inclusion in AI answers; submit the sitemap through Google Search Console/Bing Webmaster Tools and monitor the search reports after deployment.
 
 ## Run locally
 
