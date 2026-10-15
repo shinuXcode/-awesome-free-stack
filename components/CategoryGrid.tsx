@@ -17,11 +17,11 @@ const details: Partial<Record<Category, { subtitle: string; note: string; icon: 
 };
 function slug(category: string) { return category.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-"); }
 
-export default function CategoryGrid({ tools }: { tools: DetailedDevTool[] }) {
+export default function CategoryGrid({ counts }: { counts: Partial<Record<Category, number>> }) {
   return (
     <div className="category-page-grid">
       {categories.map((category, index) => {
-        const item = details[category] ?? { subtitle: `Explore ${category.toLowerCase()} tools and resources.`, note: "Review license, pricing, and maintenance before adopting.", icon: Layers3, number: String(index + 1).padStart(2, "0") }, Icon = item.icon, count = tools.filter((tool) => tool.category === category).length;
+        const item = details[category] ?? { subtitle: `Explore ${category.toLowerCase()} tools and resources.`, note: "Review license, pricing, and maintenance before adopting.", icon: Layers3, number: String(index + 1).padStart(2, "0") }, Icon = item.icon, count = counts[category] ?? 0;
         return (
           <motion.div key={category} id={slug(category)} className="category-page-card-wrap" initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ delay: index * 0.035, duration: 0.3 }}>
             <Link className="category-page-card" href={`/tools?category=${encodeURIComponent(category)}`}>
