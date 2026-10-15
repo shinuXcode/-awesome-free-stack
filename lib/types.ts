@@ -44,7 +44,7 @@ export type PricingType = "100% Free" | "Freemium" | "Open Source" | "Paid Tier 
 export type SafetyRank = "A+" | "A" | "B+";
 export type TargetAudience = "Beginner" | "Intermediate" | "Professional";
 export type ToolBadge = "Top Rated" | "Trending" | "Community Favorite";
-export type SortMode = "Highest Rated" | "Most Starred" | "Safety Score" | "Alphabetical";
+export type SortMode = "Recently Added" | "Highest Rated" | "Most Starred" | "Safety Score" | "Alphabetical";
 
 export interface DetailedDevTool {
   id: string;
