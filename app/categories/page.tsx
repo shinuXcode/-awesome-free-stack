@@ -12,7 +12,7 @@ export default function CategoriesPage() {
       <section className="subhero">
         <span className="eyebrow"><span className="eyebrow-dot" /> EXPLORE THE ECOSYSTEM / 02</span>
         <h1>Choose your<br /><span>starting point.</span></h1>
-        <p>Eight focused categories, each with practical tool notes and quick links to the official source.</p>
+        <p>Browse all {categories.length} categories, each with matching resources and quick links to official sources.</p>
         <div className="subhero-meta"><span><Layers3 size={14} /> {categories.length} categories</span><span>{tools.length} listings indexed</span></div>
       </section>
       <section className="section-wrap category-directory">

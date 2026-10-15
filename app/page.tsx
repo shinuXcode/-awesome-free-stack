@@ -54,7 +54,7 @@ export default function Home() {
       </section>
 
       <section className="section-wrap featured-section">
-        <div className="section-heading"><div><span className="eyebrow"><span className="eyebrow-dot" /> NEWLY ADDED</span><h2>More tools, <span>more possibilities.</span></h2><p>539 resources have been added across development, creative work, AI, open-source apps, operating systems, and more.</p></div><Link className="text-link" href="/tools?sort=recent">Browse all new additions <ArrowUpRight size={15} /></Link></div>
+        <div className="section-heading"><div><span className="eyebrow"><span className="eyebrow-dot" /> NEWLY ADDED</span><h2>More tools, <span>more possibilities.</span></h2><p>{tools.length - 44} resources have been added across development, creative work, AI, open-source apps, operating systems, and more.</p></div><Link className="text-link" href="/tools?sort=recent">Browse all new additions <ArrowUpRight size={15} /></Link></div>
         <motion.div className="tool-grid" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.045 } } }}>
           {recentlyAdded.map((tool, index) => <motion.div key={tool.id} variants={cardVariants}><ToolCard tool={tool} index={index} onDetails={(item) => { window.location.href = `/tools/${item.id}`; }} /></motion.div>)}
         </motion.div>
