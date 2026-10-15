@@ -37,6 +37,16 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
         <div className="hero-bottomline"><span>01 / DISCOVER</span><span>Less guesswork. More building.</span><Link href="/categories">Browse categories ↓</Link></div>
       </section>
 
+      <section className="section-wrap workbench-promo-section">
+        <div className="section-heading"><div><span className="eyebrow"><span className="eyebrow-dot" /> FROM DISCOVERY TO DEPLOYMENT</span><h2>More than a <span>directory.</span></h2><p>Compare choices, draft an architecture, export your stack, or suggest a resource to the community.</p></div></div>
+        <div className="workbench-promo-grid">
+          <Link className="workbench-promo-card" href="/compare"><span>01 / DECIDE</span><b>Side-by-side compare</b><p>Review free-tier notes, pricing labels, signup-card flags and safety signals.</p><ArrowUpRight size={17} /></Link>
+          <Link className="workbench-promo-card" href="/stack-lab"><span>02 / DESIGN</span><b>Stack Lab + architecture</b><p>Generate a starting stack, save choices, and export README, JSON or SVG.</p><ArrowUpRight size={17} /></Link>
+          <Link className="workbench-promo-card" href="/alternatives"><span>03 / SAVE</span><b>Zero-dollar alternatives</b><p>Find open-source or free-tier catalog candidates to evaluate.</p><ArrowUpRight size={17} /></Link>
+          <Link className="workbench-promo-card" href="/submit"><span>04 / CONTRIBUTE</span><b>Submit a tool</b><p>Send a pre-filled GitHub issue with official links and free-tier details.</p><ArrowUpRight size={17} /></Link>
+        </div>
+      </section>
+
       <section className="section-wrap home-intro">
         <div className="section-heading"><div><span className="eyebrow"><span className="eyebrow-dot" /> START WITH A BETTER STACK</span><h2>The right tool.<br /><span>Less noise.</span></h2><p>Explore a practical shortlist or jump straight into a category.</p></div><Link className="text-link" href="/tools">Full directory <ArrowUpRight size={15} /></Link></div>
         <div className="quick-category-grid">
