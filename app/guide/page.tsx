@@ -13,8 +13,10 @@ const faq = [
 ];
 
 export default function GuidePage() {
+  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) };
   return (
-    <main className="subpage">
+    <main id="main-content" className="subpage">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }} />
       <section className="subhero">
         <span className="eyebrow"><span className="eyebrow-dot" /> A BETTER WAY TO DISCOVER / 03</span>
         <h1>Make smarter<br /><span>stack decisions.</span></h1>
