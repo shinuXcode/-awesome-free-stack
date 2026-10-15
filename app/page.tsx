@@ -188,7 +188,7 @@ export default function Home() {
           <h2>Make the next builder's life easier.</h2>
           <p>Help keep the directory useful. Submit a tool with official sources and let automated validation catch schema mistakes.</p>
         </div>
-        <a className="button-primary" href="https://github.com/shinuXcode/-awesome-free-stack/edit/feat/zero-cost-stack-rebuild/data/tools.json" target="_blank" rel="noreferrer">Contribute a tool <ArrowUpRight size={16} /></a>
+        <a className="button-primary" href="https://github.com/shinuXcode/-awesome-free-stack/edit/main/data/tools.json" target="_blank" rel="noreferrer">Contribute a tool <ArrowUpRight size={16} /></a>
       </section>
 
       <footer>
