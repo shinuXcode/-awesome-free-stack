@@ -27,9 +27,9 @@ export default function ToolDetailsModal({ tool, onClose }: Props) {
             aria-modal="true"
             aria-label={tool.name + " details"}
             className="details-modal"
-            initial={reduceMotion ? { opacity: 0 } : { y: "8vh", opacity: 0, scale: 0.975 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={reduceMotion ? { opacity: 0 } : { y: "10vh", opacity: 0, scale: 0.98 }}
+            initial={reduceMotion ? { opacity: 0 } : { x: "8vw", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={reduceMotion ? { opacity: 0 } : { x: "8vw", opacity: 0 }}
             transition={{ type: "spring", stiffness: 250, damping: 28 }}
             drag={reduceMotion ? false : "y"}
             dragDirectionLock
