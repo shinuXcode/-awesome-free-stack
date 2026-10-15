@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { FormEvent } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Search, ShieldCheck, Sparkles } from "lucide-react";
 import type { DetailedDevTool } from "../lib/types";
@@ -32,7 +33,7 @@ export default function AlternativesClient() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
 
-  async function search(event: React.FormEvent<HTMLFormElement>) {
+  async function search(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const term = query.trim();
     if (!term) return;
