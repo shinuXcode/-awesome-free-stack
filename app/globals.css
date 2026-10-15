@@ -874,3 +874,15 @@ body::after {
   .card-utility-actions button:last-child { grid-column: 1 / -1; }
   .export-toolbar { flex-direction: column; align-items: stretch; }
 }
+
+
+/* Desktop drawer position and risk-radar labels */
+.modal-backdrop { display: flex; align-items: stretch; justify-content: flex-end; padding: 0; }
+.details-modal { width: min(640px, 100vw); height: 100vh; max-height: 100dvh; border-radius: 20px 0 0 20px; border-right: 0; }
+.detail-risk-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.detail-risk-list > span { display: inline-flex; align-items: flex-start; gap: 5px; max-width: 100%; padding: 6px 8px; border: 1px solid #ffb45e30; border-radius: 6px; color: #ffcf91; background: #ffb45e07; font-size: 8px; line-height: 1.45; }
+.detail-risk-list svg { flex: 0 0 auto; margin-top: 1px; color: #ffbb70; }
+@media (max-width: 760px) {
+  .modal-backdrop { display: flex; align-items: flex-end; justify-content: center; padding: 0; }
+  .details-modal { width: 100vw; height: auto; max-height: 92dvh; border-radius: 22px 22px 0 0; border-right: 1px solid #424957; border-bottom: 0; }
+}
