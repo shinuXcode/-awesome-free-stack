@@ -63,7 +63,7 @@ export interface DetailedDevTool {
   totalReviewsCount: number;
   safetyRank: SafetyRank;
   securityDetails: {
-    isOpaqueOrOpenSource: "Open Source" | "Closed Source";
+    isOpaqueOrOpenSource: "Open Source" | "Closed Source" | "License Unverified";
     certifications: string[];
     dataPrivacyScore: string;
   };
