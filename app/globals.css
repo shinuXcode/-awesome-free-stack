@@ -607,3 +607,30 @@ footer p { margin: 0; text-align: center; line-height: 1.6; }
 @media (prefers-reduced-motion: reduce) {
   .quick-category, .category-page-card, .founder-linkhub a, .text-link, .back-link { transition: none !important; }
 }
+
+
+/* Motion refresh: ambient graphics stay behind content and never intercept input. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -18%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .55;
+  background: radial-gradient(36rem 30rem at 18% 20%, #9bf4e610, transparent 72%), radial-gradient(34rem 30rem at 82% 36%, #b3a0ff12, transparent 70%), radial-gradient(30rem 28rem at 52% 90%, #c6f66f0b, transparent 70%);
+  transform: translate3d(0, 0, 0);
+  animation: ambient-drift 32s ease-in-out infinite alternate;
+}
+@keyframes ambient-drift {
+  0% { transform: translate3d(-1.2%, -1%, 0) scale(1); }
+  50% { transform: translate3d(1%, .8%, 0) scale(1.025); }
+  100% { transform: translate3d(-.5%, 1.2%, 0) scale(1.01); }
+}
+.tool-card { transform-style: flat !important; will-change: auto; transition: border-color .22s ease, background-color .22s ease, box-shadow .22s ease, translate .22s ease; }
+.tool-card:hover { translate: 0 -3px; box-shadow: 0 18px 44px #00000024; }
+.tool-card:focus-within { outline: 2px solid #9bf4e66b; outline-offset: 3px; }
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  body::after { animation: none; }
+  .tool-card { transition: border-color .15s ease, background-color .15s ease; }
+  .tool-card:hover { translate: none; box-shadow: none; }
+}
