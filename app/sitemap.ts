@@ -9,7 +9,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE_URL + "/tools", changeFrequency: "daily", priority: 0.95 },
     { url: SITE_URL + "/categories", lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
     { url: SITE_URL + "/guide", changeFrequency: "monthly", priority: 0.65 },
-    { url: SITE_URL + "/creator", changeFrequency: "monthly", priority: 0.45 },
+    { url: SITE_URL + "/compare", changeFrequency: "weekly", priority: 0.75 },
+    { url: SITE_URL + "/stack-lab", changeFrequency: "weekly", priority: 0.75 },
+    { url: SITE_URL + "/alternatives", changeFrequency: "weekly", priority: 0.75 },
+    { url: SITE_URL + "/submit", changeFrequency: "monthly", priority: 0.55 },
+    { url: SITE_URL + "/creator", changeFrequency: "monthly", priority: 0.55 },
   ];
   const toolPages: MetadataRoute.Sitemap = (toolsData as Array<{ id: string }>).map((tool) => ({
     url: SITE_URL + "/tools/" + encodeURIComponent(tool.id),

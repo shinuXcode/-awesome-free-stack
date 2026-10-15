@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, BookOpen, CheckCircle2, ExternalLink, Github, Globe2, ShieldCheck, Star, X } from "lucide-react";
 import type { DetailedDevTool } from "../lib/types";
+import GitHubHealth from "./GitHubHealth";
+import { riskLabels } from "../lib/stack";
 
 type Props = { tool: DetailedDevTool | null; onClose: () => void };
 
@@ -26,9 +28,9 @@ export default function ToolDetailsModal({ tool, onClose }: Props) {
             aria-modal="true"
             aria-label={tool.name + " details"}
             className="details-modal"
-            initial={reduceMotion ? { opacity: 0 } : { y: "8vh", opacity: 0, scale: 0.975 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={reduceMotion ? { opacity: 0 } : { y: "10vh", opacity: 0, scale: 0.98 }}
+            initial={reduceMotion ? { opacity: 0 } : { x: "8vw", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={reduceMotion ? { opacity: 0 } : { x: "8vw", opacity: 0 }}
             transition={{ type: "spring", stiffness: 250, damping: 28 }}
             drag={reduceMotion ? false : "y"}
             dragDirectionLock
@@ -60,6 +62,7 @@ export default function ToolDetailsModal({ tool, onClose }: Props) {
             <section className="modal-section free-tier-section">
               <div className="modal-section-heading"><span className="modal-section-icon"><CheckCircle2 size={16} /></span><div><h3>Free-tier reality check</h3><p>Read limits before you commit.</p></div></div>
               <p>{tool.freeTierLimit}</p>
+              <div className="detail-risk-list">{riskLabels(tool).map((label) => <span key={label}><ShieldCheck size={12} /> {label}</span>)}</div>
               <p className="modal-warning">Plans and signup checks change. Confirm the current pricing and terms on the official provider site; this directory is not a billing guarantee.</p>
             </section>
 
@@ -82,6 +85,8 @@ export default function ToolDetailsModal({ tool, onClose }: Props) {
               <p>{tool.securityDetails.dataPrivacyScore}</p>
               <p className="modal-warning">A community signal is not an audit or guarantee. Evaluate access controls, data retention, subprocessors, and security documentation for your own use case.</p>
             </section>
+
+            {tool.githubRepoUrl && <GitHubHealth repoUrl={tool.githubRepoUrl} />}
 
             <div className="modal-links">
               <a className="button-primary" href={tool.officialWebsiteUrl} target="_blank" rel="noreferrer"><Globe2 size={15} /> Official site <ExternalLink size={13} /></a>

@@ -8,9 +8,11 @@ import { useState } from "react";
 
 const links = [
   { href: "/tools", label: "Explore tools" },
-  { href: "/categories", label: "Categories" },
-  { href: "/guide", label: "How it works" },
-  { href: "/creator", label: "Creator" },
+  { href: "/compare", label: "Compare" },
+  { href: "/stack-lab", label: "Stack Lab" },
+  { href: "/alternatives", label: "Alternatives" },
+  { href: "/submit", label: "Add Tool" },
+  { href: "/creator", label: "Meet Creator" },
 ];
 
 export default function SiteNav() {

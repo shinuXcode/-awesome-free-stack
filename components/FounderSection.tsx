@@ -46,7 +46,8 @@ export default function FounderSection() {
             <a href={portfolioUrl} target="_blank" rel="noreferrer"><Globe2 size={14} /><span><b>Personal Website</b><small>mohammad-sadab-portfolio-v2.vercel.app</small></span><ArrowUpRight size={14} /></a>
             <a href={portfolioUrl} target="_blank" rel="noreferrer"><Sparkles size={14} /><span><b>Portfolio Link</b><small>Open Sadab's portfolio</small></span><ArrowUpRight size={14} /></a>
           </div>
-          <button type="button" className="support-button" onClick={copyProjectLink}>{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "Project link copied" : "Support this project"}<ArrowUpRight size={15} /></button>
+          <a className="support-button" href={sourceUrl + "/stargazers"} target="_blank" rel="noreferrer"><Github size={16} /> Star / support this project <ArrowUpRight size={15} /></a>
+          <button type="button" className="support-button support-copy-button" onClick={copyProjectLink}>{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "Project link copied" : "Copy project link"}<ArrowUpRight size={15} /></button>
         </div>
 
         <div className="portfolio-showcase">
