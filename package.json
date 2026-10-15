@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "validate:data": "node scripts/validate-json.js"
+    "validate:data": "node scripts/validate-json.js",
+    "refresh:catalog": "node scripts/refresh-catalog.js"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
