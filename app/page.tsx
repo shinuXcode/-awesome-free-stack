@@ -11,7 +11,7 @@ import ToolCard from "../components/ToolCard";
 const tools = toolsData as DetailedDevTool[];
 const featuredIds = ["supabase", "vercel", "neon", "tailwind-css", "huggingface", "cloudflare-pages"];
 const featured = featuredIds.map((id) => tools.find((tool) => tool.id === id)).filter(Boolean) as DetailedDevTool[];
-const cardVariants = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } } };
+const cardVariants = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" as const } } };
 
 export default function Home() {
   return (
