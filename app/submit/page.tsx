@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CheckCircle2 } from "lucide-react";
 import SubmitToolForm from "../../components/SubmitToolForm";
 
 export const metadata: Metadata = {
