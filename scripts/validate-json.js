@@ -45,7 +45,7 @@ const categories = new Set([
   "Hardware & IoT",
   "Accessibility",
 ]);
-const pricingTypes = new Set(["100% Free", "Freemium", "Open Source", "Paid Tier Available"]);
+const pricingTypes = new Set(["100% Free", "Freemium", "Open Source", "Paid Tier Available", "Needs Verification"]);
 const safetyRanks = new Set(["A+", "A", "B+"]);
 const audiences = new Set(["Beginner", "Intermediate", "Professional"]);
 const sourceTypes = new Set(["Open Source", "Closed Source"]);
