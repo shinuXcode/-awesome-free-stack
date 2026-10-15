@@ -40,7 +40,7 @@ export const categories = [
 ] as const;
 
 export type Category = (typeof categories)[number];
-export type PricingType = "100% Free" | "Freemium" | "Open Source" | "Paid Tier Available";
+export type PricingType = "100% Free" | "Freemium" | "Open Source" | "Paid Tier Available" | "Needs Verification";
 export type SafetyRank = "A+" | "A" | "B+";
 export type TargetAudience = "Beginner" | "Intermediate" | "Professional";
 export type ToolBadge = "Top Rated" | "Trending" | "Community Favorite";
