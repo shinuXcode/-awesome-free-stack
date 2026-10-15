@@ -2,493 +2,1350 @@
   {
     "id": "supabase",
     "name": "Supabase",
+    "logoUrl": "https://cdn.simpleicons.org/supabase",
     "category": "Databases & BaaS",
+    "tagline": "The open-source Firebase alternative built on Postgres.",
     "description": "Open-source Postgres platform with database, auth, storage, and edge functions.",
-    "url": "https://supabase.com",
+    "howItWorks": "Supabase sits between your application and a managed data service. You configure a project or database, connect through its documented SDK or protocol, and use credentials to authenticate requests. Data operations are executed by the provider's database layer; access controls, indexes, backup settings, and usage quotas determine how the system behaves in production. Open-source Postgres platform with database, auth, storage, and edge functions. Design the schema and access rules around the workload instead of relying on default settings.",
+    "howToUseGuide": [
+      "Create a project or database in Supabase and choose the smallest suitable region/plan.",
+      "Read the quickstart and create a minimal schema, table, or collection for one real use case.",
+      "Store connection details in environment variables; expose only documented public client keys in browser code.",
+      "Configure access policies, least-privilege roles, backups, and usage alerts before adding real user data."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has project, database, storage, and bandwidth limits; verify current quotas.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner",
-    "badge": "Popular"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://supabase.com",
+    "docsUrl": "https://supabase.com/docs",
+    "githubRepoUrl": "https://github.com/supabase/supabase",
+    "badge": "Trending"
   },
   {
     "id": "firebase",
     "name": "Firebase",
+    "logoUrl": "https://cdn.simpleicons.org/firebase",
     "category": "Databases & BaaS",
+    "tagline": "A managed app platform for shipping web and mobile products.",
     "description": "Google platform for app databases, authentication, hosting, and analytics.",
-    "url": "https://firebase.google.com",
+    "howItWorks": "Firebase sits between your application and a managed data service. You configure a project or database, connect through its documented SDK or protocol, and use credentials to authenticate requests. Data operations are executed by the provider's database layer; access controls, indexes, backup settings, and usage quotas determine how the system behaves in production. Google platform for app databases, authentication, hosting, and analytics. Design the schema and access rules around the workload instead of relying on default settings.",
+    "howToUseGuide": [
+      "Create a project or database in Firebase and choose the smallest suitable region/plan.",
+      "Read the quickstart and create a minimal schema, table, or collection for one real use case.",
+      "Store connection details in environment variables; expose only documented public client keys in browser code.",
+      "Configure access policies, least-privilege roles, backups, and usage alerts before adding real user data."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Spark plan includes no-cost quotas for selected products; some products require billing.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner",
-    "badge": "Popular"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://firebase.google.com",
+    "docsUrl": "https://firebase.google.com/docs",
+    "githubRepoUrl": "https://github.com/firebase/firebase-js-sdk",
+    "badge": "Trending"
   },
   {
     "id": "neon",
     "name": "Neon",
+    "logoUrl": "https://cdn.simpleicons.org/neon",
     "category": "Databases & BaaS",
+    "tagline": "Serverless Postgres with branching built for modern workflows.",
     "description": "Serverless Postgres with branching and scale-to-zero capabilities.",
-    "url": "https://neon.tech",
+    "howItWorks": "Neon sits between your application and a managed data service. You configure a project or database, connect through its documented SDK or protocol, and use credentials to authenticate requests. Data operations are executed by the provider's database layer; access controls, indexes, backup settings, and usage quotas determine how the system behaves in production. Serverless Postgres with branching and scale-to-zero capabilities. Design the schema and access rules around the workload instead of relying on default settings.",
+    "howToUseGuide": [
+      "Create a project or database in Neon and choose the smallest suitable region/plan.",
+      "Read the quickstart and create a minimal schema, table, or collection for one real use case.",
+      "Store connection details in environment variables; expose only documented public client keys in browser code.",
+      "Configure access policies, least-privilege roles, backups, and usage alerts before adding real user data."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan includes capped compute, storage, and branches; verify current quotas.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner",
-    "badge": "Hot"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://neon.tech",
+    "docsUrl": "https://neon.tech/docs",
+    "githubRepoUrl": "https://github.com/neondatabase/neon",
+    "badge": "Trending"
   },
   {
     "id": "cockroachdb",
     "name": "CockroachDB",
+    "logoUrl": "https://cdn.simpleicons.org/cockroachlabs",
     "category": "Databases & BaaS",
+    "tagline": "Distributed SQL for resilient applications.",
     "description": "Distributed SQL database with a managed cloud offering.",
-    "url": "https://www.cockroachlabs.com",
+    "howItWorks": "CockroachDB sits between your application and a managed data service. You configure a project or database, connect through its documented SDK or protocol, and use credentials to authenticate requests. Data operations are executed by the provider's database layer; access controls, indexes, backup settings, and usage quotas determine how the system behaves in production. Distributed SQL database with a managed cloud offering. Design the schema and access rules around the workload instead of relying on default settings.",
+    "howToUseGuide": [
+      "Create a project or database in CockroachDB and choose the smallest suitable region/plan.",
+      "Read the quickstart and create a minimal schema, table, or collection for one real use case.",
+      "Store connection details in environment variables; expose only documented public client keys in browser code.",
+      "Configure access policies, least-privilege roles, backups, and usage alerts before adding real user data."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free allowance and limits depend on current serverless plan and region.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://www.cockroachlabs.com",
+    "docsUrl": "https://www.cockroachlabs.com/docs/",
+    "githubRepoUrl": "https://github.com/cockroachdb/cockroach"
   },
   {
     "id": "planetscale",
     "name": "PlanetScale",
+    "logoUrl": "https://cdn.simpleicons.org/planetscale",
     "category": "Databases & BaaS",
+    "tagline": "Managed database workflows designed for developers.",
     "description": "Managed relational database platform for production applications.",
-    "url": "https://planetscale.com",
+    "howItWorks": "PlanetScale sits between your application and a managed data service. You configure a project or database, connect through its documented SDK or protocol, and use credentials to authenticate requests. Data operations are executed by the provider's database layer; access controls, indexes, backup settings, and usage quotas determine how the system behaves in production. Managed relational database platform for production applications. Design the schema and access rules around the workload instead of relying on default settings.",
+    "howToUseGuide": [
+      "Create a project or database in PlanetScale and choose the smallest suitable region/plan.",
+      "Read the quickstart and create a minimal schema, table, or collection for one real use case.",
+      "Store connection details in environment variables; expose only documented public client keys in browser code.",
+      "Configure access policies, least-privilege roles, backups, and usage alerts before adding real user data."
+    ],
+    "pricingType": "Paid Tier Available",
     "freeTierLimit": "Pricing and trial availability change; verify current plan before use.",
     "noCreditCardRequired": false,
+    "creditCardRequiredAtSignup": true,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://planetscale.com",
+    "docsUrl": "https://planetscale.com/docs"
   },
   {
     "id": "vercel",
     "name": "Vercel",
+    "logoUrl": "https://cdn.simpleicons.org/vercel",
     "category": "Hosting & PaaS",
+    "tagline": "Ship frontend projects with Git-based deployments.",
     "description": "Frontend cloud platform for Next.js and modern web applications.",
-    "url": "https://vercel.com",
+    "howItWorks": "Vercel turns a source repository or deployable artifact into a hosted application. A typical workflow links source control, installs dependencies, runs a build or deploy step, then publishes an immutable deployment behind the provider's routing and TLS layer. Environment variables and runtime settings configure the app without committing secrets. Frontend cloud platform for Next.js and modern web applications. Review build minutes, bandwidth, runtime, sleep, and commercial-use limits before launch.",
+    "howToUseGuide": [
+      "Create an account or project in Vercel and connect a test repository or deploy a small sample.",
+      "Follow the official guide to set the framework, build command, output directory, and runtime.",
+      "Add required environment variables in the provider dashboard, not to source control.",
+      "Deploy a preview, verify routes/logs/TLS, and check quota, sleep, and billing settings."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Hobby plan has usage and eligibility limits; commercial use restrictions may apply.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner",
-    "badge": "Popular"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://vercel.com",
+    "docsUrl": "https://vercel.com/docs",
+    "badge": "Trending"
   },
   {
     "id": "render",
     "name": "Render",
+    "logoUrl": "https://cdn.simpleicons.org/render",
     "category": "Hosting & PaaS",
+    "tagline": "Deploy applications and services without managing infrastructure.",
     "description": "Cloud hosting for web services, static sites, databases, and jobs.",
-    "url": "https://render.com",
+    "howItWorks": "Render turns a source repository or deployable artifact into a hosted application. A typical workflow links source control, installs dependencies, runs a build or deploy step, then publishes an immutable deployment behind the provider's routing and TLS layer. Environment variables and runtime settings configure the app without committing secrets. Cloud hosting for web services, static sites, databases, and jobs. Review build minutes, bandwidth, runtime, sleep, and commercial-use limits before launch.",
+    "howToUseGuide": [
+      "Create an account or project in Render and connect a test repository or deploy a small sample.",
+      "Follow the official guide to set the framework, build command, output directory, and runtime.",
+      "Add required environment variables in the provider dashboard, not to source control.",
+      "Deploy a preview, verify routes/logs/TLS, and check quota, sleep, and billing settings."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Selected services have free options with resource and availability limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://render.com",
+    "docsUrl": "https://render.com/docs"
   },
   {
     "id": "netlify",
     "name": "Netlify",
+    "logoUrl": "https://cdn.simpleicons.org/netlify",
     "category": "Hosting & PaaS",
+    "tagline": "Build, preview, and deploy modern web experiences.",
     "description": "Deploy and host modern web projects with CI integrations.",
-    "url": "https://www.netlify.com",
+    "howItWorks": "Netlify turns a source repository or deployable artifact into a hosted application. A typical workflow links source control, installs dependencies, runs a build or deploy step, then publishes an immutable deployment behind the provider's routing and TLS layer. Environment variables and runtime settings configure the app without committing secrets. Deploy and host modern web projects with CI integrations. Review build minutes, bandwidth, runtime, sleep, and commercial-use limits before launch.",
+    "howToUseGuide": [
+      "Create an account or project in Netlify and connect a test repository or deploy a small sample.",
+      "Follow the official guide to set the framework, build command, output directory, and runtime.",
+      "Add required environment variables in the provider dashboard, not to source control.",
+      "Deploy a preview, verify routes/logs/TLS, and check quota, sleep, and billing settings."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has monthly usage limits and feature constraints.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://www.netlify.com",
+    "docsUrl": "https://docs.netlify.com",
+    "githubRepoUrl": "https://github.com/netlify/cli"
   },
   {
     "id": "cloudflare-pages",
     "name": "Cloudflare Pages",
+    "logoUrl": "https://cdn.simpleicons.org/cloudflare",
     "category": "Hosting & PaaS",
+    "tagline": "Global static hosting with an edge platform nearby.",
     "description": "Global static hosting with integration to Cloudflare's developer platform.",
-    "url": "https://pages.cloudflare.com",
+    "howItWorks": "Cloudflare Pages turns a source repository or deployable artifact into a hosted application. A typical workflow links source control, installs dependencies, runs a build or deploy step, then publishes an immutable deployment behind the provider's routing and TLS layer. Environment variables and runtime settings configure the app without committing secrets. Global static hosting with integration to Cloudflare's developer platform. Review build minutes, bandwidth, runtime, sleep, and commercial-use limits before launch.",
+    "howToUseGuide": [
+      "Create an account or project in Cloudflare Pages and connect a test repository or deploy a small sample.",
+      "Follow the official guide to set the framework, build command, output directory, and runtime.",
+      "Add required environment variables in the provider dashboard, not to source control.",
+      "Deploy a preview, verify routes/logs/TLS, and check quota, sleep, and billing settings."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has build limits; Functions use Workers quotas.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://pages.cloudflare.com",
+    "docsUrl": "https://developers.cloudflare.com/pages/",
+    "githubRepoUrl": "https://github.com/cloudflare/workers-sdk"
   },
   {
     "id": "fly-io",
     "name": "Fly.io",
+    "logoUrl": "https://cdn.simpleicons.org/flydotio",
     "category": "Hosting & PaaS",
+    "tagline": "Run applications close to users on global infrastructure.",
     "description": "Deploy applications close to users on a global compute platform.",
-    "url": "https://fly.io",
+    "howItWorks": "Fly.io turns a source repository or deployable artifact into a hosted application. A typical workflow links source control, installs dependencies, runs a build or deploy step, then publishes an immutable deployment behind the provider's routing and TLS layer. Environment variables and runtime settings configure the app without committing secrets. Deploy applications close to users on a global compute platform. Review build minutes, bandwidth, runtime, sleep, and commercial-use limits before launch.",
+    "howToUseGuide": [
+      "Create an account or project in Fly.io and connect a test repository or deploy a small sample.",
+      "Follow the official guide to set the framework, build command, output directory, and runtime.",
+      "Add required environment variables in the provider dashboard, not to source control.",
+      "Deploy a preview, verify routes/logs/TLS, and check quota, sleep, and billing settings."
+    ],
+    "pricingType": "Paid Tier Available",
     "freeTierLimit": "Promotional credits and free allowances may change; check current pricing.",
     "noCreditCardRequired": false,
+    "creditCardRequiredAtSignup": true,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://fly.io",
+    "docsUrl": "https://fly.io/docs"
   },
   {
     "id": "clerk",
     "name": "Clerk",
+    "logoUrl": "https://cdn.simpleicons.org/clerk",
     "category": "Auth & Security",
+    "tagline": "Prebuilt authentication and user-management flows.",
     "description": "Authentication and user management components for web apps.",
-    "url": "https://clerk.com",
+    "howItWorks": "Clerk provides identity or access-management capabilities outside the core application. The app redirects or invokes a client SDK, the provider performs the configured identity flow, and the application validates the resulting session or token before granting access. Production integrations require correct callback URLs, allowed origins, secret handling, expiration and recovery settings. Authentication and user management components for web apps.",
+    "howToUseGuide": [
+      "Create an application in Clerk and set the application type and allowed origins.",
+      "Configure callback/redirect URLs and follow the official quickstart for your framework.",
+      "Keep confidential credentials server-side and validate sessions or tokens on protected endpoints.",
+      "Test sign-in, sign-out, expiry, recovery, and denied access before production."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has monthly active user and feature limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner",
-    "badge": "Popular"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://clerk.com",
+    "docsUrl": "https://clerk.com/docs",
+    "githubRepoUrl": "https://github.com/clerk/javascript",
+    "badge": "Trending"
   },
   {
     "id": "auth0",
     "name": "Auth0",
+    "logoUrl": "https://cdn.simpleicons.org/auth0",
     "category": "Auth & Security",
+    "tagline": "Identity infrastructure for applications and APIs.",
     "description": "Identity platform with authentication and authorization features.",
-    "url": "https://auth0.com",
+    "howItWorks": "Auth0 provides identity or access-management capabilities outside the core application. The app redirects or invokes a client SDK, the provider performs the configured identity flow, and the application validates the resulting session or token before granting access. Production integrations require correct callback URLs, allowed origins, secret handling, expiration and recovery settings. Identity platform with authentication and authorization features.",
+    "howToUseGuide": [
+      "Create an application in Auth0 and set the application type and allowed origins.",
+      "Configure callback/redirect URLs and follow the official quickstart for your framework.",
+      "Keep confidential credentials server-side and validate sessions or tokens on protected endpoints.",
+      "Test sign-in, sign-out, expiry, recovery, and denied access before production."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has user and feature quotas; verify current terms.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://auth0.com",
+    "docsUrl": "https://auth0.com/docs"
   },
   {
     "id": "stytch",
     "name": "Stytch",
+    "logoUrl": "https://cdn.simpleicons.org/stytch",
     "category": "Auth & Security",
+    "tagline": "Composable authentication APIs for product teams.",
     "description": "Authentication APIs for consumer and business applications.",
-    "url": "https://stytch.com",
+    "howItWorks": "Stytch provides identity or access-management capabilities outside the core application. The app redirects or invokes a client SDK, the provider performs the configured identity flow, and the application validates the resulting session or token before granting access. Production integrations require correct callback URLs, allowed origins, secret handling, expiration and recovery settings. Authentication APIs for consumer and business applications.",
+    "howToUseGuide": [
+      "Create an application in Stytch and set the application type and allowed origins.",
+      "Configure callback/redirect URLs and follow the official quickstart for your framework.",
+      "Keep confidential credentials server-side and validate sessions or tokens on protected endpoints.",
+      "Test sign-in, sign-out, expiry, recovery, and denied access before production."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan quotas vary by product and current pricing.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://stytch.com",
+    "docsUrl": "https://stytch.com/docs"
   },
   {
     "id": "kinde",
     "name": "Kinde",
+    "logoUrl": "https://cdn.simpleicons.org/kinde",
     "category": "Auth & Security",
+    "tagline": "Authentication and access management with developer-focused tooling.",
     "description": "Authentication and access management for developers.",
-    "url": "https://kinde.com",
+    "howItWorks": "Kinde provides identity or access-management capabilities outside the core application. The app redirects or invokes a client SDK, the provider performs the configured identity flow, and the application validates the resulting session or token before granting access. Production integrations require correct callback URLs, allowed origins, secret handling, expiration and recovery settings. Authentication and access management for developers.",
+    "howToUseGuide": [
+      "Create an application in Kinde and set the application type and allowed origins.",
+      "Configure callback/redirect URLs and follow the official quickstart for your framework.",
+      "Keep confidential credentials server-side and validate sessions or tokens on protected endpoints.",
+      "Test sign-in, sign-out, expiry, recovery, and denied access before production."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan includes capped user and organization usage.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://kinde.com",
+    "docsUrl": "https://docs.kinde.com"
   },
   {
     "id": "supabase-auth",
     "name": "Supabase Auth",
+    "logoUrl": "https://cdn.simpleicons.org/supabase",
     "category": "Auth & Security",
+    "tagline": "Authentication integrated with your Supabase project.",
     "description": "Authentication service integrated with Supabase projects.",
-    "url": "https://supabase.com/auth",
+    "howItWorks": "Supabase Auth provides identity or access-management capabilities outside the core application. The app redirects or invokes a client SDK, the provider performs the configured identity flow, and the application validates the resulting session or token before granting access. Production integrations require correct callback URLs, allowed origins, secret handling, expiration and recovery settings. Authentication service integrated with Supabase projects.",
+    "howToUseGuide": [
+      "Create an application in Supabase Auth and set the application type and allowed origins.",
+      "Configure callback/redirect URLs and follow the official quickstart for your framework.",
+      "Keep confidential credentials server-side and validate sessions or tokens on protected endpoints.",
+      "Test sign-in, sign-out, expiry, recovery, and denied access before production."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Included in Supabase plan with project-level quotas and limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://supabase.com/auth",
+    "docsUrl": "https://supabase.com/docs/guides/auth",
+    "githubRepoUrl": "https://github.com/supabase/supabase"
   },
   {
     "id": "groq",
     "name": "GroqCloud",
+    "logoUrl": "https://cdn.simpleicons.org/groq",
     "category": "AI APIs",
+    "tagline": "Low-latency inference APIs for supported language models.",
     "description": "Fast inference API for supported open models.",
-    "url": "https://groq.com",
+    "howItWorks": "GroqCloud exposes model or AI-related capabilities through a hosted interface. An application sends a request over HTTPS with an API credential and model/input parameters; the provider performs inference or the requested processing and returns a structured response. Latency, context size, model availability, rate limits, and provider data-retention terms can vary. Fast inference API for supported open models. Call paid or metered APIs from a server-side route, apply budgets, and never expose private keys in browser code.",
+    "howToUseGuide": [
+      "Create a project/API key in GroqCloud and check the current model and usage policy.",
+      "Make a minimal request using the official SDK or HTTPS API from a server route.",
+      "Keep the key server-side; validate input and handle rate limits, timeouts, and provider errors.",
+      "Set spending/rate safeguards and review the provider's prompt retention and training policy."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Rate-limited developer access; models and quotas can change.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Beginner",
-    "badge": "Hot"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://groq.com",
+    "docsUrl": "https://console.groq.com/docs",
+    "badge": "Trending"
   },
   {
     "id": "together-ai",
     "name": "Together AI",
+    "logoUrl": "https://cdn.simpleicons.org/together",
     "category": "AI APIs",
+    "tagline": "Hosted inference and tooling for open models.",
     "description": "Inference and fine-tuning platform for open models.",
-    "url": "https://www.together.ai",
+    "howItWorks": "Together AI exposes model or AI-related capabilities through a hosted interface. An application sends a request over HTTPS with an API credential and model/input parameters; the provider performs inference or the requested processing and returns a structured response. Latency, context size, model availability, rate limits, and provider data-retention terms can vary. Inference and fine-tuning platform for open models. Call paid or metered APIs from a server-side route, apply budgets, and never expose private keys in browser code.",
+    "howToUseGuide": [
+      "Create a project/API key in Together AI and check the current model and usage policy.",
+      "Make a minimal request using the official SDK or HTTPS API from a server route.",
+      "Keep the key server-side; validate input and handle rate limits, timeouts, and provider errors.",
+      "Set spending/rate safeguards and review the provider's prompt retention and training policy."
+    ],
+    "pricingType": "Paid Tier Available",
     "freeTierLimit": "Promotional credits or trial terms may apply; check current pricing.",
     "noCreditCardRequired": false,
+    "creditCardRequiredAtSignup": true,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://www.together.ai",
+    "docsUrl": "https://docs.together.ai"
   },
   {
     "id": "huggingface",
     "name": "Hugging Face",
+    "logoUrl": "https://cdn.simpleicons.org/huggingface",
     "category": "AI APIs",
+    "tagline": "Explore models, datasets, and the open ML ecosystem.",
     "description": "Model hub, datasets, and hosted inference tools.",
-    "url": "https://huggingface.co",
+    "howItWorks": "Hugging Face exposes model or AI-related capabilities through a hosted interface. An application sends a request over HTTPS with an API credential and model/input parameters; the provider performs inference or the requested processing and returns a structured response. Latency, context size, model availability, rate limits, and provider data-retention terms can vary. Model hub, datasets, and hosted inference tools. Call paid or metered APIs from a server-side route, apply budgets, and never expose private keys in browser code.",
+    "howToUseGuide": [
+      "Create a project/API key in Hugging Face and check the current model and usage policy.",
+      "Make a minimal request using the official SDK or HTTPS API from a server route.",
+      "Keep the key server-side; validate input and handle rate limits, timeouts, and provider errors.",
+      "Set spending/rate safeguards and review the provider's prompt retention and training policy."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free Hub features and inference quotas vary by product.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner",
-    "badge": "Popular"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://huggingface.co",
+    "docsUrl": "https://huggingface.co/docs",
+    "githubRepoUrl": "https://github.com/huggingface/transformers",
+    "badge": "Trending"
   },
   {
     "id": "openrouter",
     "name": "OpenRouter",
+    "logoUrl": "https://cdn.simpleicons.org/openrouter",
     "category": "AI APIs",
+    "tagline": "One API interface across multiple model providers.",
     "description": "Unified API for multiple model providers.",
-    "url": "https://openrouter.ai",
+    "howItWorks": "OpenRouter exposes model or AI-related capabilities through a hosted interface. An application sends a request over HTTPS with an API credential and model/input parameters; the provider performs inference or the requested processing and returns a structured response. Latency, context size, model availability, rate limits, and provider data-retention terms can vary. Unified API for multiple model providers. Call paid or metered APIs from a server-side route, apply budgets, and never expose private keys in browser code.",
+    "howToUseGuide": [
+      "Create a project/API key in OpenRouter and check the current model and usage policy.",
+      "Make a minimal request using the official SDK or HTTPS API from a server route.",
+      "Keep the key server-side; validate input and handle rate limits, timeouts, and provider errors.",
+      "Set spending/rate safeguards and review the provider's prompt retention and training policy."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Some models may be free with rate limits; paid usage requires credits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://openrouter.ai",
+    "docsUrl": "https://openrouter.ai/docs"
   },
   {
     "id": "cohere",
     "name": "Cohere",
+    "logoUrl": "https://cdn.simpleicons.org/cohere",
     "category": "AI APIs",
+    "tagline": "Language-model APIs for generation, embeddings, and retrieval.",
     "description": "Language model APIs for retrieval, embeddings, and generation.",
-    "url": "https://cohere.com",
+    "howItWorks": "Cohere exposes model or AI-related capabilities through a hosted interface. An application sends a request over HTTPS with an API credential and model/input parameters; the provider performs inference or the requested processing and returns a structured response. Latency, context size, model availability, rate limits, and provider data-retention terms can vary. Language model APIs for retrieval, embeddings, and generation. Call paid or metered APIs from a server-side route, apply budgets, and never expose private keys in browser code.",
+    "howToUseGuide": [
+      "Create a project/API key in Cohere and check the current model and usage policy.",
+      "Make a minimal request using the official SDK or HTTPS API from a server route.",
+      "Keep the key server-side; validate input and handle rate limits, timeouts, and provider errors.",
+      "Set spending/rate safeguards and review the provider's prompt retention and training policy."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Trial/developer quotas and production restrictions may apply.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://cohere.com",
+    "docsUrl": "https://docs.cohere.com"
   },
   {
     "id": "uploadthing",
     "name": "UploadThing",
+    "logoUrl": "https://cdn.simpleicons.org/uploadthing",
     "category": "Storage & CDN",
+    "tagline": "Type-safe file upload flows for web apps.",
     "description": "File uploads and storage workflows for TypeScript applications.",
-    "url": "https://uploadthing.com",
+    "howItWorks": "UploadThing handles file or media storage, transformation, and/or delivery. An application uploads or references an object, the service stores it under a bucket or asset identifier, and configured access controls and delivery endpoints govern retrieval. CDN caching and transformations can reduce delivery work, while bandwidth, operations, egress, and object-size limits affect cost. File uploads and storage workflows for TypeScript applications. Set access rules deliberately and avoid public access for private user files.",
+    "howToUseGuide": [
+      "Create a project, bucket, or media account in UploadThing.",
+      "Follow the official quickstart to upload one sample object and retrieve its URL or identifier.",
+      "Choose private/public access intentionally; use signed URLs or server-side authorization for private assets.",
+      "Test caching, file-size constraints, retention/deletion, bandwidth, and egress limits."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has file, storage, or bandwidth limits; check current pricing.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://uploadthing.com",
+    "docsUrl": "https://docs.uploadthing.com"
   },
   {
     "id": "cloudinary",
     "name": "Cloudinary",
+    "logoUrl": "https://cdn.simpleicons.org/cloudinary",
     "category": "Storage & CDN",
+    "tagline": "Transform, optimize, and deliver media through APIs.",
     "description": "Media storage, transformations, optimization, and delivery.",
-    "url": "https://cloudinary.com",
+    "howItWorks": "Cloudinary handles file or media storage, transformation, and/or delivery. An application uploads or references an object, the service stores it under a bucket or asset identifier, and configured access controls and delivery endpoints govern retrieval. CDN caching and transformations can reduce delivery work, while bandwidth, operations, egress, and object-size limits affect cost. Media storage, transformations, optimization, and delivery. Set access rules deliberately and avoid public access for private user files.",
+    "howToUseGuide": [
+      "Create a project, bucket, or media account in Cloudinary.",
+      "Follow the official quickstart to upload one sample object and retrieve its URL or identifier.",
+      "Choose private/public access intentionally; use signed URLs or server-side authorization for private assets.",
+      "Test caching, file-size constraints, retention/deletion, bandwidth, and egress limits."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan uses monthly credits and product-specific limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://cloudinary.com",
+    "docsUrl": "https://cloudinary.com/documentation"
   },
   {
     "id": "backblaze-b2",
     "name": "Backblaze B2",
+    "logoUrl": "https://cdn.simpleicons.org/backblaze",
     "category": "Storage & CDN",
+    "tagline": "S3-compatible object storage with predictable controls.",
     "description": "Object storage compatible with common S3 workflows.",
-    "url": "https://www.backblaze.com/cloud-storage",
+    "howItWorks": "Backblaze B2 handles file or media storage, transformation, and/or delivery. An application uploads or references an object, the service stores it under a bucket or asset identifier, and configured access controls and delivery endpoints govern retrieval. CDN caching and transformations can reduce delivery work, while bandwidth, operations, egress, and object-size limits affect cost. Object storage compatible with common S3 workflows. Set access rules deliberately and avoid public access for private user files.",
+    "howToUseGuide": [
+      "Create a project, bucket, or media account in Backblaze B2.",
+      "Follow the official quickstart to upload one sample object and retrieve its URL or identifier.",
+      "Choose private/public access intentionally; use signed URLs or server-side authorization for private assets.",
+      "Test caching, file-size constraints, retention/deletion, bandwidth, and egress limits."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free storage allowance and transaction/download limits apply.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://www.backblaze.com/cloud-storage",
+    "docsUrl": "https://www.backblaze.com/docs/cloud-storage"
   },
   {
     "id": "aws-s3",
     "name": "AWS S3",
+    "logoUrl": "https://cdn.simpleicons.org/amazons3",
     "category": "Storage & CDN",
+    "tagline": "Object storage with a broad cloud ecosystem.",
     "description": "Object storage service with a broad ecosystem of integrations.",
-    "url": "https://aws.amazon.com/s3",
+    "howItWorks": "AWS S3 handles file or media storage, transformation, and/or delivery. An application uploads or references an object, the service stores it under a bucket or asset identifier, and configured access controls and delivery endpoints govern retrieval. CDN caching and transformations can reduce delivery work, while bandwidth, operations, egress, and object-size limits affect cost. Object storage service with a broad ecosystem of integrations. Set access rules deliberately and avoid public access for private user files.",
+    "howToUseGuide": [
+      "Create a project, bucket, or media account in AWS S3.",
+      "Follow the official quickstart to upload one sample object and retrieve its URL or identifier.",
+      "Choose private/public access intentionally; use signed URLs or server-side authorization for private assets.",
+      "Test caching, file-size constraints, retention/deletion, bandwidth, and egress limits."
+    ],
+    "pricingType": "Paid Tier Available",
     "freeTierLimit": "Free Tier eligibility, duration, and usage quotas depend on account and offer.",
     "noCreditCardRequired": false,
+    "creditCardRequiredAtSignup": true,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Pro"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Professional",
+    "officialWebsiteUrl": "https://aws.amazon.com/s3",
+    "docsUrl": "https://docs.aws.amazon.com/s3/"
   },
   {
     "id": "github-actions",
     "name": "GitHub Actions",
+    "logoUrl": "https://cdn.simpleicons.org/githubactions",
     "category": "Dev Tools",
+    "tagline": "Automate tests, builds, and releases beside your code.",
     "description": "CI/CD automation integrated with GitHub repositories.",
-    "url": "https://github.com/features/actions",
+    "howItWorks": "GitHub Actions supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. CI/CD automation integrated with GitHub repositories.",
+    "howToUseGuide": [
+      "Create a workspace or project in GitHub Actions and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Included minutes and storage depend on repository visibility and plan.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate",
-    "badge": "Popular"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://github.com/features/actions",
+    "docsUrl": "https://docs.github.com/actions",
+    "githubRepoUrl": "https://github.com/actions/runner",
+    "badge": "Trending"
   },
   {
     "id": "tailwind-css",
     "name": "Tailwind CSS",
+    "logoUrl": "https://cdn.simpleicons.org/tailwindcss",
     "category": "Dev Tools",
+    "tagline": "A utility-first CSS framework for custom interfaces.",
     "description": "Utility-first CSS framework for rapidly building custom interfaces.",
-    "url": "https://tailwindcss.com",
+    "howItWorks": "Tailwind CSS supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Utility-first CSS framework for rapidly building custom interfaces.",
+    "howToUseGuide": [
+      "Create a workspace or project in Tailwind CSS and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Open Source",
     "freeTierLimit": "Open-source framework; core use is free.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A+",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Open Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://tailwindcss.com",
+    "docsUrl": "https://tailwindcss.com/docs",
+    "githubRepoUrl": "https://github.com/tailwindlabs/tailwindcss"
   },
   {
     "id": "shadcn-ui",
     "name": "shadcn/ui",
+    "logoUrl": "https://cdn.simpleicons.org/shadcnui",
     "category": "Dev Tools",
+    "tagline": "Accessible UI building blocks you own in your codebase.",
     "description": "Copy-and-own accessible UI components for React applications.",
-    "url": "https://ui.shadcn.com",
+    "howItWorks": "shadcn/ui supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Copy-and-own accessible UI components for React applications.",
+    "howToUseGuide": [
+      "Create a workspace or project in shadcn/ui and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Open Source",
     "freeTierLimit": "Open-source components; core use is free.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Open Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://ui.shadcn.com",
+    "docsUrl": "https://ui.shadcn.com/docs",
+    "githubRepoUrl": "https://github.com/shadcn-ui/ui"
   },
   {
     "id": "radix-ui",
     "name": "Radix UI",
+    "logoUrl": "https://cdn.simpleicons.org/radixui",
     "category": "Dev Tools",
+    "tagline": "Accessible React primitives without imposed visual styling.",
     "description": "Accessible, unstyled React primitives for design systems.",
-    "url": "https://www.radix-ui.com",
+    "howItWorks": "Radix UI supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Accessible, unstyled React primitives for design systems.",
+    "howToUseGuide": [
+      "Create a workspace or project in Radix UI and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Open Source",
     "freeTierLimit": "Open-source component primitives; core use is free.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Open Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://www.radix-ui.com",
+    "docsUrl": "https://www.radix-ui.com/primitives/docs/overview/introduction",
+    "githubRepoUrl": "https://github.com/radix-ui/primitives"
   },
   {
     "id": "aceternity-ui",
     "name": "Aceternity UI",
+    "logoUrl": "https://cdn.simpleicons.org/aceternityui",
     "category": "Dev Tools",
+    "tagline": "Motion-rich React components for expressive interfaces.",
     "description": "Animated UI components and effects for modern React sites.",
-    "url": "https://ui.aceternity.com",
+    "howItWorks": "Aceternity UI supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Animated UI components and effects for modern React sites.",
+    "howToUseGuide": [
+      "Create a workspace or project in Aceternity UI and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Community components and paid products may have different terms.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://ui.aceternity.com",
+    "docsUrl": "https://ui.aceternity.com",
+    "githubRepoUrl": "https://github.com/aceternity/aceternity-ui"
   },
   {
     "id": "posthog",
     "name": "PostHog",
-    "category": "Dev Tools",
+    "logoUrl": "https://cdn.simpleicons.org/posthog",
+    "category": "Analytics",
+    "tagline": "Product analytics, feature flags, and experimentation.",
     "description": "Product analytics, feature flags, session replay, and experimentation.",
-    "url": "https://posthog.com",
+    "howItWorks": "PostHog collects application events, errors, or performance signals through an SDK, API, or source integration, then processes them into searchable events, dashboards, alerts, or reports. Instrumentation quality, sampling, retention, and privacy controls determine both insight and cost. Product analytics, feature flags, session replay, and experimentation. Configure redaction and avoid collecting secrets, authentication tokens, or unnecessary personal data.",
+    "howToUseGuide": [
+      "Create a project in PostHog and read its privacy/instrumentation guide.",
+      "Install the official SDK or connect the relevant data source for a test environment.",
+      "Track a small set of useful events and exclude secrets or unnecessary personal information.",
+      "Validate events and alerts, set retention/access controls, and check the current event quota."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free usage tiers vary by product and monthly event volume.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://posthog.com",
+    "docsUrl": "https://posthog.com/docs",
+    "githubRepoUrl": "https://github.com/PostHog/posthog"
   },
   {
     "id": "sentry",
     "name": "Sentry",
-    "category": "Dev Tools",
+    "logoUrl": "https://cdn.simpleicons.org/sentry",
+    "category": "Analytics",
+    "tagline": "Find errors and performance regressions with context.",
     "description": "Application error monitoring and performance tracing.",
-    "url": "https://sentry.io",
+    "howItWorks": "Sentry collects application events, errors, or performance signals through an SDK, API, or source integration, then processes them into searchable events, dashboards, alerts, or reports. Instrumentation quality, sampling, retention, and privacy controls determine both insight and cost. Application error monitoring and performance tracing. Configure redaction and avoid collecting secrets, authentication tokens, or unnecessary personal data.",
+    "howToUseGuide": [
+      "Create a project in Sentry and read its privacy/instrumentation guide.",
+      "Install the official SDK or connect the relevant data source for a test environment.",
+      "Track a small set of useful events and exclude secrets or unnecessary personal information.",
+      "Validate events and alerts, set retention/access controls, and check the current event quota."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Developer plan has event and retention limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://sentry.io",
+    "docsUrl": "https://docs.sentry.io",
+    "githubRepoUrl": "https://github.com/getsentry/sentry"
   },
   {
     "id": "logrocket",
     "name": "LogRocket",
-    "category": "Dev Tools",
+    "logoUrl": "https://cdn.simpleicons.org/logrocket",
+    "category": "Analytics",
+    "tagline": "Understand user sessions and frontend issues.",
     "description": "Frontend session replay and application monitoring.",
-    "url": "https://logrocket.com",
+    "howItWorks": "LogRocket collects application events, errors, or performance signals through an SDK, API, or source integration, then processes them into searchable events, dashboards, alerts, or reports. Instrumentation quality, sampling, retention, and privacy controls determine both insight and cost. Frontend session replay and application monitoring. Configure redaction and avoid collecting secrets, authentication tokens, or unnecessary personal data.",
+    "howToUseGuide": [
+      "Create a project in LogRocket and read its privacy/instrumentation guide.",
+      "Install the official SDK or connect the relevant data source for a test environment.",
+      "Track a small set of useful events and exclude secrets or unnecessary personal information.",
+      "Validate events and alerts, set retention/access controls, and check the current event quota."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has session and feature limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://logrocket.com",
+    "docsUrl": "https://docs.logrocket.com"
   },
   {
     "id": "axiom",
     "name": "Axiom",
-    "category": "Dev Tools",
+    "logoUrl": "https://cdn.simpleicons.org/axiom",
+    "category": "Analytics",
+    "tagline": "Search logs and events for fast operational insight.",
     "description": "Logs, observability, and event data exploration.",
-    "url": "https://axiom.co",
+    "howItWorks": "Axiom collects application events, errors, or performance signals through an SDK, API, or source integration, then processes them into searchable events, dashboards, alerts, or reports. Instrumentation quality, sampling, retention, and privacy controls determine both insight and cost. Logs, observability, and event data exploration. Configure redaction and avoid collecting secrets, authentication tokens, or unnecessary personal data.",
+    "howToUseGuide": [
+      "Create a project in Axiom and read its privacy/instrumentation guide.",
+      "Install the official SDK or connect the relevant data source for a test environment.",
+      "Track a small set of useful events and exclude secrets or unnecessary personal information.",
+      "Validate events and alerts, set retention/access controls, and check the current event quota."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free usage limits depend on ingest and retention.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://axiom.co",
+    "docsUrl": "https://axiom.co/docs"
   },
   {
     "id": "resend",
     "name": "Resend",
+    "logoUrl": "https://cdn.simpleicons.org/resend",
     "category": "Dev Tools",
+    "tagline": "A developer-friendly API for transactional email.",
     "description": "Email API designed for developers.",
-    "url": "https://resend.com",
+    "howItWorks": "Resend supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Email API designed for developers.",
+    "howToUseGuide": [
+      "Create a workspace or project in Resend and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has monthly sending and daily limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://resend.com",
+    "docsUrl": "https://resend.com/docs",
+    "githubRepoUrl": "https://github.com/resend/resend-node"
   },
   {
     "id": "sendgrid",
     "name": "SendGrid",
+    "logoUrl": "https://cdn.simpleicons.org/sendgrid",
     "category": "Dev Tools",
+    "tagline": "Email delivery APIs and deliverability tooling.",
     "description": "Email delivery APIs and deliverability tooling.",
-    "url": "https://sendgrid.com",
+    "howItWorks": "SendGrid supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Email delivery APIs and deliverability tooling.",
+    "howToUseGuide": [
+      "Create a workspace or project in SendGrid and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Paid Tier Available",
     "freeTierLimit": "Trial and free-tier availability can change; verify current offer.",
     "noCreditCardRequired": false,
+    "creditCardRequiredAtSignup": true,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://sendgrid.com",
+    "docsUrl": "https://www.twilio.com/docs/sendgrid"
   },
   {
     "id": "postmark",
     "name": "Postmark",
+    "logoUrl": "https://cdn.simpleicons.org/postmark",
     "category": "Dev Tools",
+    "tagline": "Transactional email with delivery-focused workflows.",
     "description": "Transactional email delivery and message activity tracking.",
-    "url": "https://postmarkapp.com",
+    "howItWorks": "Postmark supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Transactional email delivery and message activity tracking.",
+    "howToUseGuide": [
+      "Create a workspace or project in Postmark and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Paid Tier Available",
     "freeTierLimit": "Trial/testing allowances differ from paid production sending.",
     "noCreditCardRequired": false,
+    "creditCardRequiredAtSignup": true,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://postmarkapp.com",
+    "docsUrl": "https://postmarkapp.com/developer"
   },
   {
     "id": "plunk",
     "name": "Plunk",
+    "logoUrl": "https://cdn.simpleicons.org/plunk",
     "category": "Dev Tools",
+    "tagline": "Event-driven email APIs with an open-source-friendly approach.",
     "description": "Open-source-friendly email API and event-driven messaging.",
-    "url": "https://useplunk.com",
+    "howItWorks": "Plunk supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Open-source-friendly email API and event-driven messaging.",
+    "howToUseGuide": [
+      "Create a workspace or project in Plunk and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Paid Tier Available",
     "freeTierLimit": "Plan limits and availability can change; check provider pricing.",
     "noCreditCardRequired": false,
+    "creditCardRequiredAtSignup": true,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://useplunk.com",
+    "docsUrl": "https://docs.useplunk.com"
   },
   {
     "id": "strapi",
     "name": "Strapi",
-    "category": "Dev Tools",
+    "logoUrl": "https://cdn.simpleicons.org/strapi",
+    "category": "CMS",
+    "tagline": "A customizable, open-source headless CMS.",
     "description": "Open-source headless CMS for Node.js.",
-    "url": "https://strapi.io",
+    "howItWorks": "Strapi separates content management from the application presentation layer. Editors create structured content in a management interface; the CMS stores and validates it, then exposes it through an API or SDK that the frontend queries. Content models, roles, draft/publish workflow, preview, and caching control how content reaches end users. Open-source headless CMS for Node.js.",
+    "howToUseGuide": [
+      "Create a project or install the self-hosted core of Strapi, depending on the deployment you choose.",
+      "Define a small content type, field list, and editor roles.",
+      "Create sample content and fetch it through the documented API or SDK.",
+      "Configure draft/publish permissions, preview, backups, and API access before using live content."
+    ],
+    "pricingType": "Open Source",
     "freeTierLimit": "Self-hosted open-source core can be run without a vendor subscription; hosting costs may apply.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Open Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://strapi.io",
+    "docsUrl": "https://docs.strapi.io",
+    "githubRepoUrl": "https://github.com/strapi/strapi"
   },
   {
     "id": "sanity",
     "name": "Sanity",
-    "category": "Dev Tools",
+    "logoUrl": "https://cdn.simpleicons.org/sanity",
+    "category": "CMS",
+    "tagline": "Structured content with a flexible Studio and hosted APIs.",
     "description": "Structured content platform with a hosted content lake and studio.",
-    "url": "https://www.sanity.io",
+    "howItWorks": "Sanity separates content management from the application presentation layer. Editors create structured content in a management interface; the CMS stores and validates it, then exposes it through an API or SDK that the frontend queries. Content models, roles, draft/publish workflow, preview, and caching control how content reaches end users. Structured content platform with a hosted content lake and studio.",
+    "howToUseGuide": [
+      "Create a project or install the self-hosted core of Sanity, depending on the deployment you choose.",
+      "Define a small content type, field list, and editor roles.",
+      "Create sample content and fetch it through the documented API or SDK.",
+      "Configure draft/publish permissions, preview, backups, and API access before using live content."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan has usage and collaboration limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://www.sanity.io",
+    "docsUrl": "https://www.sanity.io/docs"
   },
   {
     "id": "directus",
     "name": "Directus",
-    "category": "Dev Tools",
+    "logoUrl": "https://cdn.simpleicons.org/directus",
+    "category": "CMS",
+    "tagline": "A data platform that layers APIs over SQL.",
     "description": "Data platform and headless CMS over SQL databases.",
-    "url": "https://directus.io",
+    "howItWorks": "Directus separates content management from the application presentation layer. Editors create structured content in a management interface; the CMS stores and validates it, then exposes it through an API or SDK that the frontend queries. Content models, roles, draft/publish workflow, preview, and caching control how content reaches end users. Data platform and headless CMS over SQL databases.",
+    "howToUseGuide": [
+      "Create a project or install the self-hosted core of Directus, depending on the deployment you choose.",
+      "Define a small content type, field list, and editor roles.",
+      "Create sample content and fetch it through the documented API or SDK.",
+      "Configure draft/publish permissions, preview, backups, and API access before using live content."
+    ],
+    "pricingType": "Open Source",
     "freeTierLimit": "Self-hosting is possible; cloud pricing and licensing terms vary by use.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Open Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://directus.io",
+    "docsUrl": "https://docs.directus.io",
+    "githubRepoUrl": "https://github.com/directus/directus"
   },
   {
     "id": "payload-cms",
     "name": "Payload",
-    "category": "Dev Tools",
+    "logoUrl": "https://cdn.simpleicons.org/payload",
+    "category": "CMS",
+    "tagline": "A TypeScript-native CMS and app framework.",
     "description": "TypeScript-native headless CMS and application framework.",
-    "url": "https://payloadcms.com",
+    "howItWorks": "Payload separates content management from the application presentation layer. Editors create structured content in a management interface; the CMS stores and validates it, then exposes it through an API or SDK that the frontend queries. Content models, roles, draft/publish workflow, preview, and caching control how content reaches end users. TypeScript-native headless CMS and application framework.",
+    "howToUseGuide": [
+      "Create a project or install the self-hosted core of Payload, depending on the deployment you choose.",
+      "Define a small content type, field list, and editor roles.",
+      "Create sample content and fetch it through the documented API or SDK.",
+      "Configure draft/publish permissions, preview, backups, and API access before using live content."
+    ],
+    "pricingType": "Open Source",
     "freeTierLimit": "Open-source core is available; infrastructure and hosted services may cost money.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Intermediate"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Open Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Intermediate",
+    "officialWebsiteUrl": "https://payloadcms.com",
+    "docsUrl": "https://payloadcms.com/docs",
+    "githubRepoUrl": "https://github.com/payloadcms/payload"
   },
   {
     "id": "postman",
     "name": "Postman",
+    "logoUrl": "https://cdn.simpleicons.org/postman",
     "category": "Dev Tools",
+    "tagline": "Design, test, and document HTTP APIs.",
     "description": "API development, testing, collaboration, and documentation platform.",
-    "url": "https://www.postman.com",
+    "howItWorks": "Postman supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. API development, testing, collaboration, and documentation platform.",
+    "howToUseGuide": [
+      "Create a workspace or project in Postman and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Free plan includes limits on collaboration and advanced features.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://www.postman.com",
+    "docsUrl": "https://learning.postman.com/docs"
   },
   {
     "id": "hoppscotch",
     "name": "Hoppscotch",
+    "logoUrl": "https://cdn.simpleicons.org/hoppscotch",
     "category": "Dev Tools",
+    "tagline": "A lightweight, open-source API development environment.",
     "description": "Open-source API client for testing HTTP requests.",
-    "url": "https://hoppscotch.io",
+    "howItWorks": "Hoppscotch supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Open-source API client for testing HTTP requests.",
+    "howToUseGuide": [
+      "Create a workspace or project in Hoppscotch and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Open Source",
     "freeTierLimit": "Open-source core is free; hosted features may have plan limits.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "A+",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Open Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://hoppscotch.io",
+    "docsUrl": "https://docs.hoppscotch.io",
+    "githubRepoUrl": "https://github.com/hoppscotch/hoppscotch"
   },
   {
     "id": "raycast",
     "name": "Raycast",
+    "logoUrl": "https://cdn.simpleicons.org/raycast",
     "category": "Dev Tools",
+    "tagline": "A launcher for shortcuts, extensions, and everyday workflows.",
     "description": "Productivity launcher and extensible workflow tool.",
-    "url": "https://raycast.com",
+    "howItWorks": "Raycast supports the developer workflow around source code, APIs, communications, or productivity. You configure a workspace or project, connect the tool through its UI, CLI, SDK, or repository integration, and then use it in a repeatable development process. Integrations, permissions, CI secrets, quotas, and collaboration limits shape the workflow. Productivity launcher and extensible workflow tool.",
+    "howToUseGuide": [
+      "Create a workspace or project in Raycast and install its official CLI, SDK, or integration if needed.",
+      "Start with one low-risk repository, request, message, or workflow.",
+      "Configure permissions and any required secrets using the tool's official settings.",
+      "Document the workflow and review usage, data-sharing, and team-plan limits."
+    ],
+    "pricingType": "Freemium",
     "freeTierLimit": "Core app is free; selected AI and team features may be paid.",
     "noCreditCardRequired": true,
+    "creditCardRequiredAtSignup": false,
+    "userRating": 0,
+    "totalReviewsCount": 0,
     "safetyRank": "B+",
-    "difficulty": "Beginner"
+    "securityDetails": {
+      "isOpaqueOrOpenSource": "Closed Source",
+      "certifications": [],
+      "dataPrivacyScore": "Not independently scored. Review the current privacy policy, data retention, processing terms, and regional controls."
+    },
+    "targetAudience": "Beginner",
+    "officialWebsiteUrl": "https://raycast.com",
+    "docsUrl": "https://developers.raycast.com"
   }
 ]
