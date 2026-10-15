@@ -1,0 +1,25 @@
+name: Verify catalog and production build
+
+on:
+  pull_request:
+    branches: [main, feat/multipage-motion-refresh]
+  push:
+    branches: [main, feat/multipage-motion-refresh, feat/500-tools-motion-fixes]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Validate catalog schema
+        run: npm run validate:data
+      - name: Build all routes
+        run: npm run build

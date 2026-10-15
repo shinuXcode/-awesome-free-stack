@@ -23,7 +23,7 @@ type Props = {
   categories: Category[];
 };
 
-const pricingOptions: PricingType[] = ["100% Free", "Open Source", "Freemium", "Paid Tier Available"];
+const pricingOptions: PricingType[] = ["100% Free", "Open Source", "Freemium", "Paid Tier Available", "Needs Verification"];
 
 export default function FilterBar(props: Props) {
   const chipsRef = useRef<HTMLDivElement>(null);

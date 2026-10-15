@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, BarChart3, Bot, Boxes, Cloud, Database, Fingerprint, Gauge, Layers3 } from "lucide-react";
 import { categories, type Category, type DetailedDevTool } from "../lib/types";
 
-const details: Record<Category, { subtitle: string; note: string; icon: typeof Database; number: string }> = {
+const details: Partial<Record<Category, { subtitle: string; note: string; icon: typeof Database; number: string }>> = {
   "Databases & BaaS": { subtitle: "Data, auth, and backend building blocks.", note: "Build the backbone of your product.", icon: Database, number: "01" },
   "Hosting & PaaS": { subtitle: "Deploy sites and apps without owning servers.", note: "From preview builds to production.", icon: Cloud, number: "02" },
   "Auth & Security": { subtitle: "Identity, sessions, and access workflows.", note: "Keep users and application routes protected.", icon: Fingerprint, number: "03" },
@@ -21,7 +21,7 @@ export default function CategoryGrid({ tools }: { tools: DetailedDevTool[] }) {
   return (
     <div className="category-page-grid">
       {categories.map((category, index) => {
-        const item = details[category], Icon = item.icon, count = tools.filter((tool) => tool.category === category).length;
+        const item = details[category] ?? { subtitle: `Explore ${category.toLowerCase()} tools and resources.`, note: "Review license, pricing, and maintenance before adopting.", icon: Layers3, number: String(index + 1).padStart(2, "0") }, Icon = item.icon, count = tools.filter((tool) => tool.category === category).length;
         return (
           <motion.div key={category} id={slug(category)} className="category-page-card-wrap" initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.18 }} transition={{ delay: index * 0.035, duration: 0.3 }}>
             <Link className="category-page-card" href={`/tools?category=${encodeURIComponent(category)}`}>

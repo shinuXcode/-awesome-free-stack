@@ -6,13 +6,49 @@ const path = require("node:path");
 const file = path.resolve(process.argv[2] || "data/tools.json");
 
 const categories = new Set([
-  "Databases & BaaS", "Hosting & PaaS", "Auth & Security", "AI APIs",
-  "Storage & CDN", "Dev Tools", "CMS", "Analytics",
+  "Databases & BaaS",
+  "Hosting & PaaS",
+  "Auth & Security",
+  "AI APIs",
+  "Storage & CDN",
+  "Dev Tools",
+  "CMS",
+  "Analytics",
+  "Frontend & Web Dev",
+  "Backend & APIs",
+  "Programming Languages",
+  "Mobile & Desktop Apps",
+  "AI & Machine Learning",
+  "Data Science & Analytics",
+  "Design & UI/UX",
+  "Video Editing & Motion",
+  "3D & VFX",
+  "Audio & Music",
+  "Game Development",
+  "Cybersecurity & Ethical Hacking",
+  "Reverse Engineering",
+  "Operating Systems",
+  "Office & Productivity",
+  "Open Source Apps",
+  "Creator & Social Media",
+  "Communities & Forums",
+  "Freelancing & Client Management",
+  "Project & Idea Management",
+  "DevOps & Cloud",
+  "Testing & QA",
+  "Documentation & Knowledge",
+  "Privacy & Utilities",
+  "Collaboration & Communication",
+  "Education & Learning",
+  "Automation & No-Code",
+  "Blockchain & Web3",
+  "Hardware & IoT",
+  "Accessibility",
 ]);
-const pricingTypes = new Set(["100% Free", "Freemium", "Open Source", "Paid Tier Available"]);
+const pricingTypes = new Set(["100% Free", "Freemium", "Open Source", "Paid Tier Available", "Needs Verification"]);
 const safetyRanks = new Set(["A+", "A", "B+"]);
 const audiences = new Set(["Beginner", "Intermediate", "Professional"]);
-const sourceTypes = new Set(["Open Source", "Closed Source"]);
+const sourceTypes = new Set(["Open Source", "Closed Source", "License Unverified"]);
 const badges = new Set(["Top Rated", "Trending", "Community Favorite"]);
 const requiredStringFields = [
   "id", "name", "logoUrl", "tagline", "description", "howItWorks",
