@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, BarChart3, Bot, Boxes, Cloud, Database, Fingerprint, Gauge, Layers3 } from "lucide-react";
-import { categories, type Category, type DetailedDevTool } from "../lib/types";
+import { categories, type Category } from "../lib/types";
 
 const details: Partial<Record<Category, { subtitle: string; note: string; icon: typeof Database; number: string }>> = {
   "Databases & BaaS": { subtitle: "Data, auth, and backend building blocks.", note: "Build the backbone of your product.", icon: Database, number: "01" },
