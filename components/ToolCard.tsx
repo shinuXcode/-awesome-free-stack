@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Check, ExternalLink, Github, ShieldCheck, Star } from "lucide-react";
+import { ArrowUpRight, Check, ExternalLink, Github, Share2, ShieldCheck, Star } from "lucide-react";
 import type { DetailedDevTool } from "../lib/types";
 
 type Props = { tool: DetailedDevTool; index: number; onDetails: (tool: DetailedDevTool) => void };
@@ -10,6 +10,7 @@ type Props = { tool: DetailedDevTool; index: number; onDetails: (tool: DetailedD
 export default function ToolCard({ tool, index, onDetails }: Props) {
   const [logoFailed, setLogoFailed] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [shareToast, setShareToast] = useState("");
 
   async function copyUrl() {
     try {
@@ -19,6 +20,36 @@ export default function ToolCard({ tool, index, onDetails }: Props) {
     } catch {
       setCopied(false);
     }
+  }
+
+  async function shareTool() {
+    const profileUrl = new URL("/tools/" + encodeURIComponent(tool.id), window.location.origin).toString();
+    const shareText = [
+      tool.tagline,
+      "Category: " + tool.category,
+      "Pricing: " + tool.pricingType,
+      tool.description,
+      "Official website: " + tool.officialWebsiteUrl,
+      "Documentation: " + tool.docsUrl,
+      tool.githubRepoUrl ? "Source repository: " + tool.githubRepoUrl : "",
+    ].filter(Boolean).join("\n");
+    try {
+      if (typeof navigator.share === "function") {
+        await navigator.share({ title: tool.name + " — Zero-Cost Dev Stack", text: shareText, url: profileUrl });
+        return;
+      }
+      await navigator.clipboard.writeText(shareText + "\nDirectory profile: " + profileUrl);
+      setShareToast("Share details copied");
+    } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") return;
+      try {
+        await navigator.clipboard.writeText(shareText + "\nDirectory profile: " + profileUrl);
+        setShareToast("Share details copied");
+      } catch {
+        setShareToast("Sharing unavailable in this browser");
+      }
+    }
+    window.setTimeout(() => setShareToast(""), 1800);
   }
 
   const stars = tool.githubStars ? tool.githubStars : null;
@@ -67,11 +98,13 @@ export default function ToolCard({ tool, index, onDetails }: Props) {
         <span className="difficulty">{tool.targetAudience}</span>
       </div>
       <div className="card-actions">
-        <button onClick={() => onDetails(tool)} className="button-secondary">Explore details <ArrowUpRight size={13} /></button>
-        <a className="card-visit" href={tool.officialWebsiteUrl} target="_blank" rel="noreferrer" aria-label={`Visit ${tool.name} official website`}><ExternalLink size={16} /></a>
-        <button className="card-copy" onClick={copyUrl} aria-label={copied ? "URL copied" : "Copy website URL"}>{copied ? <Check size={15} /> : <span>Copy</span>}</button>
+        <button type="button" onClick={() => onDetails(tool)} className="button-secondary">Explore details <ArrowUpRight size={13} /></button>
+        <a className="card-visit" href={tool.officialWebsiteUrl} target="_blank" rel="noreferrer" aria-label={"Visit " + tool.name + " official website"}><ExternalLink size={16} /></a>
+        <button type="button" className="card-copy" onClick={copyUrl} aria-label={copied ? "Official website URL copied" : "Copy official website URL"}>{copied ? <Check size={15} /> : <span>Copy</span>}</button>
+        <button type="button" className="card-copy card-share" onClick={shareTool} aria-label={"Share " + tool.name + " with its directory metadata"} title="Share tool details"><Share2 size={15} /></button>
       </div>
-      <AnimatePresence>{copied && <motion.span className="copy-toast" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>Link copied</motion.span>}</AnimatePresence>
+      <AnimatePresence>{copied && <motion.span className="copy-toast" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>Official link copied</motion.span>}</AnimatePresence>
+      <AnimatePresence>{shareToast && <motion.span className="copy-toast" role="status" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>{shareToast}</motion.span>}</AnimatePresence>
     </motion.article>
   );
 }
