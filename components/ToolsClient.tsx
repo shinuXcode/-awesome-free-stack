@@ -148,7 +148,7 @@ export default function ToolsClient(props: Props) {
         <div className="subhero-orb" aria-hidden="true" />
         <span className="eyebrow"><span className="eyebrow-dot" /> TOOL LIBRARY / 01</span>
         <h1>Find your next<br /><span>building block.</span></h1>
-        <p>Explore 1,800+ tools across {categories.length} categories. Compare official sources, read setup notes, and check pricing caveats before choosing.</p>
+        <p>Explore the full catalog across {categories.length} categories. Compare official sources, read setup notes, and check pricing caveats before choosing.</p>
         <div className="subhero-meta"><span><Sparkles size={14} /> Community maintained</span><span>Unrated means no verified review data yet</span></div>
       </section>
       <section className="section-wrap tool-library">
