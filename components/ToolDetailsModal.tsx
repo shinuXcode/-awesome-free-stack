@@ -1,0 +1,7 @@
+"use client";
+import { AnimatePresence,motion } from "framer-motion";
+import { X,ExternalLink,Copy } from "lucide-react";
+import type { DevTool } from "../lib/types";
+export default function ToolDetailsModal({tool,onClose}:{tool:DevTool|null;onClose:()=>void}) {
+ return <AnimatePresence>{tool&&<motion.div className="modal-backdrop" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onClick={onClose}><motion.section role="dialog" aria-modal="true" aria-label={tool.name+" details"} className="details-modal" initial={{y:30,opacity:0,scale:.98}} animate={{y:0,opacity:1,scale:1}} exit={{y:20,opacity:0}} onClick={e=>e.stopPropagation()}><button className="modal-close" onClick={onClose} aria-label="Close"><X/></button><span className="category-label">{tool.category}</span><h2>{tool.name}</h2><p>{tool.description}</p><h3>Free allowance</h3><p>{tool.freeTierLimit}</p><div className="detail-stats"><span>Safety signal <b>{tool.safetyRank}</b></span><span>Difficulty <b>{tool.difficulty}</b></span><span>Card required <b>{tool.noCreditCardRequired?"No":"Check provider"}</b></span></div><p className="fine-print">Community ratings are not security certifications. Verify current pricing and terms with the provider.</p><div className="card-actions"><button className="button-secondary" onClick={()=>navigator.clipboard?.writeText(tool.url)}><Copy size={15}/>Copy URL</button><a className="button-primary" href={tool.url} target="_blank" rel="noreferrer">Official site <ExternalLink size={15}/></a></div></motion.section></motion.div>}</AnimatePresence>
+}
