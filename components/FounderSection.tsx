@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Check, Copy, Github, Globe2, Linkedin, Sparkles, Twitter } from "lucide-react";
 
-const portfolioUrl = "https://mohammad-sadab-portfolio-v2.vercel.app";
+const portfolioUrl = "https://mohammad-sadab-portfolio-v2.vercel.app/";
 const portfolioRepo = "https://github.com/shinuXcode/sadab-portfolio";
 const sourceUrl = "https://github.com/shinuXcode/-awesome-free-stack";
 
@@ -41,6 +41,10 @@ export default function FounderSection() {
             <a href="https://x.com/shinuxcode" target="_blank" rel="noreferrer" aria-label="X profile"><Twitter size={17} /></a>
             <a href={portfolioUrl} target="_blank" rel="noreferrer" aria-label="Personal portfolio website"><Globe2 size={17} /></a>
             <a className="social-unconfigured" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn homepage; creator profile link not configured" title="LinkedIn profile URL not configured"><Linkedin size={17} /></a>
+          </div>
+          <div className="founder-linkhub">
+            <a href={portfolioUrl} target="_blank" rel="noreferrer"><Globe2 size={14} /><span><b>Personal Website</b><small>mohammad-sadab-portfolio-v2.vercel.app</small></span><ArrowUpRight size={14} /></a>
+            <a href={portfolioUrl} target="_blank" rel="noreferrer"><Sparkles size={14} /><span><b>Portfolio Link</b><small>Open Sadab's portfolio</small></span><ArrowUpRight size={14} /></a>
           </div>
           <button type="button" className="support-button" onClick={copyProjectLink}>{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "Project link copied" : "Support this project"}<ArrowUpRight size={15} /></button>
         </div>
