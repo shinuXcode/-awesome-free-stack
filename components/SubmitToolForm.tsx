@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import { ArrowUpRight, CheckCircle2, Github, Send } from "lucide-react";
 
 const CATEGORIES = [
