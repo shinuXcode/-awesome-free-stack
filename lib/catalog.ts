@@ -18,7 +18,17 @@ export type CatalogFilters = {
   sort?: string;
 };
 
-export function normalizeFilters(filters: CatalogFilters) {
+export type NormalizedCatalogFilters = {
+  query: string;
+  category: Category | "All";
+  pricingType: PricingType | "All";
+  noCard: boolean;
+  beginner: boolean;
+  safetyOnly: boolean;
+  sort: SortMode;
+};
+
+export function normalizeFilters(filters: CatalogFilters): NormalizedCatalogFilters {
   return {
     query: (filters.query || "").trim().toLowerCase(),
     category: filters.category && categorySet.has(filters.category) ? filters.category as Category : "All",
