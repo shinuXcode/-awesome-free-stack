@@ -1,0 +1,6 @@
+"use client";
+import { Search, X } from "lucide-react";
+export default function FilterBar({query,setQuery,category,setCategory,noCard,setNoCard,beginner,setBeginner,topSafety,setTopSafety,categories}:{query:string;setQuery:(v:string)=>void;category:string;setCategory:(v:string)=>void;noCard:boolean;setNoCard:(v:boolean)=>void;beginner:boolean;setBeginner:(v:boolean)=>void;topSafety:boolean;setTopSafety:(v:boolean)=>void;categories:string[]}) {
+ const chip=(active:boolean,label:string,click:()=>void)=><button onClick={click} className={"chip "+(active?"chip-active":"")}>{label}</button>;
+ return <div className="filter-panel"><label className="searchbox"><Search size={19}/><input aria-label="Search tools" placeholder="Search tools, categories, use cases…" value={query} onChange={e=>setQuery(e.target.value)}/>{query&&<button aria-label="Clear search" onClick={()=>setQuery("")}><X size={16}/></button>}<kbd>⌘ K</kbd></label><div className="filter-row"><select aria-label="Category" value={category} onChange={e=>setCategory(e.target.value)}><option value="All">All categories</option>{categories.map(c=><option key={c}>{c}</option>)}</select>{chip(noCard,"No credit card",()=>setNoCard(!noCard))}{chip(beginner,"Beginner friendly",()=>setBeginner(!beginner))}{chip(topSafety,"A+ safety only",()=>setTopSafety(!topSafety))}</div></div>
+}
