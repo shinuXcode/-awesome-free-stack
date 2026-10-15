@@ -14,11 +14,11 @@ for (const category of categories) categoryCounts[category] = tools.filter((tool
 
 export const metadata: Metadata = {
   title: "Free & Open-Source Developer Tools, AI, Design and Creator Software",
-  description: "Discover 1,800+ tools for developers, AI/ML engineers, security researchers, video editors, 3D artists, creators and everyday users. Compare official sources and pricing caveats.",
+  description: `Discover ${tools.length.toLocaleString("en-US")} tools for developers, AI/ML engineers, security researchers, video editors, 3D artists, creators and everyday users. Compare official sources and pricing caveats.`,
   alternates: { canonical: "/" },
   openGraph: {
     title: "Zero-Cost Dev Stack — Free tools for people who build",
-    description: "A source-first catalog of developer, AI, creative, productivity, security and open-source tools.",
+    description: `A source-first catalog of ${tools.length.toLocaleString("en-US")} developer, AI, creative, productivity, security and open-source tools.`,
     url: SITE_URL,
     type: "website",
   },
