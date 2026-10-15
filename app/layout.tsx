@@ -3,8 +3,10 @@ import "./globals.css";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import RouteMotion from "../components/RouteMotion";
+import toolsData from "../data/tools.json";
 
 const SITE_URL = "https://awesome-free-stack.vercel.app";
+const toolCount = (toolsData as unknown[]).length;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
     default: "Zero-Cost Dev Stack — Free & Open-Source Tools for Builders",
     template: "%s | Zero-Cost Dev Stack",
   },
-  description: "Discover 1,800+ developer, AI, design, security, creator, productivity and open-source tools. Compare official links, licenses, pricing caveats and setup notes.",
+  description: `Discover ${toolCount.toLocaleString("en-US")} developer, AI, design, security, creator, productivity and open-source tools. Compare official links, licenses, pricing caveats and setup notes.`,
   applicationName: "Zero-Cost Dev Stack",
   authors: [{ name: "Sadab", url: "https://github.com/shinuXcode" }],
   creator: "Sadab (shinuXcode)",
