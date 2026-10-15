@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, BookOpen, CheckCircle2, Github, Globe2, Shield
 import toolsData from "../../../data/tools.json";
 import type { Metadata } from "next";
 import type { DetailedDevTool } from "../../../lib/types";
+import { riskLabels } from "../../../lib/stack";
 
 const SITE_URL = "https://awesome-free-stack.vercel.app";
 const tools = toolsData as DetailedDevTool[];
@@ -86,7 +87,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ id:
             <section className="detail-content-panel"><span className="eyebrow">03 / SECURITY NOTES</span><h2>Check the <span>fine print.</span></h2><p>{tool.securityDetails.dataPrivacyScore}</p><div className="detail-security-facts"><div><span>Certifications recorded</span><b>{tool.securityDetails.certifications.length ? tool.securityDetails.certifications.join(", ") : "None verified in directory"}</b></div><div><span>Community safety signal</span><b>{tool.safetyRank} (not an audit)</b></div></div><p className="detail-warning">Review data retention, access controls, subprocessors, current pricing, and usage quotas directly with the provider. These directory notes are not a security or cost guarantee.</p></section>
           </div>
           <aside className="detail-sidebar">
-            <div className="detail-side-panel"><span className="eyebrow">FREE-TIER REALITY CHECK</span><p>{tool.freeTierLimit}</p><hr /><p className="detail-small-note">Free allowances and signup requirements may change by region, account type, or intended use.</p></div>
+            <div className="detail-side-panel"><span className="eyebrow">FREE-TIER REALITY CHECK</span><p>{tool.freeTierLimit}</p><div className="detail-risk-list">{riskLabels(tool).map((label) => <span key={label}><ShieldCheck size={12} /> {label}</span>)}</div><hr /><p className="detail-small-note">Warning labels are detected from the listing note. The absence of a label does not mean a plan has no expiry, quota, billing or idle-pause restrictions. Verify current terms with the provider.</p></div>
             <div className="detail-side-panel"><span className="eyebrow">OFFICIAL LINKS</span><a href={tool.officialWebsiteUrl} target="_blank" rel="noreferrer"><Globe2 size={15} /> Website <ArrowUpRight size={13} /></a><a href={tool.docsUrl} target="_blank" rel="noreferrer"><BookOpen size={15} /> Documentation <ArrowUpRight size={13} /></a>{tool.githubRepoUrl && <a href={tool.githubRepoUrl} target="_blank" rel="noreferrer"><Github size={15} /> GitHub repository <ArrowUpRight size={13} /></a>}</div>
             <div className="detail-side-panel detail-note-panel"><CheckCircle2 size={17} /><p>Directory entries are editorial discovery notes, not paid endorsements or security certifications. Verify claims at the official source.</p></div>
           </aside>
