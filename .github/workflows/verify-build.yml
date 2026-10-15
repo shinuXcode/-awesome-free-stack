@@ -19,6 +19,8 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Check scheduled refresher syntax
+        run: node --check scripts/refresh-catalog.js
       - name: Validate catalog schema
         run: npm run validate:data
       - name: Build all routes

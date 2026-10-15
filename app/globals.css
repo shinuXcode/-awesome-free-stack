@@ -25,6 +25,12 @@ button, input, select { font: inherit; }
 button, a, select { touch-action: manipulation; }
 button { cursor: pointer; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--acid); outline-offset: 4px; }
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 9999; padding: 10px 14px; border-radius: 8px; color: #10140c; background: var(--acid); font-size: 12px; font-weight: 800; transform: translateY(-160%); transition: transform .18s ease; }
+.skip-link:focus { transform: translateY(0); }
+.pagination-cta { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 26px 0 8px; }
+.pagination-cta .button-primary:disabled { opacity: .62; cursor: wait; }
+.spin { animation: spin-loader .8s linear infinite; }
+@keyframes spin-loader { to { transform: rotate(360deg); } }
 ::selection { color: #0b1011; background: var(--acid); }
 .nav { height: 74px; position: sticky; top: 0; z-index: 35; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(19px, 5.4vw, 84px); border-bottom: 1px solid #ffffff0c; background: #090b10dc; backdrop-filter: blur(22px); }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 790; letter-spacing: -.6px; white-space: nowrap; }
