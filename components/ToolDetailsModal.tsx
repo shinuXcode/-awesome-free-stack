@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, BookOpen, CheckCircle2, ExternalLink, Github, Globe2, ShieldCheck, Star, X } from "lucide-react";
 import type { DetailedDevTool } from "../lib/types";
+import GitHubHealth from "./GitHubHealth";
 
 type Props = { tool: DetailedDevTool | null; onClose: () => void };
 
@@ -82,6 +83,8 @@ export default function ToolDetailsModal({ tool, onClose }: Props) {
               <p>{tool.securityDetails.dataPrivacyScore}</p>
               <p className="modal-warning">A community signal is not an audit or guarantee. Evaluate access controls, data retention, subprocessors, and security documentation for your own use case.</p>
             </section>
+
+            {tool.githubRepoUrl && <GitHubHealth repoUrl={tool.githubRepoUrl} />}
 
             <div className="modal-links">
               <a className="button-primary" href={tool.officialWebsiteUrl} target="_blank" rel="noreferrer"><Globe2 size={15} /> Official site <ExternalLink size={13} /></a>
