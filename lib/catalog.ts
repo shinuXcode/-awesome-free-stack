@@ -31,12 +31,12 @@ export type NormalizedCatalogFilters = {
 export function normalizeFilters(filters: CatalogFilters): NormalizedCatalogFilters {
   return {
     query: (filters.query || "").trim().toLowerCase(),
-    category: filters.category && categorySet.has(filters.category) ? filters.category as Category : "All",
-    pricingType: filters.pricingType && pricingSet.has(filters.pricingType) ? filters.pricingType as PricingType : "All",
+    category: filters.category && categorySet.has(filters.category) ? (filters.category as Category) : ("All" as const),
+    pricingType: filters.pricingType && pricingSet.has(filters.pricingType) ? (filters.pricingType as PricingType) : ("All" as const),
     noCard: Boolean(filters.noCard),
     beginner: Boolean(filters.beginner),
     safetyOnly: Boolean(filters.safetyOnly),
-    sort: filters.sort && sortModes.has(filters.sort) ? filters.sort as SortMode : "Recently Added",
+    sort: filters.sort && sortModes.has(filters.sort) ? (filters.sort as SortMode) : ("Recently Added" as const),
   };
 }
 
