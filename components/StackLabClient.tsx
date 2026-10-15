@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import type { FormEvent } from "react";
 import Link from "next/link";
-import { ArrowDownToLine, ArrowUpRight, BookmarkCheck, Boxes, Clipboard, Copy, Download, Heart, Plus, RefreshCw, Save, Share2, Sparkles, Trash2, X } from "lucide-react";
+import { ArrowUpRight, BookmarkCheck, Boxes, Clipboard, Download, Heart, Plus, RefreshCw, Save, Sparkles, Trash2, X } from "lucide-react";
 import type { Category, DetailedDevTool } from "../lib/types";
 import { readSavedStack, writeSavedStack } from "../lib/stack";
 
