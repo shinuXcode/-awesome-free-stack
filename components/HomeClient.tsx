@@ -1,18 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Compass, Github, Layers3, ShieldCheck, Sparkles, Star } from "lucide-react";
 
 import type { Category, DetailedDevTool } from "../lib/types";
 import { categories } from "../lib/types";
 import ToolCard from "../components/ToolCard";
+import ToolDetailsModal from "./ToolDetailsModal";
 
 const cardVariants = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } };
 
 type HomeClientProps = { featured: DetailedDevTool[]; recentlyAdded: DetailedDevTool[]; categoryCounts: Partial<Record<Category, number>>; totalTools: number; openSourceCount: number; noCardCount: number };
 
 export default function HomeClient({ featured, recentlyAdded, categoryCounts, totalTools, openSourceCount, noCardCount }: HomeClientProps) {
+  const [selectedTool, setSelectedTool] = useState<DetailedDevTool | null>(null);
   return (
     <main id="main-content">
       <section className="hero home-hero">
@@ -64,14 +67,14 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
       <section className="section-wrap featured-section">
         <div className="section-heading"><div><span className="eyebrow"><span className="eyebrow-dot" /> NEWLY ADDED</span><h2>More tools, <span>more possibilities.</span></h2><p>{totalTools.toLocaleString("en-US")} resources across development, creative work, AI, open-source apps, operating systems, and more. The catalog is designed to refresh as new resources are found and reviewed.</p></div><Link className="text-link" href="/tools?sort=recent">Browse all new additions <ArrowUpRight size={15} /></Link></div>
         <motion.div className="tool-grid" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.045 } } }}>
-          {recentlyAdded.map((tool, index) => <motion.div key={tool.id} variants={cardVariants}><ToolCard tool={tool} index={index} onDetails={(item) => { window.location.href = `/tools/${item.id}`; }} /></motion.div>)}
+          {recentlyAdded.map((tool, index) => <motion.div key={tool.id} variants={cardVariants}><ToolCard tool={tool} index={index} onDetails={setSelectedTool} /></motion.div>)}
         </motion.div>
       </section>
 
       <section className="section-wrap featured-section">
         <div className="section-heading"><div><span className="eyebrow"><span className="eyebrow-dot" /> THE STARTER STACK</span><h2>Good places <span>to start.</span></h2><p>A few familiar entry points. Open a profile to inspect the real trade-offs.</p></div><div className="directory-total"><strong>{featured.length.toString().padStart(2, "0")}</strong><span>EDITOR'S PICKS</span></div></div>
         <motion.div className="tool-grid" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.055 } } }}>
-          {featured.map((tool, index) => <motion.div key={tool.id} variants={cardVariants}><ToolCard tool={tool} index={index} onDetails={(item) => { window.location.href = `/tools/${item.id}`; }} /></motion.div>)}
+          {featured.map((tool, index) => <motion.div key={tool.id} variants={cardVariants}><ToolCard tool={tool} index={index} onDetails={setSelectedTool} /></motion.div>)}
         </motion.div>
         <div className="center-cta"><Link className="button-primary" href="/tools">Explore all {totalTools} tools <ArrowRight size={15} /></Link></div>
       </section>
@@ -81,6 +84,7 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
         <div className="principle-list"><div><span>01</span><b>Transparent trade-offs</b><p>Each profile explains its free-tier caveats and where to verify them.</p></div><div><span>02</span><b>Evidence before ratings</b><p>New entries stay unrated until genuine review data exists.</p></div><div><span>03</span><b>Community maintained</b><p>A strict schema check catches mistakes before contributions are merged.</p></div></div>
       </section>
       <section className="home-creator-banner"><div><span className="eyebrow">BUILT BY AN INDIE DEVELOPER</span><h2>Made for people building<br /><span>their first big thing.</span></h2><p>Meet Sadab and see the projects behind the directory.</p></div><Link className="button-primary" href="/creator">Meet the creator <ArrowUpRight size={15} /></Link></section>
+      <ToolDetailsModal tool={selectedTool} onClose={() => setSelectedTool(null)} />
     </main>
   );
 }
