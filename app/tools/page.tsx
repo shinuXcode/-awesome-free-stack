@@ -26,12 +26,14 @@ export default function ToolsPage() {
   const [noCard, setNoCard] = useState(false);
   const [beginner, setBeginner] = useState(false);
   const [safetyOnly, setSafetyOnly] = useState(false);
-  const [sort, setSort] = useState<SortMode>("Highest Rated");
+  const [sort, setSort] = useState<SortMode>("Recently Added");
   const [selected, setSelected] = useState<DetailedDevTool | null>(null);
 
   useEffect(() => {
-    const requested = new URLSearchParams(window.location.search).get("category");
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get("category");
     if (requested && (categories as readonly string[]).includes(requested)) setCategory(requested as Category);
+    if (params.get("sort") === "recent") setSort("Recently Added");
     const focusSearch = () => document.querySelector<HTMLInputElement>('input[aria-label="Search tools"]')?.focus();
     const keyHandler = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
@@ -55,6 +57,7 @@ export default function ToolsPage() {
       (!needle || [tool.name, tool.tagline, tool.description, tool.category, tool.pricingType].join(" ").toLowerCase().includes(needle))
     );
     return list.sort((a, b) => {
+      if (sort === "Recently Added") return tools.indexOf(b) - tools.indexOf(a);
       if (sort === "Highest Rated") return b.userRating - a.userRating || b.totalReviewsCount - a.totalReviewsCount || a.name.localeCompare(b.name);
       if (sort === "Most Starred") return starCount(b) - starCount(a) || Number(Boolean(b.githubRepoUrl)) - Number(Boolean(a.githubRepoUrl)) || a.name.localeCompare(b.name);
       if (sort === "Safety Score") return safetyScore[b.safetyRank] - safetyScore[a.safetyRank] || a.name.localeCompare(b.name);
@@ -62,7 +65,7 @@ export default function ToolsPage() {
     });
   }, [query, category, pricingType, noCard, beginner, safetyOnly, sort]);
 
-  const reset = () => { setQuery(""); setCategory("All"); setPricingType("All"); setNoCard(false); setBeginner(false); setSafetyOnly(false); setSort("Highest Rated"); };
+  const reset = () => { setQuery(""); setCategory("All"); setPricingType("All"); setNoCard(false); setBeginner(false); setSafetyOnly(false); setSort("Recently Added"); };
 
   return (
     <main className="subpage">
