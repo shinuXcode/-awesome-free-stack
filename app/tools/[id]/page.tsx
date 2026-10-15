@@ -1,26 +1,68 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, BookOpen, CheckCircle2, ExternalLink, Github, Globe2, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, BookOpen, CheckCircle2, Github, Globe2, ShieldCheck } from "lucide-react";
 import toolsData from "../../../data/tools.json";
+import type { Metadata } from "next";
 import type { DetailedDevTool } from "../../../lib/types";
 
+const SITE_URL = "https://awesome-free-stack.vercel.app";
 const tools = toolsData as DetailedDevTool[];
+
 export function generateStaticParams() {
   return tools.map((tool) => ({ id: tool.id }));
 }
+
 export const dynamicParams = false;
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const tool = tools.find((item) => item.id === id);
-  if (!tool) return { title: "Tool not found — Zero-Cost Dev Stack" };
-  return { title: `${tool.name} — Zero-Cost Dev Stack`, description: tool.tagline };
+  if (!tool) return { title: "Tool not found — Zero-Cost Dev Stack", robots: { index: false, follow: false } };
+  const title = tool.name + " — " + tool.category;
+  const description = (tool.description || tool.tagline).slice(0, 155);
+  const canonical = "/tools/" + encodeURIComponent(tool.id);
+  return {
+    title,
+    description,
+    keywords: [tool.name, tool.category, tool.pricingType, "developer tools", "software directory", "official documentation"],
+    alternates: { canonical },
+    openGraph: { type: "article", url: canonical, title: title + " | Zero-Cost Dev Stack", description, siteName: "Zero-Cost Dev Stack" },
+    twitter: { card: "summary", title, description },
+  };
 }
+
 export default async function ToolDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const tool = tools.find((item) => item.id === id);
   if (!tool) notFound();
+  const profileUrl = SITE_URL + "/tools/" + encodeURIComponent(tool.id);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: tool.name + " — " + tool.category,
+    url: profileUrl,
+    description: tool.description,
+    isPartOf: { "@type": "WebSite", name: "Zero-Cost Dev Stack", url: SITE_URL },
+    about: {
+      "@type": "Thing",
+      name: tool.name,
+      description: tool.description,
+      sameAs: tool.officialWebsiteUrl,
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Tools", item: SITE_URL + "/tools" },
+        { "@type": "ListItem", position: 3, name: tool.name, item: profileUrl },
+      ],
+    },
+    author: { "@type": "Person", name: "Sadab", url: "https://github.com/shinuXcode" },
+  };
+  const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
   return (
-    <main className="subpage tool-detail-page">
+    <main id="main-content" className="subpage tool-detail-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <section className="section-wrap detail-page-wrap">
         <Link href="/tools" className="back-link"><ArrowLeft size={14} /> Back to all tools</Link>
         <div className="detail-page-head">
@@ -46,7 +88,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ id:
           <aside className="detail-sidebar">
             <div className="detail-side-panel"><span className="eyebrow">FREE-TIER REALITY CHECK</span><p>{tool.freeTierLimit}</p><hr /><p className="detail-small-note">Free allowances and signup requirements may change by region, account type, or intended use.</p></div>
             <div className="detail-side-panel"><span className="eyebrow">OFFICIAL LINKS</span><a href={tool.officialWebsiteUrl} target="_blank" rel="noreferrer"><Globe2 size={15} /> Website <ArrowUpRight size={13} /></a><a href={tool.docsUrl} target="_blank" rel="noreferrer"><BookOpen size={15} /> Documentation <ArrowUpRight size={13} /></a>{tool.githubRepoUrl && <a href={tool.githubRepoUrl} target="_blank" rel="noreferrer"><Github size={15} /> GitHub repository <ArrowUpRight size={13} /></a>}</div>
-            <div className="detail-side-panel detail-note-panel"><CheckCircle2 size={17} /><p>New tools remain unrated until genuine review data is available.</p></div>
+            <div className="detail-side-panel detail-note-panel"><CheckCircle2 size={17} /><p>Directory entries are editorial discovery notes, not paid endorsements or security certifications. Verify claims at the official source.</p></div>
           </aside>
         </div>
       </section>
