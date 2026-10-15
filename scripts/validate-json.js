@@ -48,7 +48,7 @@ const categories = new Set([
 const pricingTypes = new Set(["100% Free", "Freemium", "Open Source", "Paid Tier Available", "Needs Verification"]);
 const safetyRanks = new Set(["A+", "A", "B+"]);
 const audiences = new Set(["Beginner", "Intermediate", "Professional"]);
-const sourceTypes = new Set(["Open Source", "Closed Source"]);
+const sourceTypes = new Set(["Open Source", "Closed Source", "License Unverified"]);
 const badges = new Set(["Top Rated", "Trending", "Community Favorite"]);
 const requiredStringFields = [
   "id", "name", "logoUrl", "tagline", "description", "howItWorks",
