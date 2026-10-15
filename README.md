@@ -31,15 +31,32 @@ The project is intentionally cautious: **“free” is not a promise of permanen
 | Experience | What it does |
 |---|---|
 | Rich tool profiles | Setup notes, official docs, pricing caveats, privacy prompts and permanent profile URLs |
-| Broad catalog | 1,800+ resources across 38 developer, creative, security, operating-system and productivity categories |
+| Broad catalog | 2,000+ resources across 38 developer, creative, security, operating-system and productivity categories |
 | Search and filters | Search as you type; filter by category, pricing label, card-at-signup signal and skill level |
 | Keyboard access | Press `/` or `Cmd/Ctrl + K` to focus search; `Escape` closes the details dialog |
 | Fast tool directory | Server-rendered first batch, server-side filtering and 48-at-a-time pagination keep the full dataset out of the main client bundle |
+| Tool comparison | Compare two or three tools across written free-tier limits, payment-card notes, source model, safety signals, ratings and repository stars |
+| Stack Lab | Generate a use-case-based draft stack, save tools in local browser storage, and export README.md, JSON and a visual SVG architecture map |
+| Quick card actions | Save to stack, copy free-tier notes, copy a secure AI setup prompt, vote locally, share, or preselect a tool for comparison |
+| GitHub health tracker | Fetch cached repository stars, open issue/PR count, latest push date, archived status and license when opening a tool profile |
+| Free-tier warning radar | Highlight expiry, idle-pause, usage/overage and billing wording found in the tool's current catalog note; absence of a warning is not a guarantee |
+| Alternatives search | Discover catalog candidates for paid-tool replacement; users must verify fit, license, pricing and hosting costs |
+| Community submissions | A validated web form generates a pre-filled GitHub issue for human review; it does not create unauthenticated code-changing pull requests |
 | Native sharing | Every tool card can share its canonical profile plus summary, category, pricing label and source links |
 | Search and AI discovery | Canonical metadata, Open Graph/Twitter previews, structured data, robots policy, XML sitemap and `llms.txt` feeds |
 | Automatic catalog updates | A daily GitHub Actions job discovers active, licensed projects from curated topics, de-duplicates them, validates the data and builds the site before committing new entries |
 | Responsive and accessible | Mobile-first UI, visible keyboard focus, skip-to-content link and reduced-motion support |
 | Community quality gate | Strict schema validation and a Next.js production build run in pull request CI |
+
+## Interactive workbench
+
+- **Compare:** [Compare two or three tools](https://awesome-free-stack.vercel.app/compare).
+- **Stack Lab:** [Generate a stack, save tools and export a manifest](https://awesome-free-stack.vercel.app/stack-lab).
+- **Alternatives:** [Search the catalog for free-tier and open-source candidates](https://awesome-free-stack.vercel.app/alternatives).
+- **Submit:** [Suggest a tool for review](https://awesome-free-stack.vercel.app/submit).
+
+Bookmarks and votes are local to the current browser; this build does not claim a shared community-vote leaderboard. GitHub repository health is fetched on demand and cached to respect the unauthenticated public API's rate limits. Tool recommendations are heuristic discovery aids, not cost, security or compatibility guarantees.
+
 
 ## Categories
 
