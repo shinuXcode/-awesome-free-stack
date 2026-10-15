@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import ToolsClient from "../../components/ToolsClient";
-import { getFilteredTools, normalizeFilters } from "../../lib/catalog";
+import { catalog, getFilteredTools, normalizeFilters } from "../../lib/catalog";
 import { categories } from "../../lib/types";
 
 const SITE_URL = "https://awesome-free-stack.vercel.app";
 export const metadata: Metadata = {
-  title: "Explore 1,800+ Developer & Open-Source Tools",
-  description: "Search and compare developer tools, AI, data science, security, creative software, operating systems and open-source apps. Check official sources, pricing and license caveats.",
+  title: `Explore ${catalog.length.toLocaleString("en-US")} Developer & Open-Source Tools`,
+  description: `Search ${catalog.length.toLocaleString("en-US")} developer, AI, data science, security, creative software, operating-system and open-source app listings. Check official sources, pricing and license caveats.`,
   keywords: ["developer tool directory", "free software", "open source tools", "AI tools", "web development", "cybersecurity", "video editing", "Linux apps"],
   alternates: { canonical: "/tools" },
   openGraph: {
-    title: "Explore Developer & Open-Source Tools",
+    title: `Explore ${catalog.length.toLocaleString("en-US")} Developer & Open-Source Tools`,
     url: SITE_URL + "/tools",
-    description: "Search a large catalog of developer, AI, security, creative and productivity tools with source-first profiles.",
+    description: `Search ${catalog.length.toLocaleString("en-US")} developer, AI, security, creative and productivity tools with source-first profiles.`,
     type: "website",
   },
 };
