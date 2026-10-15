@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { AlertTriangle, ArrowUpRight, Check, Clipboard, ExternalLink, Github, GitCompareArrows, Heart, Share2, ShieldCheck, Star, ThumbsUp } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, Check, Clipboard, ExternalLink, Github, GitCompareArrows, Heart, Share2, ShieldCheck, Sparkles, Star, ThumbsUp } from "lucide-react";
 import type { DetailedDevTool } from "../lib/types";
 import { buildSetupPrompt, readLocalVotes, readSavedStack, riskLabels, writeLocalVotes, writeSavedStack } from "../lib/stack";
 
