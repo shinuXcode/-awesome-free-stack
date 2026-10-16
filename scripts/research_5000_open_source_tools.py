@@ -166,6 +166,11 @@ def allowed_license(repo):
 def duplicate(repo,names,urls,domains):
     full=normurl(repo.get("html_url")); n=slug(repo.get("name")); homepage=normurl(repo.get("homepage"))
     return full in urls or n in names or slug((repo.get("full_name") or "").replace("/","-")) in names or bool(homepage and homepage.split("/")[0] in domains)
+def excluded_project(repo):
+    # Keep the export focused on general-purpose developer software, not circumvention services or gambling.
+    text=" ".join([repo.get("name") or "",repo.get("description") or ""]+[str(t) for t in (repo.get("topics") or [])]).lower()
+    blocked=("online casino","sports betting","sportsbook","prediction market","gambling","betting","age gate bypass","age-check bypass","unblocker","censorship circumvention","vpn","virtual private network")
+    return any(term in text for term in blocked)
 def build_pdf(path,rows,stamp,existing_count,requests_done,empty):
     from reportlab.lib import colors
     from reportlab.lib.pagesizes import landscape,letter
@@ -207,9 +212,11 @@ def main():
     print("Existing catalog entries:",existing_count,flush=True)
     found={}; categories={}; requests_done=0; empty=0
     # First sweep is broad and category-balanced; subsequent sweeps paginate deeper only if needed.
+    # Fast mode searches one representative topic per category per page, retaining broad category coverage.
+    groups = [(category, topics.split()[:1]) for category, topics in GROUPS]
     for page in range(1,11):
-        for category,topics in GROUPS:
-            for topic in topics.split():
+        for category,topic_list in groups:
+            for topic in topic_list:
                 if len(found)>=TARGET+500:break
                 q=f"topic:{topic} stars:>=5 fork:false archived:false is:public pushed:>2022-01-01"
                 url=API+"?"+urllib.parse.urlencode({"q":q,"sort":"stars","order":"desc","per_page":100,"page":page})
@@ -217,7 +224,7 @@ def main():
                 if not payload:empty+=1
                 for repo in items:
                     ok,lic=allowed_license(repo)
-                    if not ok or repo.get("fork") or repo.get("archived") or repo.get("disabled") or duplicate(repo,names,urls,domains):continue
+                    if not ok or repo.get("fork") or repo.get("archived") or repo.get("disabled") or duplicate(repo,names,urls,domains) or excluded_project(repo):continue
                     key=(repo.get("full_name") or "").lower()
                     if key and key not in found:found[key]=repo;categories[key]=category
                 print(f"request={requests_done} page={page} topic={topic} new_candidates={len(found)}",flush=True)
