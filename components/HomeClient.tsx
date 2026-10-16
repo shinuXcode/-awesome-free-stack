@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
 import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Compass, Github, Layers3, LoaderCircle, Search, ShieldCheck, Sparkles, Star, X } from "lucide-react";
 
 import type { Category, DetailedDevTool } from "../lib/types";
 import { categories } from "../lib/types";
 import ToolCard from "../components/ToolCard";
-import ToolDetailsModal from "./ToolDetailsModal";
 import ToolDetailsModal from "./ToolDetailsModal";
 
 const cardVariants = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } };
