@@ -5,17 +5,21 @@ import path from "node:path";
 import dns from "node:dns/promises";
 import net from "node:net";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 import { formatStars, normalizeName, normalizeRepositoryUrl, scoreRepository, slugify } from "./scoring.mjs";
+import { githubJson } from "./github-api.mjs";
+import { clearCheckpoint, readCheckpoint, writeCheckpoint } from "./checkpoint.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
 const DATA_FILE = path.join(ROOT, "data", "tools.json");
 const SOURCES_FILE = path.join(HERE, "sources.json");
+const CHECKPOINT_FILE = path.join(HERE, ".checkpoint.json");
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
 const TODAY = new Date().toISOString().slice(0, 10);
-const MAX_NEW_TOOLS = boundedInteger(process.env.SCRAPER_MAX_NEW_TOOLS, 24, 1, 50);
+const MAX_NEW_TOOLS = boundedInteger(process.env.SCRAPER_MAX_NEW_TOOLS, 40, 1, 100);
 const MAX_PER_CATEGORY = boundedInteger(process.env.SCRAPER_MAX_PER_CATEGORY, 2, 1, 5);
-const MAX_API_LOOKUPS = boundedInteger(process.env.SCRAPER_MAX_API_LOOKUPS, 90, 10, 150);
+const MAX_API_LOOKUPS = boundedInteger(process.env.SCRAPER_MAX_API_LOOKUPS, 300, 10, 500);
 const MAX_OFFICIAL_SITE_CHECKS = boundedInteger(process.env.SCRAPER_MAX_OFFICIAL_SITE_CHECKS, 35, 0, 60);
 const MIN_CANDIDATES_PER_SOURCE = 8;
 const RESERVED_GITHUB_PATHS = new Set([
@@ -202,33 +206,10 @@ async function crawlDiscoverySources(sources) {
 async function fetchRepository(candidate) {
   const url = "https://api.github.com/repos/" +
     encodeURIComponent(candidate.owner) + "/" + encodeURIComponent(candidate.name);
-  const headers = {
-    Accept: "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-    "User-Agent": "awesome-free-stack-catalog-discovery",
-  };
-  if (TOKEN) headers.Authorization = "Bearer " + TOKEN;
-
-  let response;
-  try {
-    response = await fetch(url, {
-      headers,
-      signal: AbortSignal.timeout(12_000),
-    });
-  } catch (error) {
-    return { error: "network", detail: String(error?.message || "network error") };
-  }
-
-  if (response.status === 404 || response.status === 451) return { skipped: true };
-  if (response.status === 403 || response.status === 429) {
-    const remaining = response.headers.get("x-ratelimit-remaining");
-    if (remaining === "0" || response.status === 429) {
-      throw new Error("GitHub API rate limit reached. Stop safely and retry in a later run.");
-    }
-    return { skipped: true };
-  }
-  if (!response.ok) return { error: "http", detail: "GitHub API returned HTTP " + response.status };
-  const repository = await response.json();
+  const result = await githubJson(url, { token: TOKEN });
+  if (result.rateLimited) return result;
+  if (result.skipped || result.error) return result;
+  const repository = result.data;
   if (String(repository.full_name || "").toLowerCase() !== candidate.fullName.toLowerCase()) return { skipped: true };
   return { repository };
 }
@@ -415,9 +396,6 @@ function refreshExistingMetrics(tool, repository, source, score) {
 }
 
 async function main() {
-  if (!TOKEN) {
-    throw new Error("GITHUB_TOKEN is missing. Supply it through the GitHub Actions environment or a local environment variable; never paste it into source code.");
-  }
   const sources = JSON.parse(await fs.readFile(SOURCES_FILE, "utf8"));
   if (!Array.isArray(sources) || !sources.length) throw new Error("scraper/sources.json must contain at least one source.");
   for (const source of sources) {
@@ -435,40 +413,54 @@ async function main() {
   const dryRun = process.argv.includes("--dry-run") || process.env.SCRAPER_DRY_RUN === "1";
   const { candidates: found, pagesProcessed } = await crawlDiscoverySources(sources);
   const candidates = found.slice(0, MAX_API_LOOKUPS);
-  console.log("Discovery complete: " + pagesProcessed + " source pages checked; " + found.length + " unique repository candidates; " + candidates.length + " scheduled for GitHub API verification.");
+  const fingerprint = createHash("sha256").update(JSON.stringify(candidates.map((c) => [c.fullName, c.sourceId, c.category]))).digest("hex");
+  const checkpoint = await readCheckpoint(CHECKPOINT_FILE, fingerprint);
+  const completed = new Map(checkpoint.completed.map((item) => [item.candidate.fullName.toLowerCase(), item]));
+  console.log("Discovery: " + pagesProcessed + " pages, " + found.length + " unique repositories; verifying up to " + candidates.length + ".");
+  console.log("Resume checkpoint: " + completed.size + " of " + candidates.length + " candidates already processed.");
 
-  const verified = [];
+  let rateLimited = false;
   let apiErrors = 0;
-  for (let start = 0; start < candidates.length; start += 8) {
-    const batch = candidates.slice(start, start + 8);
-    const results = await Promise.all(batch.map(async (candidate) => {
-      const result = await fetchRepository(candidate);
-      if (result.repository) {
-        const repository = result.repository;
-        const score = scoreRepository(repository, {
-          category: candidate.category,
-          type: candidate.sourceType,
-          rank: candidate.rank,
-          trendingStars: candidate.trendingStars,
-        });
-        if (score.eligible) return { candidate, repository, score };
-      }
-      if (result.error) apiErrors += 1;
-      return null;
-    }));
-    verified.push(...results.filter(Boolean));
+  for (const candidate of candidates) {
+    const key = candidate.fullName.toLowerCase();
+    if (completed.has(key)) continue;
+    const result = await fetchRepository(candidate);
+    if (result.rateLimited) {
+      await writeCheckpoint(CHECKPOINT_FILE, fingerprint, [...completed.values()]);
+      const waitMinutes = Math.max(1, Math.ceil(Number(result.waitMs || 60_000) / 60_000));
+      console.warn("GitHub API quota is exhausted. Saved progress; stopping safely. Retry this run in about " + waitMinutes + " minute(s).");
+      rateLimited = true;
+      break;
+    }
+    if (result.error) apiErrors += 1;
+    let accepted = null;
+    if (result.repository) {
+      const score = scoreRepository(result.repository, {
+        category: candidate.category,
+        type: candidate.sourceType,
+        rank: candidate.rank,
+        trendingStars: candidate.trendingStars,
+      });
+      if (score.eligible) accepted = { candidate, repository: result.repository, score };
+    }
+    completed.set(key, { candidate, accepted });
+    await writeCheckpoint(CHECKPOINT_FILE, fingerprint, [...completed.values()]);
   }
 
+  if (rateLimited) {
+    console.log("No catalog writes were made. The next run can resume from the saved checkpoint.");
+    return;
+  }
+
+  const verified = [...completed.values()].map((item) => item.accepted).filter(Boolean);
   const websiteMetadata = await crawlOfficialWebsites(
     verified.slice().sort((a, b) => b.score.qualityScore - a.score.qualityScore).slice(0, MAX_OFFICIAL_SITE_CHECKS)
   );
   const indexes = existingIndexes(catalog);
   const perCategory = new Map();
-  const updatedIds = new Set();
   let added = 0;
   let refreshed = 0;
   let rejectedDuplicate = 0;
-
   const ranked = verified.sort((a, b) =>
     (b.score.trendScore - a.score.trendScore) ||
     (b.score.qualityScore - a.score.qualityScore) ||
@@ -491,24 +483,21 @@ async function main() {
       rejectedDuplicate += 1;
       continue;
     }
-
     const categoryCount = perCategory.get(candidate.category) || 0;
     if (categoryCount >= MAX_PER_CATEGORY || added >= MAX_NEW_TOOLS) continue;
-
     const tool = makeTool(repository, candidate, score, pageInfo);
     catalog.push(tool);
     indexes.ids.add(id);
     indexes.names.add(nameKey);
     indexes.repositories.add(repoUrl);
     perCategory.set(candidate.category, categoryCount + 1);
-    updatedIds.add(id);
     added += 1;
   }
 
-  console.log("Candidate quality checks: " + verified.length + " passed; " + apiErrors + " repository metadata fetches failed.");
+  console.log("Candidate quality checks: " + verified.length + " passed; " + apiErrors + " API requests failed.");
   console.log("Catalog changes: " + added + " new tools; " + refreshed + " existing verified records refreshed; " + rejectedDuplicate + " duplicates rejected.");
-
   if (!added && !refreshed) {
+    await clearCheckpoint(CHECKPOINT_FILE);
     console.log("No changes to publish. Catalog remains at " + catalog.length + " tools.");
     return;
   }
@@ -520,7 +509,8 @@ async function main() {
   const tempFile = DATA_FILE + ".tmp";
   await fs.writeFile(tempFile, JSON.stringify(catalog), "utf8");
   await fs.rename(tempFile, DATA_FILE);
-  console.log("Wrote catalog atomically: " + catalog.length + " tools. The workflow must run schema, source verification and production build checks before committing.");
+  await clearCheckpoint(CHECKPOINT_FILE);
+  console.log("Wrote catalog atomically: " + catalog.length + " tools. Publishing remains gated by validation, source checks, tests and a production build.");
 }
 
 main().catch((error) => {
