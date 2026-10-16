@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Compass, Github, Layers3, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Compass, Github, Layers3, LoaderCircle, Search, ShieldCheck, Sparkles, Star, X } from "lucide-react";
 
 import type { Category, DetailedDevTool } from "../lib/types";
 import { categories } from "../lib/types";
@@ -16,6 +16,48 @@ type HomeClientProps = { featured: DetailedDevTool[]; recentlyAdded: DetailedDev
 
 export default function HomeClient({ featured, recentlyAdded, categoryCounts, totalTools, openSourceCount, noCardCount }: HomeClientProps) {
   const [selectedTool, setSelectedTool] = useState<DetailedDevTool | null>(null);
+  const [homeQuery, setHomeQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<DetailedDevTool[]>([]);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [searchError, setSearchError] = useState("");
+
+  useEffect(() => {
+    const term = homeQuery.trim();
+    if (term.length < 2) {
+      setSearchResults([]);
+      setSearchError("");
+      setSearchLoading(false);
+      return;
+    }
+    const controller = new AbortController();
+    const timer = window.setTimeout(async () => {
+      setSearchLoading(true);
+      setSearchError("");
+      try {
+        const response = await fetch("/api/tools?q=" + encodeURIComponent(term) + "&limit=8", {
+          signal: controller.signal,
+          headers: { Accept: "application/json" },
+        });
+        if (!response.ok) throw new Error("Search failed");
+        const data = await response.json() as { tools: DetailedDevTool[]; total: number };
+        if (!controller.signal.aborted) setSearchResults(data.tools);
+      } catch {
+        if (!controller.signal.aborted) setSearchError("Search is temporarily unavailable. Try the full directory.");
+      } finally {
+        if (!controller.signal.aborted) setSearchLoading(false);
+      }
+    }, 180);
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, [homeQuery]);
+
+  function submitHomeSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const query = homeQuery.trim();
+    if (query) window.location.href = "/tools?q=" + encodeURIComponent(query);
+  }
   return (
     <main id="main-content">
       <section className="hero home-hero">
@@ -38,6 +80,27 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
         </motion.aside>
         <div className="hero-stamp"><span>BUILT FOR</span><b>the next<br />generation.</b><span>INDIE MAKERS · 2026</span></div>
         <div className="hero-bottomline"><span>01 / DISCOVER</span><span>Less guesswork. More building.</span><Link href="/categories">Browse categories ↓</Link></div>
+      </section>
+
+      <section className="section-wrap home-search-section" aria-label="Search the tool catalog">
+        <div className="home-search-heading">
+          <span className="eyebrow"><Search size={13} /> FIND A TOOL FAST</span>
+          <h2>What are you <span>building?</span></h2>
+          <p>Search {totalTools.toLocaleString("en-US")} listings by name, category, capability or project need.</p>
+        </div>
+        <form className="home-search-form" onSubmit={submitHomeSearch}>
+          <Search size={19} aria-hidden="true" />
+          <input type="search" value={homeQuery} onChange={(event) => setHomeQuery(event.target.value)} placeholder="Try “database”, “free hosting”, “AI API”…" aria-label="Search tools" autoComplete="off" />
+          {homeQuery && <button type="button" className="home-search-clear" onClick={() => setHomeQuery("")} aria-label="Clear search"><X size={16} /></button>}
+          <button type="submit" className="button-primary">Search directory <ArrowUpRight size={14} /></button>
+        </form>
+        <div className="home-search-hints"><span>Popular:</span>{["Database", "AI tools", "Free hosting", "Design", "Open source"].map((hint) => <button type="button" key={hint} onClick={() => setHomeQuery(hint)}>{hint}</button>)}</div>
+        {searchLoading && <p className="home-search-status" role="status"><LoaderCircle size={14} className="spin" /> Searching catalog…</p>}
+        {searchError && <p className="home-search-status" role="status">{searchError}</p>}
+        {homeQuery.trim().length >= 2 && !searchLoading && !searchError && <div className="home-search-results">
+          <div className="home-search-results-head"><span>{searchResults.length ? "MATCHING LISTINGS" : "NO QUICK MATCHES"}</span><button type="button" onClick={() => { if (homeQuery.trim()) window.location.href = "/tools?q=" + encodeURIComponent(homeQuery.trim()); }}>View all results <ArrowUpRight size={12} /></button></div>
+          {searchResults.length ? <div className="tool-grid">{searchResults.slice(0, 6).map((tool, index) => <ToolCard key={tool.id} tool={tool} index={index} onDetails={setSelectedTool} />)}</div> : <p>Try a shorter term, a category name, or open the full directory search.</p>}
+        </div>}
       </section>
 
       <section className="section-wrap workbench-promo-section">
