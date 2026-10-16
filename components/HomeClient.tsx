@@ -72,7 +72,7 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
           </motion.div>
           <motion.form className="home-search-form" onSubmit={submitHomeSearch} variants={cardVariants} role="search" aria-label="Search developer tools">
             <label htmlFor="home-tool-search"><Search size={18} /><span className="sr-only">Search all developer tools</span></label>
-            <input id="home-tool-search" value={homeSearch} onChange={(event) => setHomeSearch(event.target.value)} placeholder="Search tools, APIs, hosting, AI, open source..." autoComplete="off" />
+            <input id="home-tool-search" value={homeQuery} onChange={(event) => setHomeSearch(event.target.value)} placeholder="Search tools, APIs, hosting, AI, open source..." autoComplete="off" />
             <button className="button-primary" type="submit">Search <ArrowUpRight size={14} /></button>
           </motion.form>
           <motion.div className="hero-note" variants={cardVariants}><Code2 size={13} /> Built for curious developers and small creators.</motion.div>
