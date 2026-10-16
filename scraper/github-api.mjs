@@ -48,10 +48,16 @@ export async function githubJson(url, { token, fetchImpl = fetch, maxRetries = M
     if (response.status === 404 || response.status === 451) return { skipped: true };
     if (response.status === 403 || response.status === 429) {
       const remaining = response.headers.get("x-ratelimit-remaining");
-      const rateLimited = response.status === 429 ||
+      let rateLimited = response.status === 429 ||
         remaining === "0" ||
         response.headers.get("retry-after") !== null ||
         /rate limit/i.test(response.headers.get("x-ratelimit-resource") || "");
+      if (!rateLimited && response.status === 403) {
+        try {
+          const body = await response.clone().json();
+          rateLimited = /rate limit|secondary rate|abuse detection/i.test(String(body.message || ""));
+        } catch {}
+      }
       if (!rateLimited) return { skipped: true, reason: "forbidden" };
       const waitMs = retryDelay(response, attempt);
       const resetAt = response.headers.get("x-ratelimit-reset") || null;
