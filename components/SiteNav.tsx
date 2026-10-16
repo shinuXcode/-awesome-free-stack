@@ -11,6 +11,7 @@ const links = [
   { href: "/compare", label: "Compare" },
   { href: "/stack-lab", label: "Stack Lab" },
   { href: "/alternatives", label: "Alternatives" },
+  { href: "/open-source", label: "Open Source" },
   { href: "/submit", label: "Add Tool" },
   { href: "/creator", label: "Meet Creator" },
 ];
