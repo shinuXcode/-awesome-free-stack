@@ -20,6 +20,7 @@ export function GET() {
     "- Compare tools: https://awesome-free-stack.vercel.app/compare",
     "- Stack generator and architecture builder: https://awesome-free-stack.vercel.app/stack-lab",
     "- Free-tier/open-source alternatives finder: https://awesome-free-stack.vercel.app/alternatives",
+    "- Open-source repository explorer (license-filtered, stars/recent activity, official GitHub links): https://awesome-free-stack.vercel.app/open-source",
     "- Submit a tool for human review: https://awesome-free-stack.vercel.app/submit",
     "- Creator and project information: https://awesome-free-stack.vercel.app/creator",
     "- Full machine-readable catalog: https://awesome-free-stack.vercel.app/llms-full.txt",
