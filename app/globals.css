@@ -1195,3 +1195,60 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .workbench-promo-card,.home-search-form,.card-utility-actions button { transition: none; }
 }
+
+
+
+/* Logo, layout overflow guard, and a complete responsive footer */
+html, body { max-width: 100%; overflow-x: clip; }
+@supports not (overflow: clip) { html, body { overflow-x: hidden; } }
+.brand-mark.brand-mark-image {
+  display:grid; place-items:center; width:42px; height:42px; flex:0 0 auto; padding:0;
+  overflow:hidden; border:1px solid #72eaff30; border-radius:13px; background:#030a1b;
+  box-shadow:0 0 24px #167dff1a, inset 0 1px #ffffff0b;
+}
+.brand-logo { display:block; width:100%; height:100%; object-fit:contain; }
+.site-header .brand-mark.brand-mark-image { width:38px; height:38px; border-radius:11px; }
+.site-footer {
+  display:block; width:100%; padding:42px clamp(20px,5.4vw,84px) 16px;
+  border-top:1px solid #ffffff12; color:#99a1b0;
+  background:radial-gradient(ellipse at 8% 0%, #10c9ff08, transparent 32%), #080b12; font-size:12px;
+}
+.footer-main {
+  display:grid; grid-template-columns:minmax(260px,1.35fr) repeat(2,minmax(155px,.65fr));
+  gap:clamp(26px,6vw,90px); max-width:1280px; margin:0 auto; padding-bottom:34px;
+}
+.footer-brand-block { max-width:410px; }
+.site-footer .footer-brand { display:inline-flex; align-items:center; gap:11px; color:#f5f7fb; font-size:18px; }
+.footer-brand-copy { max-width:340px; margin:17px 0 13px; color:#a6afbe; font-size:13px; line-height:1.8; text-align:left; }
+.footer-disclaimer { display:flex; align-items:flex-start; gap:8px; max-width:390px; margin:0; color:#798394; font-size:11px; line-height:1.65; text-align:left; }
+.footer-disclaimer svg { flex:0 0 auto; margin-top:1px; color:#47d9e9; }
+.footer-github-cta {
+  display:inline-flex; align-items:center; gap:9px; margin-top:19px; padding:10px 13px;
+  border:1px solid #ffffff1d; border-radius:10px; color:#e8edf8; background:#ffffff05;
+  font-size:12px; transition:border-color .18s ease, background .18s ease;
+}
+.footer-github-cta:hover { border-color:#55ddf366; background:#2bd3f10b; }
+.footer-column { display:flex; flex-direction:column; align-items:flex-start; gap:13px; }
+.footer-column h2 { margin:4px 0 8px; color:#f1f4fb; font-size:12px; font-weight:800; letter-spacing:.02em; }
+.footer-column a { color:#929cad; font-size:12px; line-height:1.5; transition:color .18s ease; }
+.footer-column a:hover { color:#75efff; }
+.footer-bottom {
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px 22px;
+  max-width:1280px; margin:0 auto; padding-top:17px; border-top:1px solid #ffffff10;
+  color:#778091; font-size:10px; line-height:1.6;
+}
+.footer-bottom-note { text-align:center; }
+.footer-made { display:inline-flex; align-items:center; gap:6px; white-space:nowrap; }
+.footer-made svg { color:#69e5f4; }
+@media (max-width:760px) {
+  .footer-main { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px 22px; }
+  .footer-brand-block { grid-column:1 / -1; max-width:540px; }
+  .footer-bottom { align-items:flex-start; flex-direction:column; gap:7px; }
+  .footer-bottom-note { text-align:left; }
+}
+@media (max-width:400px) {
+  .site-footer { padding-right:17px; padding-left:17px; }
+  .footer-main { grid-template-columns:minmax(0,1fr); gap:25px; }
+  .footer-brand-block { grid-column:auto; }
+  .footer-column { gap:11px; }
+}

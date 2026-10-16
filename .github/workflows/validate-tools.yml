@@ -1,22 +1,42 @@
 name: Validate tool directory
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - "data/tools.json"
       - "scripts/validate-json.js"
+      - "scripts/validate-changed-tools.js"
+      - "lib/types.ts"
+      - ".github/workflows/validate-tools.yml"
   push:
     branches: [main]
     paths:
       - "data/tools.json"
       - "scripts/validate-json.js"
+      - "scripts/validate-changed-tools.js"
+      - "lib/types.ts"
 permissions:
   contents: read
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: node scripts/validate-json.js
+      - name: Validate catalog schema
+        run: npm run validate:data
+      - name: Verify evidence for new and changed entries
+        env:
+          BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -n "$BASE_SHA" ] && ! echo "$BASE_SHA" | grep -q '^0\{40\}$'; then
+            npm run validate:changed-tools -- --base "$BASE_SHA"
+          else
+            echo "No earlier catalog revision available; maintainer review is required for initial content."
+          fi

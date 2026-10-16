@@ -1,0 +1,63 @@
+name: Verify discovery scraper
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scraper/**"
+      - "scripts/validate-json.js"
+      - "lib/types.ts"
+      - ".github/workflows/verify-scraper.yml"
+      - ".github/workflows/manual-discovery-verification.yml"
+      - ".github/workflows/refresh-catalog.yml"
+  push:
+    branches: [feat/logo-catalog-quality-auto-publish]
+    paths:
+      - "scraper/**"
+      - "scripts/validate-json.js"
+      - "lib/types.ts"
+      - ".github/workflows/verify-scraper.yml"
+      - ".github/workflows/manual-discovery-verification.yml"
+      - ".github/workflows/refresh-catalog.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-scraper-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install scraper dependencies
+        working-directory: scraper
+        run: npm install --no-audit --no-fund
+      - name: Check JavaScript syntax
+        run: |
+          node --check scraper/discover.mjs
+          node --check scraper/scoring.mjs
+          node --check scraper/github-api.mjs
+          node --check scraper/checkpoint.mjs
+      - name: Run unit tests
+        working-directory: scraper
+        run: npm test
+      - name: Validate catalog schema
+        run: node scripts/validate-json.js
+      - name: Check patch for common hard-coded credential patterns
+        shell: bash
+        run: |
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          if git diff --unified=0 origin/main...HEAD -- . ':!package-lock.json' | grep -E '^[+].*(gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|EC|OPENSSH) PRIVATE KEY-----)'; then
+            echo "Possible hard-coded credential detected. Use environment variables or GitHub Actions secrets."
+            exit 1
+          fi

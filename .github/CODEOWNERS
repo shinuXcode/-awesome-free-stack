@@ -1,0 +1,6 @@
+# Catalog records and the validation pipeline require maintainer attention.
+/data/tools.json @shinuXcode
+/scripts/validate-json.js @shinuXcode
+/scripts/validate-changed-tools.js @shinuXcode
+/.github/workflows/validate-tools.yml @shinuXcode
+/.github/workflows/publish-merged-catalog.yml @shinuXcode

@@ -1,0 +1,83 @@
+name: Discovery staging and verification
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scraper/**"
+      - "data/tools.json"
+      - "scripts/validate-json.js"
+      - "scripts/validate-changed-tools.js"
+      - "lib/types.ts"
+      - ".github/workflows/manual-discovery-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalog-discovery-verification-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Restore resumable discovery checkpoint
+        uses: actions/cache/restore@v4
+        with:
+          path: scraper/.checkpoint.json
+          key: scraper-checkpoint-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            scraper-checkpoint-${{ github.ref_name }}-
+      - name: Record catalog baseline
+        id: baseline
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Install website dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install scraper dependencies
+        working-directory: scraper
+        run: npm install --no-audit --no-fund
+      - name: Verify scraper code and unit tests
+        run: |
+          node --check scraper/discover.mjs
+          node --check scraper/scoring.mjs
+          node --check scraper/github-api.mjs
+          node --check scraper/checkpoint.mjs
+          cd scraper && npm test
+      - name: Discover and stage candidates locally (never commits or publishes)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SCRAPER_MAX_SOURCES: ${{ github.event_name == 'pull_request' && '20' || '60' }}
+          SCRAPER_MAX_API_LOOKUPS: "60"
+          SCRAPER_MAX_NEW_TOOLS: "10"
+          SCRAPER_MAX_OFFICIAL_SITE_CHECKS: "5"
+        run: npm run discover --prefix scraper
+      - name: Validate the resulting catalog
+        run: npm run validate:data
+      - name: Verify source evidence and GitHub repository health
+        env:
+          BASE_SHA: ${{ steps.baseline.outputs.sha }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run validate:changed-tools -- --base "$BASE_SHA"
+      - name: Build the website with the staged catalog
+        run: npm run build
+      - name: Save checkpoint if quota prevented completion
+        if: always() && hashFiles('scraper/.checkpoint.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: scraper/.checkpoint.json
+          key: scraper-checkpoint-${{ github.ref_name }}-${{ github.run_id }}
+      - name: Upload staged catalog for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-discovery-verification
+          path: data/tools.json
+          if-no-files-found: error
+          retention-days: 7

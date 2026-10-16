@@ -72,7 +72,25 @@ export interface DetailedDevTool {
   docsUrl: string;
   githubRepoUrl?: string;
   githubStars?: string;
+  sourceVerification?: {
+    verifiedAt: string;
+    method: "maintainer-review" | "github-api" | "github-api+homepage";
+    licenseUrl: string;
+    pricingUrl?: string;
+    officialWebsiteUrl?: string;
+  };
   badge?: ToolBadge;
+  discoveryMetadata?: {
+    sourceType: "trending" | "topic";
+    sourceUrl: string;
+    firstDiscoveredAt: string;
+    lastSeenAt: string;
+    qualityScore: number;
+    trendScore: number;
+    starCount: number;
+    forkCount: number;
+    lastPushedAt: string;
+  };
 }
 
 export type DevTool = DetailedDevTool;

@@ -58,7 +58,7 @@ const rootFields = new Set([
   ...requiredStringFields, "category", "howToUseGuide", "pricingType",
   "noCreditCardRequired", "creditCardRequiredAtSignup", "userRating",
   "totalReviewsCount", "safetyRank", "securityDetails", "targetAudience",
-  "githubRepoUrl", "githubStars", "badge",
+  "githubRepoUrl", "githubStars", "badge", "sourceVerification", "discoveryMetadata",
 ]);
 const securityFields = new Set(["isOpaqueOrOpenSource", "certifications", "dataPrivacyScore"]);
 let errors = [];
@@ -126,8 +126,9 @@ function validateTool(tool, index, ids, names) {
   if (typeof tool.creditCardRequiredAtSignup !== "boolean") issue(`${location}.creditCardRequiredAtSignup`, "must be boolean");
   if (typeof tool.noCreditCardRequired === "boolean" &&
       typeof tool.creditCardRequiredAtSignup === "boolean" &&
-      tool.noCreditCardRequired === tool.creditCardRequiredAtSignup) {
-    issue(location, "noCreditCardRequired and creditCardRequiredAtSignup must be opposites");
+      tool.noCreditCardRequired === tool.creditCardRequiredAtSignup &&
+      !(tool.pricingType === "Needs Verification" && tool.noCreditCardRequired === false)) {
+    issue(location, "credit-card flags must be opposites unless pricingType is Needs Verification and both are unknown (false)");
   }
 
   if (typeof tool.userRating !== "number" || !Number.isFinite(tool.userRating) ||
@@ -147,6 +148,52 @@ function validateTool(tool, index, ids, names) {
   if (!Array.isArray(tool.howToUseGuide) || tool.howToUseGuide.length < 3 ||
       !tool.howToUseGuide.every(isNonEmptyString)) {
     issue(`${location}.howToUseGuide`, "must contain at least three non-empty step strings");
+  }
+
+  if (tool.sourceVerification !== undefined) {
+    const verification = tool.sourceVerification;
+    const verificationFields = new Set(["verifiedAt", "method", "licenseUrl", "pricingUrl", "officialWebsiteUrl"]);
+    if (!verification || typeof verification !== "object" || Array.isArray(verification)) {
+      issue(location + ".sourceVerification", "must be an object");
+    } else {
+      checkKnownKeys(verification, verificationFields, location + ".sourceVerification");
+      if (typeof verification.verifiedAt !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(verification.verifiedAt) ||
+          Number.isNaN(Date.parse(verification.verifiedAt + "T00:00:00Z"))) {
+        issue(location + ".sourceVerification.verifiedAt", "must be a valid YYYY-MM-DD date");
+      }
+      if (!["maintainer-review", "github-api", "github-api+homepage"].includes(verification.method)) {
+        issue(location + ".sourceVerification.method", "must be maintainer-review, github-api, or github-api+homepage");
+      }
+      if (!isHttpsUrl(verification.licenseUrl)) {
+        issue(location + ".sourceVerification.licenseUrl", "must be a valid HTTPS source URL");
+      }
+      if (verification.pricingUrl !== undefined && !isHttpsUrl(verification.pricingUrl)) {
+        issue(location + ".sourceVerification.pricingUrl", "must be a valid HTTPS pricing/source URL");
+      }
+      if (verification.officialWebsiteUrl !== undefined && !isHttpsUrl(verification.officialWebsiteUrl)) {
+        issue(location + ".sourceVerification.officialWebsiteUrl", "must be a valid HTTPS URL");
+      }
+    }
+  }
+
+
+  if (tool.discoveryMetadata !== undefined) {
+    const discovery = tool.discoveryMetadata;
+    const fields = new Set(["sourceType", "sourceUrl", "firstDiscoveredAt", "lastSeenAt", "qualityScore", "trendScore", "starCount", "forkCount", "lastPushedAt"]);
+    if (!discovery || typeof discovery !== "object" || Array.isArray(discovery)) {
+      issue(location + ".discoveryMetadata", "must be an object");
+    } else {
+      checkKnownKeys(discovery, fields, location + ".discoveryMetadata");
+      if (!["trending", "topic"].includes(discovery.sourceType)) issue(location + ".discoveryMetadata.sourceType", "must be trending or topic");
+      if (!isHttpsUrl(discovery.sourceUrl) || !/^https:\/\/github\.com\//i.test(discovery.sourceUrl)) issue(location + ".discoveryMetadata.sourceUrl", "must be an HTTPS GitHub source page");
+      for (const field of ["firstDiscoveredAt", "lastSeenAt"]) {
+        if (typeof discovery[field] !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(discovery[field]) || Number.isNaN(Date.parse(discovery[field] + "T00:00:00Z"))) issue(location + ".discoveryMetadata." + field, "must be a valid YYYY-MM-DD date");
+      }
+      for (const field of ["qualityScore", "trendScore", "starCount", "forkCount"]) {
+        if (!Number.isFinite(discovery[field]) || discovery[field] < 0) issue(location + ".discoveryMetadata." + field, "must be a non-negative number");
+      }
+      if (typeof discovery.lastPushedAt !== "string" || Number.isNaN(Date.parse(discovery.lastPushedAt))) issue(location + ".discoveryMetadata.lastPushedAt", "must be a valid timestamp");
+    }
   }
 
   const security = tool.securityDetails;
