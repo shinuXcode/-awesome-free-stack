@@ -40,7 +40,7 @@ export default function CompareClient({ initialTool }: Props) {
     const controllers = new Map<number, AbortController>();
     searches.forEach((query, index) => {
       if (query.trim().length < 2 || selected[index]) {
-        setResults((current) => current.map((items, itemIndex) => itemIndex === index ? [] : items));
+        setResults((current) => current[index]?.length ? current.map((items, itemIndex) => itemIndex === index ? [] : items) : current);
         return;
       }
       const controller = new AbortController();
@@ -69,7 +69,7 @@ export default function CompareClient({ initialTool }: Props) {
   function choose(index: number, tool: DetailedDevTool) {
     setSelected((current) => current.map((item, itemIndex) => itemIndex === index ? tool : item));
     setSearches((current) => current.map((item, itemIndex) => itemIndex === index ? "" : item));
-    setResults((current) => current.map((items, itemIndex) => itemIndex === index ? [] : items));
+    setResults((current) => current[index]?.length ? current.map((items, itemIndex) => itemIndex === index ? [] : items) : current);
     setError("");
   }
   function clear(index: number) {
