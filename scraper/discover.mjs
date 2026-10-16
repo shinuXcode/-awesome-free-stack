@@ -375,8 +375,9 @@ export function makeTool(repository, source, score, websiteMetadata) {
     githubStars: formatStars(repository.stargazers_count),
     sourceVerification: {
       verifiedAt: TODAY,
-      method: "github-api",
+      method: homepageFacts?.homepageUrl ? "github-api+homepage" : "github-api",
       licenseUrl,
+      ...(homepageFacts?.homepageUrl ? { officialWebsiteUrl: homepageFacts.homepageUrl } : {}),
       ...(homepageFacts.pricingUrl ? { pricingUrl: homepageFacts.pricingUrl } : {}),
     },
     discoveryMetadata,
