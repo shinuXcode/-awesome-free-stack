@@ -445,10 +445,13 @@ async function main() {
 
   let rateLimited = false;
   let apiErrors = 0;
+  let processedThisRun = 0;
   for (const candidate of candidates) {
     const key = candidate.fullName.toLowerCase();
     if (completed.has(key)) continue;
+    if (processedThisRun >= MAX_API_LOOKUPS) break;
     const result = await fetchRepository(candidate);
+    processedThisRun += 1;
     if (result.rateLimited) {
       await writeCheckpoint(CHECKPOINT_FILE, fingerprint, [...completed.values()]);
       const waitMinutes = Math.max(1, Math.ceil(Number(result.waitMs || 60_000) / 60_000));
@@ -526,7 +529,7 @@ async function main() {
   console.log("Candidate quality checks: " + verified.length + " passed; " + apiErrors + " API requests failed.");
   console.log("Catalog changes: " + added + " new tools; " + refreshed + " existing verified records refreshed; " + rejectedDuplicate + " duplicates rejected.");
   if (!added && !refreshed) {
-    await clearCheckpoint(CHECKPOINT_FILE);
+    if (!hasRemainingCandidates) await clearCheckpoint(CHECKPOINT_FILE);
     console.log("No changes to publish. Catalog remains at " + catalog.length + " tools.");
     return;
   }
@@ -538,7 +541,7 @@ async function main() {
   const tempFile = DATA_FILE + ".tmp";
   await fs.writeFile(tempFile, JSON.stringify(catalog), "utf8");
   await fs.rename(tempFile, DATA_FILE);
-  await clearCheckpoint(CHECKPOINT_FILE);
+  if (!hasRemainingCandidates) await clearCheckpoint(CHECKPOINT_FILE);
   console.log("Wrote catalog atomically: " + catalog.length + " tools. Publishing remains gated by validation, source checks, tests and a production build.");
 }
 
