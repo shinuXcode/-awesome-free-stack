@@ -358,7 +358,7 @@ function makeTool(repository, source, score, websiteMetadata) {
     ],
     pricingType: "Needs Verification",
     freeTierLimit: "Repository license: " + licenseId + ". Hosted-service pricing, usage limits and payment requirements have not been verified; consult the official pricing source before relying on free access.",
-    noCreditCardRequired: true,
+    noCreditCardRequired: false,
     creditCardRequiredAtSignup: false,
     userRating: 0,
     totalReviewsCount: 0,
