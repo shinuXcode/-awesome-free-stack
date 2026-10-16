@@ -170,6 +170,9 @@ function validateTool(tool, index, ids, names) {
       if (verification.pricingUrl !== undefined && !isHttpsUrl(verification.pricingUrl)) {
         issue(location + ".sourceVerification.pricingUrl", "must be a valid HTTPS pricing/source URL");
       }
+      if (verification.officialWebsiteUrl !== undefined && !isHttpsUrl(verification.officialWebsiteUrl)) {
+        issue(location + ".sourceVerification.officialWebsiteUrl", "must be a valid HTTPS URL");
+      }
     }
   }
 
