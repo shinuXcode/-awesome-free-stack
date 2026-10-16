@@ -76,7 +76,8 @@ export interface DetailedDevTool {
     verifiedAt: string;
     method: "maintainer-review" | "github-api" | "github-api+homepage";
     licenseUrl: string;
-    pricingUrl?: string;\n    officialWebsiteUrl?: string;
+    pricingUrl?: string;
+    officialWebsiteUrl?: string;
   };
   badge?: ToolBadge;
   discoveryMetadata?: {
