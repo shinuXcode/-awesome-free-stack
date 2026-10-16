@@ -9,6 +9,7 @@ import type { Category, DetailedDevTool } from "../lib/types";
 import { categories } from "../lib/types";
 import ToolCard from "../components/ToolCard";
 import ToolDetailsModal from "./ToolDetailsModal";
+import ToolDetailsModal from "./ToolDetailsModal";
 
 const cardVariants = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } };
 
@@ -76,6 +77,30 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
             <button className="button-primary" type="submit">Search <ArrowUpRight size={14} /></button>
           </motion.form>
           <motion.div className="hero-note" variants={cardVariants}><Code2 size={13} /> Built for curious developers and small creators.</motion.div>
+          <motion.div className="home-search-block" variants={cardVariants}>
+            <form className="home-search-form" role="search" onSubmit={submitSearch}>
+              <Search size={19} aria-hidden="true" />
+              <input
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                aria-label="Search the tool catalog"
+                aria-controls="home-search-results"
+                aria-expanded={searchQuery.trim().length >= 2}
+                placeholder="Search 2,000+ tools, APIs, databases, AI…"
+                autoComplete="off"
+              />
+              {searchQuery && <button type="button" className="home-search-clear" aria-label="Clear search" onClick={() => setSearchQuery("")}><X size={15} /></button>}
+              <button className="button-primary" type="submit">Search <ArrowRight size={14} /></button>
+            </form>
+            <div className="home-search-hints"><span>Popular:</span>{["Supabase", "AI tools", "hosting", "open source"].map((term) => <button type="button" key={term} onClick={() => setSearchQuery(term)}>{term}</button>)}<span className="search-shortcut">Press <kbd>/</kbd> or <kbd>Ctrl K</kbd></span></div>
+            {searchQuery.trim().length >= 2 && <div id="home-search-results" className="home-search-results" aria-live="polite">
+              <div className="home-search-results-head"><span>{searching ? "SEARCHING THE CATALOG…" : searchResults.length ? "MATCHING TOOLS" : "SEARCH RESULTS"}</span><button type="button" onClick={() => { window.location.href = "/tools?q=" + encodeURIComponent(searchQuery.trim()); }}>View all results <ArrowUpRight size={12} /></button></div>
+              {searching && <p className="home-search-status"><LoaderCircle size={14} className="spin" /> Searching verified catalog records…</p>}
+              {!searching && searchError && <p className="home-search-status">{searchError}</p>}
+              {!searching && !searchError && searchResults.length === 0 && <p className="home-search-status">No matches yet. Try a broader term or open all search results.</p>}
+              {!searching && searchResults.map((tool) => <button className="home-search-result" type="button" key={tool.id} onClick={() => openTool(tool)}><span className="home-search-result-mark">{tool.name.slice(0, 1).toUpperCase()}</span><span><b>{tool.name}</b><small>{tool.category} · {tool.pricingType}</small><em>{tool.tagline}</em></span><ArrowUpRight size={14} /></button>)}
+            </div>}
+          </motion.div>
         </motion.div>
         <motion.aside className="hero-dashboard" initial={{ opacity: 0, y: 20, rotate: 2 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ delay: 0.25, duration: 0.7, type: "spring", stiffness: 80, damping: 18 }} aria-label="Directory statistics">
           <div className="dashboard-top"><span className="dashboard-lamp" /><span className="dashboard-lamp" /><span className="dashboard-lamp" /><span className="dashboard-title">STACK / OVERVIEW</span><Sparkles size={14} /></div>
