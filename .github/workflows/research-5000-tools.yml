@@ -1,25 +1,22 @@
 name: Research 5,000+ New Tool Candidates
+
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
   workflow_dispatch:
+
 permissions:
-  contents: write
-  pull-requests: read
-  actions: read
+  contents: read
+
 concurrency:
-  group: research-5000-tools-${{ github.event.pull_request.number || github.ref }}
+  group: research-5000-tools-manual
   cancel-in-progress: false
+
 jobs:
   research:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - name: Checkout research branch
+      - name: Check out selected branch
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -31,17 +28,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/research-5000-tools.py
-      - name: Commit the PDF to the research branch
-        if: ${{ success() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
-        env:
-          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add output/5000-tool-candidates.pdf
-          git diff --cached --quiet && exit 0
-          git commit -m "Add generated 5,000+ tool research PDF"
-          git push origin "HEAD:${BRANCH_NAME}"
       - name: Upload the full report bundle
         uses: actions/upload-artifact@v4
         with:
