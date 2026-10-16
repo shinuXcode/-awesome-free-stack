@@ -320,7 +320,7 @@ function existingIndexes(catalog) {
   };
 }
 
-function makeTool(repository, source, score, websiteMetadata) {
+export function makeTool(repository, source, score, websiteMetadata) {
   const fullName = String(repository.full_name || source.fullName);
   const repoUrl = safeRepoUrl(repository);
   const officialUrl = websiteMetadata?.homepageUrl || repoUrl;
@@ -536,7 +536,9 @@ async function main() {
   console.log("Wrote catalog atomically: " + catalog.length + " tools. Publishing remains gated by validation, source checks, tests and a production build.");
 }
 
-main().catch((error) => {
-  console.error("Automated discovery failed: " + String(error?.message || error));
-  process.exitCode = 1;
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error("Automated discovery failed: " + String(error?.message || error));
+    process.exitCode = 1;
+  });
+}
