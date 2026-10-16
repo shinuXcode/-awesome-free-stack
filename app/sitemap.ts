@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE_URL + "/compare", changeFrequency: "weekly", priority: 0.75 },
     { url: SITE_URL + "/stack-lab", changeFrequency: "weekly", priority: 0.75 },
     { url: SITE_URL + "/alternatives", changeFrequency: "weekly", priority: 0.75 },
+    { url: SITE_URL + "/open-source", changeFrequency: "daily", priority: 0.8 },
     { url: SITE_URL + "/submit", changeFrequency: "monthly", priority: 0.55 },
     { url: SITE_URL + "/creator", changeFrequency: "monthly", priority: 0.55 },
   ];
