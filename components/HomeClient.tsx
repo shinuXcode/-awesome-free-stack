@@ -105,7 +105,7 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
         {searchLoading && <p className="home-search-status" role="status"><LoaderCircle size={14} className="spin" /> Searching catalog…</p>}
         {searchError && <p className="home-search-status" role="status">{searchError}</p>}
         {homeQuery.trim().length >= 2 && !searchLoading && !searchError && <div className="home-search-results">
-          <div className="home-search-results-head"><span>{searchResults.length ? "MATCHING LISTINGS" : "NO QUICK MATCHES"}</span><button type="button" onClick={submitHomeSearch as unknown as React.MouseEventHandler<HTMLButtonElement}>View all results <ArrowUpRight size={12} /></button></div>
+          <div className="home-search-results-head"><span>{searchResults.length ? "MATCHING LISTINGS" : "NO QUICK MATCHES"}</span><button type="button" onClick={() => { if (homeQuery.trim()) window.location.href = "/tools?q=" + encodeURIComponent(homeQuery.trim()); }}>View all results <ArrowUpRight size={12} /></button></div>
           {searchResults.length ? <div className="tool-grid">{searchResults.slice(0, 6).map((tool, index) => <ToolCard key={tool.id} tool={tool} index={index} onDetails={setSelectedTool} />)}</div> : <p>Try a shorter term, a category name, or open the full directory search.</p>}
         </div>}
       </section>
