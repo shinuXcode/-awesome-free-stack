@@ -22,12 +22,12 @@ export default function ToolDetailsModal({ tool, onClose }: Props) {
   return (
     <AnimatePresence>
       {tool && (
-        <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
+        <motion.div className="modal-backdrop drawer-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
           <motion.section
             role="dialog"
             aria-modal="true"
             aria-label={tool.name + " details"}
-            className="details-modal"
+            className="details-modal details-drawer"
             initial={reduceMotion ? { opacity: 0 } : { x: "8vw", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={reduceMotion ? { opacity: 0 } : { x: "8vw", opacity: 0 }}

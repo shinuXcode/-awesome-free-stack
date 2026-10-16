@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
 import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Compass, Github, Layers3, LoaderCircle, Search, ShieldCheck, Sparkles, Star, X } from "lucide-react";
 
@@ -71,6 +72,7 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
             <Link className="button-secondary hero-button" href="/guide"><Compass size={16} /> How it works</Link>
           </motion.div>
           <motion.div className="hero-note" variants={cardVariants}><Code2 size={13} /> Built for curious developers and small creators.</motion.div>
+
         </motion.div>
         <motion.aside className="hero-dashboard" initial={{ opacity: 0, y: 20, rotate: 2 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ delay: 0.25, duration: 0.7, type: "spring", stiffness: 80, damping: 18 }} aria-label="Directory statistics">
           <div className="dashboard-top"><span className="dashboard-lamp" /><span className="dashboard-lamp" /><span className="dashboard-lamp" /><span className="dashboard-title">STACK / OVERVIEW</span><Sparkles size={14} /></div>
@@ -90,7 +92,14 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
         </div>
         <form className="home-search-form" onSubmit={submitHomeSearch}>
           <Search size={19} aria-hidden="true" />
-          <input type="search" value={homeQuery} onChange={(event) => setHomeQuery(event.target.value)} placeholder="Try “database”, “free hosting”, “AI API”…" aria-label="Search tools" autoComplete="off" />
+          <input
+            type="search"
+            value={homeQuery}
+            onChange={(event) => setHomeQuery(event.target.value)}
+            placeholder="Try “database”, “free hosting”, “AI API”…"
+            aria-label="Search tools"
+            autoComplete="off"
+          />
           {homeQuery && <button type="button" className="home-search-clear" onClick={() => setHomeQuery("")} aria-label="Clear search"><X size={16} /></button>}
           <button type="submit" className="button-primary">Search directory <ArrowUpRight size={14} /></button>
         </form>
