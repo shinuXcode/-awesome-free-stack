@@ -223,69 +223,92 @@ async function crawlOfficialWebsites(repositoryCandidates) {
     if (!siteRequests.has(key)) siteRequests.set(key, { url: website, repositoryKeys: [] });
     siteRequests.get(key).repositoryKeys.push(item.repository.full_name.toLowerCase());
   }
+
   const sites = [...siteRequests.values()].slice(0, MAX_OFFICIAL_SITE_CHECKS);
   const metadata = new Map();
-  if (!sites.length) return metadata;
-
-  const crawler = new CheerioCrawler({
-    maxRequestsPerCrawl: sites.length,
-    maxConcurrency: 1,
-    maxRequestRetries: 1,
-    requestHandlerTimeoutSecs: 25,
-    sameDomainDelaySecs: 1.25,
-    respectRobotsTxtFile: true,
-    requestHandler: async ({ $, request, log }) => {
-      const pageHost = new URL(request.url).hostname.toLowerCase();
-      let docsUrl = "";
-      let pricingUrl = "";
-      let canonicalUrl = "";
-      const canonical = $("link[rel='canonical']").attr("href");
-      if (canonical) {
-        try {
-          const target = new URL(canonical, request.url);
-          if (target.protocol === "https:" && target.hostname.toLowerCase() === pageHost) canonicalUrl = target.toString();
-        } catch {}
+  for (const site of sites) {
+    let currentUrl = site.url;
+    let response = null;
+    let safe = true;
+    for (let hop = 0; hop <= 3; hop += 1) {
+      const checked = await verifiedPublicHomepage(currentUrl);
+      if (!checked) { safe = false; break; }
+      try {
+        response = await fetch(checked, {
+          redirect: "manual",
+          signal: AbortSignal.timeout(8_000),
+          headers: { "User-Agent": "awesome-free-stack-catalog-discovery/1.0", Accept: "text/html" },
+        });
+      } catch {
+        safe = false;
+        break;
       }
-      $("a[href]").each((_, element) => {
-        if (docsUrl && pricingUrl) return;
-        const anchor = $(element);
-        const href = anchor.attr("href");
-        if (!href) return;
-        const label = (anchor.text() + " " + (anchor.attr("aria-label") || "") + " " + href).toLowerCase();
+      if ([301, 302, 303, 307, 308].includes(response.status)) {
+        const location = response.headers.get("location");
+        if (!location || hop === 3) { safe = false; break; }
         try {
-          const target = new URL(href, request.url);
-          if (target.protocol !== "https:" || target.hostname.toLowerCase() !== pageHost) return;
-          if (!docsUrl && /\b(docs|documentation|developer guide|api reference)\b/.test(label)) docsUrl = target.toString();
-          if (!pricingUrl && /\b(pricing|plans|price list|free plan)\b/.test(label)) pricingUrl = target.toString();
-        } catch {}
-      });
-      const pageInfo = {
-        title: ($("meta[property='og:title']").attr("content") || $("title").first().text() || "").trim().slice(0, 160),
-        docsUrl,
-        pricingUrl,
-        canonicalUrl,
-        fetchedAt: TODAY,
-      };
-      for (const repositoryKey of request.userData.repositoryKeys || []) metadata.set(repositoryKey, pageInfo);
-      log.info("Checked a project's official homepage", {
-        hostname: pageHost,
-        foundDocsLink: Boolean(docsUrl),
-        foundPricingLink: Boolean(pricingUrl),
-      });
-    },
-    failedRequestHandler: async ({ request, error, log }) => {
-      log.info("Official homepage could not be crawled; the repository can still qualify using its public metadata.", {
-        hostname: (() => { try { return new URL(request.url).hostname; } catch { return "unknown"; } })(),
-        error: String(error?.message || "request failed").slice(0, 120),
-      });
-    },
-  });
+          const next = new URL(location, checked);
+          if (next.protocol !== "https:" || next.username || next.password) { safe = false; break; }
+          currentUrl = next.toString();
+          continue;
+        } catch {
+          safe = false;
+          break;
+        }
+      }
+      break;
+    }
+    if (!safe || !response || !response.ok ||
+        !String(response.headers.get("content-type") || "").toLowerCase().includes("text/html")) continue;
 
-  await crawler.run(sites.map((site) => ({
-    url: site.url,
-    uniqueKey: "official-home-" + site.url.toLowerCase(),
-    userData: { repositoryKeys: site.repositoryKeys },
-  })));
+    let html = "";
+    try {
+      const reader = response.body?.getReader();
+      if (!reader) continue;
+      const chunks = [];
+      let size = 0;
+      while (size < 1_000_000) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        size += value.byteLength;
+      }
+      await reader.cancel().catch(() => {});
+      html = Buffer.concat(chunks.map((chunk) => Buffer.from(chunk))).toString("utf8");
+    } catch {
+      continue;
+    }
+
+    const pageHost = new URL(currentUrl).hostname.toLowerCase();
+    const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "")
+      .replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim().slice(0, 160);
+    let docsUrl = "";
+    let pricingUrl = "";
+    let canonicalUrl = "";
+    const linkPattern = /<a\b([^>]*?)href\s*=\s*["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi;
+    for (const match of html.matchAll(linkPattern)) {
+      const attrs = match[1] + " " + match[3];
+      const href = match[2];
+      const label = (match[4].replace(/<[^>]+>/g, " ") + " " + attrs + " " + href).toLowerCase();
+      try {
+        const target = new URL(href, currentUrl);
+        if (target.protocol !== "https:" || target.hostname.toLowerCase() !== pageHost) continue;
+        if (!docsUrl && /\b(docs|documentation|developer guide|api reference)\b/.test(label)) docsUrl = target.toString();
+        if (!pricingUrl && /\b(pricing|plans|price list|free plan)\b/.test(label)) pricingUrl = target.toString();
+      } catch {}
+    }
+    const canonicalMatch = html.match(/<link\b([^>]*rel\s*=\s*["']canonical["'][^>]*)>/i);
+    const canonicalHref = canonicalMatch?.[1]?.match(/href\s*=\s*["']([^"']+)["']/i)?.[1];
+    if (canonicalHref) {
+      try {
+        const target = new URL(canonicalHref, currentUrl);
+        if (target.protocol === "https:" && target.hostname.toLowerCase() === pageHost) canonicalUrl = target.toString();
+      } catch {}
+    }
+    const pageInfo = { homepageUrl: currentUrl, title, docsUrl, pricingUrl, canonicalUrl, fetchedAt: TODAY };
+    for (const repositoryKey of site.repositoryKeys) metadata.set(repositoryKey, pageInfo);
+    console.log("Official homepage checked: " + pageHost + "; pricing link found: " + Boolean(pricingUrl) + ".");
+  }
   return metadata;
 }
 
@@ -300,7 +323,7 @@ function existingIndexes(catalog) {
 function makeTool(repository, source, score, websiteMetadata) {
   const fullName = String(repository.full_name || source.fullName);
   const repoUrl = safeRepoUrl(repository);
-  const officialUrl = repoUrl;
+  const officialUrl = websiteMetadata?.homepageUrl || repoUrl;
   const host = new URL(officialUrl).hostname;
   const licenseId = repository.license.spdx_id;
   const description = String(repository.description).trim().slice(0, 1_000);
@@ -333,8 +356,8 @@ function makeTool(repository, source, score, websiteMetadata) {
       "Confirm the license and any hosted-service, model, dataset or asset terms before use.",
       "Test with a small project and non-sensitive data before adopting it for important work.",
     ],
-    pricingType: "Open Source",
-    freeTierLimit: "The repository declares " + licenseId + ". This verifies the repository license only; hosted services, external assets, dependencies, support and usage limits may have separate terms.",
+    pricingType: "Needs Verification",
+    freeTierLimit: "Repository license: " + licenseId + ". Hosted-service pricing, usage limits and payment requirements have not been verified; consult the official pricing source before relying on free access.",
     noCreditCardRequired: true,
     creditCardRequiredAtSignup: false,
     userRating: 0,
