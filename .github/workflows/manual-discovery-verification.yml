@@ -39,7 +39,7 @@ jobs:
         id: baseline
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Install website dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
       - name: Install scraper dependencies
         working-directory: scraper
         run: npm install --no-audit --no-fund
