@@ -79,6 +79,17 @@ export interface DetailedDevTool {
     pricingUrl?: string;
   };
   badge?: ToolBadge;
+  discoveryMetadata?: {
+    sourceType: "trending" | "topic";
+    sourceUrl: string;
+    firstDiscoveredAt: string;
+    lastSeenAt: string;
+    qualityScore: number;
+    trendScore: number;
+    starCount: number;
+    forkCount: number;
+    lastPushedAt: string;
+  };
 }
 
 export type DevTool = DetailedDevTool;
