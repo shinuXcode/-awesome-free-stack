@@ -11,6 +11,7 @@ export default function SiteFooter() {
         <Link href="/compare">Compare tools</Link>
         <Link href="/stack-lab">Stack Lab</Link>
         <Link href="/alternatives">Free alternatives</Link>
+        <Link href="/open-source">Open-source radar</Link>
         <Link href="/submit">Add a tool</Link>
         <Link href="/creator">Meet the creator</Link>
         <a href="https://github.com/shinuXcode/-awesome-free-stack" target="_blank" rel="noreferrer"><Github size={12} /> GitHub</a>
