@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Github, LoaderCircle, Search, Star, RefreshCw } from "lucide-react";
 
@@ -36,14 +36,17 @@ export default function OpenSourceExplorer() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [note, setNote] = useState("");
+  const requestId = useRef(0);
 
   async function load(nextPage: number, reset = false) {
+    const thisRequest = ++requestId.current;
     setBusy(true);
     setError("");
     try {
       const params = new URLSearchParams({ q: submittedQuery, license, sort, page: String(nextPage) });
       const response = await fetch("/api/open-source?" + params.toString(), { headers: { Accept: "application/json" } });
       const data = await response.json() as SearchResponse & { error?: string };
+      if (thisRequest !== requestId.current) return;
       if (!response.ok) throw new Error(data.error || "Could not load repositories.");
       setItems((current) => {
         const next = reset ? [] : current;
@@ -56,9 +59,9 @@ export default function OpenSourceExplorer() {
       if (reset) setVisibleCount(BATCH_SIZE);
       setNote(data.note);
     } catch (reason) {
-      setError(reason instanceof Error ? reason.message : "Could not load repositories.");
+      if (thisRequest === requestId.current) setError(reason instanceof Error ? reason.message : "Could not load repositories.");
     } finally {
-      setBusy(false);
+      if (thisRequest === requestId.current) setBusy(false);
     }
   }
 
