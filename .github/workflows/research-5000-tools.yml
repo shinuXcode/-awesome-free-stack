@@ -41,7 +41,7 @@ jobs:
           git add output/5000-tool-candidates.pdf
           git diff --cached --quiet && exit 0
           git commit -m "Add generated 5,000+ tool research PDF"
-          git push origin "HEAD:\${BRANCH_NAME}"
+          git push origin "HEAD:${BRANCH_NAME}"
       - name: Upload the full report bundle
         uses: actions/upload-artifact@v4
         with:
