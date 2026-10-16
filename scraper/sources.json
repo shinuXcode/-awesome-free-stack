@@ -604,5 +604,905 @@
     "type": "topic",
     "url": "https://github.com/topics/invoice?o=desc&s=updated",
     "category": "Freelancing & Client Management"
+  },
+  {
+    "id": "topic-frontend",
+    "type": "topic",
+    "url": "https://github.com/topics/frontend?o=desc&s=updated",
+    "category": "Frontend & Web Dev"
+  },
+  {
+    "id": "topic-css",
+    "type": "topic",
+    "url": "https://github.com/topics/css?o=desc&s=updated",
+    "category": "Frontend & Web Dev"
+  },
+  {
+    "id": "topic-tailwindcss",
+    "type": "topic",
+    "url": "https://github.com/topics/tailwindcss?o=desc&s=updated",
+    "category": "Frontend & Web Dev"
+  },
+  {
+    "id": "topic-nextjs",
+    "type": "topic",
+    "url": "https://github.com/topics/nextjs?o=desc&s=updated",
+    "category": "Frontend & Web Dev"
+  },
+  {
+    "id": "topic-astro",
+    "type": "topic",
+    "url": "https://github.com/topics/astro?o=desc&s=updated",
+    "category": "Frontend & Web Dev"
+  },
+  {
+    "id": "topic-web-components",
+    "type": "topic",
+    "url": "https://github.com/topics/web-components?o=desc&s=updated",
+    "category": "Frontend & Web Dev"
+  },
+  {
+    "id": "topic-component-library",
+    "type": "topic",
+    "url": "https://github.com/topics/component-library?o=desc&s=updated",
+    "category": "Design & UI/UX"
+  },
+  {
+    "id": "topic-ui-kit",
+    "type": "topic",
+    "url": "https://github.com/topics/ui-kit?o=desc&s=updated",
+    "category": "Design & UI/UX"
+  },
+  {
+    "id": "topic-figma",
+    "type": "topic",
+    "url": "https://github.com/topics/figma?o=desc&s=updated",
+    "category": "Design & UI/UX"
+  },
+  {
+    "id": "topic-icons",
+    "type": "topic",
+    "url": "https://github.com/topics/icons?o=desc&s=updated",
+    "category": "Design & UI/UX"
+  },
+  {
+    "id": "topic-color-palette",
+    "type": "topic",
+    "url": "https://github.com/topics/color-palette?o=desc&s=updated",
+    "category": "Design & UI/UX"
+  },
+  {
+    "id": "topic-image-processing",
+    "type": "topic",
+    "url": "https://github.com/topics/image-processing?o=desc&s=updated",
+    "category": "Design & UI/UX"
+  },
+  {
+    "id": "topic-computer-vision",
+    "type": "topic",
+    "url": "https://github.com/topics/computer-vision?o=desc&s=updated",
+    "category": "AI & Machine Learning"
+  },
+  {
+    "id": "topic-deep-learning",
+    "type": "topic",
+    "url": "https://github.com/topics/deep-learning?o=desc&s=updated",
+    "category": "AI & Machine Learning"
+  },
+  {
+    "id": "topic-natural-language-processing",
+    "type": "topic",
+    "url": "https://github.com/topics/natural-language-processing?o=desc&s=updated",
+    "category": "AI & Machine Learning"
+  },
+  {
+    "id": "topic-speech-recognition",
+    "type": "topic",
+    "url": "https://github.com/topics/speech-recognition?o=desc&s=updated",
+    "category": "AI & Machine Learning"
+  },
+  {
+    "id": "topic-rag",
+    "type": "topic",
+    "url": "https://github.com/topics/rag?o=desc&s=updated",
+    "category": "AI & Machine Learning"
+  },
+  {
+    "id": "topic-prompt-engineering",
+    "type": "topic",
+    "url": "https://github.com/topics/prompt-engineering?o=desc&s=updated",
+    "category": "AI & Machine Learning"
+  },
+  {
+    "id": "topic-inference",
+    "type": "topic",
+    "url": "https://github.com/topics/inference?o=desc&s=updated",
+    "category": "AI & Machine Learning"
+  },
+  {
+    "id": "topic-machine-learning-ops",
+    "type": "topic",
+    "url": "https://github.com/topics/machine-learning-ops?o=desc&s=updated",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "id": "topic-data-pipeline",
+    "type": "topic",
+    "url": "https://github.com/topics/data-pipeline?o=desc&s=updated",
+    "category": "Data Science & Analytics"
+  },
+  {
+    "id": "topic-etl",
+    "type": "topic",
+    "url": "https://github.com/topics/etl?o=desc&s=updated",
+    "category": "Data Science & Analytics"
+  },
+  {
+    "id": "topic-jupyter",
+    "type": "topic",
+    "url": "https://github.com/topics/jupyter?o=desc&s=updated",
+    "category": "Data Science & Analytics"
+  },
+  {
+    "id": "topic-notebook",
+    "type": "topic",
+    "url": "https://github.com/topics/notebook?o=desc&s=updated",
+    "category": "Education & Learning"
+  },
+  {
+    "id": "topic-visualization",
+    "type": "topic",
+    "url": "https://github.com/topics/visualization?o=desc&s=updated",
+    "category": "Data Science & Analytics"
+  },
+  {
+    "id": "topic-business-intelligence",
+    "type": "topic",
+    "url": "https://github.com/topics/business-intelligence?o=desc&s=updated",
+    "category": "Analytics"
+  },
+  {
+    "id": "topic-product-analytics",
+    "type": "topic",
+    "url": "https://github.com/topics/product-analytics?o=desc&s=updated",
+    "category": "Analytics"
+  },
+  {
+    "id": "topic-logging",
+    "type": "topic",
+    "url": "https://github.com/topics/logging?o=desc&s=updated",
+    "category": "Analytics"
+  },
+  {
+    "id": "topic-metrics",
+    "type": "topic",
+    "url": "https://github.com/topics/metrics?o=desc&s=updated",
+    "category": "Analytics"
+  },
+  {
+    "id": "topic-feature-flags",
+    "type": "topic",
+    "url": "https://github.com/topics/feature-flags?o=desc&s=updated",
+    "category": "Dev Tools"
+  },
+  {
+    "id": "topic-secrets-management",
+    "type": "topic",
+    "url": "https://github.com/topics/secrets-management?o=desc&s=updated",
+    "category": "Auth & Security"
+  },
+  {
+    "id": "topic-zero-trust",
+    "type": "topic",
+    "url": "https://github.com/topics/zero-trust?o=desc&s=updated",
+    "category": "Auth & Security"
+  },
+  {
+    "id": "topic-sso",
+    "type": "topic",
+    "url": "https://github.com/topics/sso?o=desc&s=updated",
+    "category": "Auth & Security"
+  },
+  {
+    "id": "topic-identity",
+    "type": "topic",
+    "url": "https://github.com/topics/identity?o=desc&s=updated",
+    "category": "Auth & Security"
+  },
+  {
+    "id": "topic-vulnerability-scanner",
+    "type": "topic",
+    "url": "https://github.com/topics/vulnerability-scanner?o=desc&s=updated",
+    "category": "Cybersecurity & Ethical Hacking"
+  },
+  {
+    "id": "topic-malware-analysis",
+    "type": "topic",
+    "url": "https://github.com/topics/malware-analysis?o=desc&s=updated",
+    "category": "Reverse Engineering"
+  },
+  {
+    "id": "topic-reverse-engineering",
+    "type": "topic",
+    "url": "https://github.com/topics/reverse-engineering?o=desc&s=updated",
+    "category": "Reverse Engineering"
+  },
+  {
+    "id": "topic-forensics",
+    "type": "topic",
+    "url": "https://github.com/topics/forensics?o=desc&s=updated",
+    "category": "Cybersecurity & Ethical Hacking"
+  },
+  {
+    "id": "topic-network-security",
+    "type": "topic",
+    "url": "https://github.com/topics/network-security?o=desc&s=updated",
+    "category": "Cybersecurity & Ethical Hacking"
+  },
+  {
+    "id": "topic-backup",
+    "type": "topic",
+    "url": "https://github.com/topics/backup?o=desc&s=updated",
+    "category": "Privacy & Utilities"
+  },
+  {
+    "id": "topic-file-sharing",
+    "type": "topic",
+    "url": "https://github.com/topics/file-sharing?o=desc&s=updated",
+    "category": "Storage & CDN"
+  },
+  {
+    "id": "topic-object-storage",
+    "type": "topic",
+    "url": "https://github.com/topics/object-storage?o=desc&s=updated",
+    "category": "Storage & CDN"
+  },
+  {
+    "id": "topic-cdn",
+    "type": "topic",
+    "url": "https://github.com/topics/cdn?o=desc&s=updated",
+    "category": "Storage & CDN"
+  },
+  {
+    "id": "topic-image-optimization",
+    "type": "topic",
+    "url": "https://github.com/topics/image-optimization?o=desc&s=updated",
+    "category": "Storage & CDN"
+  },
+  {
+    "id": "topic-file-storage",
+    "type": "topic",
+    "url": "https://github.com/topics/file-storage?o=desc&s=updated",
+    "category": "Storage & CDN"
+  },
+  {
+    "id": "topic-distributed-storage",
+    "type": "topic",
+    "url": "https://github.com/topics/distributed-storage?o=desc&s=updated",
+    "category": "Storage & CDN"
+  },
+  {
+    "id": "topic-message-queue",
+    "type": "topic",
+    "url": "https://github.com/topics/message-queue?o=desc&s=updated",
+    "category": "Backend & APIs"
+  },
+  {
+    "id": "topic-event-driven",
+    "type": "topic",
+    "url": "https://github.com/topics/event-driven?o=desc&s=updated",
+    "category": "Backend & APIs"
+  },
+  {
+    "id": "topic-serverless",
+    "type": "topic",
+    "url": "https://github.com/topics/serverless?o=desc&s=updated",
+    "category": "Hosting & PaaS"
+  },
+  {
+    "id": "topic-edge-computing",
+    "type": "topic",
+    "url": "https://github.com/topics/edge-computing?o=desc&s=updated",
+    "category": "Hosting & PaaS"
+  },
+  {
+    "id": "topic-web-server",
+    "type": "topic",
+    "url": "https://github.com/topics/web-server?o=desc&s=updated",
+    "category": "Hosting & PaaS"
+  },
+  {
+    "id": "topic-static-hosting",
+    "type": "topic",
+    "url": "https://github.com/topics/static-hosting?o=desc&s=updated",
+    "category": "Hosting & PaaS"
+  },
+  {
+    "id": "topic-container",
+    "type": "topic",
+    "url": "https://github.com/topics/container?o=desc&s=updated",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "id": "topic-terraform",
+    "type": "topic",
+    "url": "https://github.com/topics/terraform?o=desc&s=updated",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "id": "topic-ansible",
+    "type": "topic",
+    "url": "https://github.com/topics/ansible?o=desc&s=updated",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "id": "topic-configuration-management",
+    "type": "topic",
+    "url": "https://github.com/topics/configuration-management?o=desc&s=updated",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "id": "topic-deployment",
+    "type": "topic",
+    "url": "https://github.com/topics/deployment?o=desc&s=updated",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "id": "topic-release-management",
+    "type": "topic",
+    "url": "https://github.com/topics/release-management?o=desc&s=updated",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "id": "topic-database-management",
+    "type": "topic",
+    "url": "https://github.com/topics/database-management?o=desc&s=updated",
+    "category": "Databases & BaaS"
+  },
+  {
+    "id": "topic-orm",
+    "type": "topic",
+    "url": "https://github.com/topics/orm?o=desc&s=updated",
+    "category": "Databases & BaaS"
+  },
+  {
+    "id": "topic-search-engine",
+    "type": "topic",
+    "url": "https://github.com/topics/search-engine?o=desc&s=updated",
+    "category": "Databases & BaaS"
+  },
+  {
+    "id": "topic-full-text-search",
+    "type": "topic",
+    "url": "https://github.com/topics/full-text-search?o=desc&s=updated",
+    "category": "Databases & BaaS"
+  },
+  {
+    "id": "topic-graph-database",
+    "type": "topic",
+    "url": "https://github.com/topics/graph-database?o=desc&s=updated",
+    "category": "Databases & BaaS"
+  },
+  {
+    "id": "topic-time-series-database",
+    "type": "topic",
+    "url": "https://github.com/topics/time-series-database?o=desc&s=updated",
+    "category": "Databases & BaaS"
+  },
+  {
+    "id": "topic-sql",
+    "type": "topic",
+    "url": "https://github.com/topics/sql?o=desc&s=updated",
+    "category": "Databases & BaaS"
+  },
+  {
+    "id": "topic-test-automation",
+    "type": "topic",
+    "url": "https://github.com/topics/test-automation?o=desc&s=updated",
+    "category": "Testing & QA"
+  },
+  {
+    "id": "topic-mocking",
+    "type": "topic",
+    "url": "https://github.com/topics/mocking?o=desc&s=updated",
+    "category": "Testing & QA"
+  },
+  {
+    "id": "topic-load-testing",
+    "type": "topic",
+    "url": "https://github.com/topics/load-testing?o=desc&s=updated",
+    "category": "Testing & QA"
+  },
+  {
+    "id": "topic-performance-testing",
+    "type": "topic",
+    "url": "https://github.com/topics/performance-testing?o=desc&s=updated",
+    "category": "Testing & QA"
+  },
+  {
+    "id": "topic-code-quality",
+    "type": "topic",
+    "url": "https://github.com/topics/code-quality?o=desc&s=updated",
+    "category": "Testing & QA"
+  },
+  {
+    "id": "topic-linting",
+    "type": "topic",
+    "url": "https://github.com/topics/linting?o=desc&s=updated",
+    "category": "Testing & QA"
+  },
+  {
+    "id": "topic-static-site",
+    "type": "topic",
+    "url": "https://github.com/topics/static-site?o=desc&s=updated",
+    "category": "Frontend & Web Dev"
+  },
+  {
+    "id": "topic-headless-cms",
+    "type": "topic",
+    "url": "https://github.com/topics/headless-cms?o=desc&s=updated",
+    "category": "CMS"
+  },
+  {
+    "id": "topic-blog",
+    "type": "topic",
+    "url": "https://github.com/topics/blog?o=desc&s=updated",
+    "category": "CMS"
+  },
+  {
+    "id": "topic-documentation-generator",
+    "type": "topic",
+    "url": "https://github.com/topics/documentation-generator?o=desc&s=updated",
+    "category": "Documentation & Knowledge"
+  },
+  {
+    "id": "topic-wiki",
+    "type": "topic",
+    "url": "https://github.com/topics/wiki?o=desc&s=updated",
+    "category": "Documentation & Knowledge"
+  },
+  {
+    "id": "topic-knowledge-management",
+    "type": "topic",
+    "url": "https://github.com/topics/knowledge-management?o=desc&s=updated",
+    "category": "Documentation & Knowledge"
+  },
+  {
+    "id": "topic-personal-knowledge-management",
+    "type": "topic",
+    "url": "https://github.com/topics/personal-knowledge-management?o=desc&s=updated",
+    "category": "Office & Productivity"
+  },
+  {
+    "id": "topic-calendar",
+    "type": "topic",
+    "url": "https://github.com/topics/calendar?o=desc&s=updated",
+    "category": "Office & Productivity"
+  },
+  {
+    "id": "topic-email",
+    "type": "topic",
+    "url": "https://github.com/topics/email?o=desc&s=updated",
+    "category": "Collaboration & Communication"
+  },
+  {
+    "id": "topic-messaging",
+    "type": "topic",
+    "url": "https://github.com/topics/messaging?o=desc&s=updated",
+    "category": "Collaboration & Communication"
+  },
+  {
+    "id": "topic-video-conferencing",
+    "type": "topic",
+    "url": "https://github.com/topics/video-conferencing?o=desc&s=updated",
+    "category": "Collaboration & Communication"
+  },
+  {
+    "id": "topic-forum",
+    "type": "topic",
+    "url": "https://github.com/topics/forum?o=desc&s=updated",
+    "category": "Communities & Forums"
+  },
+  {
+    "id": "topic-social-network",
+    "type": "topic",
+    "url": "https://github.com/topics/social-network?o=desc&s=updated",
+    "category": "Communities & Forums"
+  },
+  {
+    "id": "topic-chatbot",
+    "type": "topic",
+    "url": "https://github.com/topics/chatbot?o=desc&s=updated",
+    "category": "AI & Machine Learning"
+  },
+  {
+    "id": "topic-customer-support",
+    "type": "topic",
+    "url": "https://github.com/topics/customer-support?o=desc&s=updated",
+    "category": "Collaboration & Communication"
+  },
+  {
+    "id": "topic-crm",
+    "type": "topic",
+    "url": "https://github.com/topics/crm?o=desc&s=updated",
+    "category": "Freelancing & Client Management"
+  },
+  {
+    "id": "topic-project-management",
+    "type": "topic",
+    "url": "https://github.com/topics/project-management?o=desc&s=updated",
+    "category": "Project & Idea Management"
+  },
+  {
+    "id": "topic-kanban",
+    "type": "topic",
+    "url": "https://github.com/topics/kanban?o=desc&s=updated",
+    "category": "Project & Idea Management"
+  },
+  {
+    "id": "topic-time-tracking",
+    "type": "topic",
+    "url": "https://github.com/topics/time-tracking?o=desc&s=updated",
+    "category": "Freelancing & Client Management"
+  },
+  {
+    "id": "topic-accounting",
+    "type": "topic",
+    "url": "https://github.com/topics/accounting?o=desc&s=updated",
+    "category": "Freelancing & Client Management"
+  },
+  {
+    "id": "topic-ecommerce",
+    "type": "topic",
+    "url": "https://github.com/topics/ecommerce?o=desc&s=updated",
+    "category": "CMS"
+  },
+  {
+    "id": "topic-payment",
+    "type": "topic",
+    "url": "https://github.com/topics/payment?o=desc&s=updated",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "id": "topic-cryptography",
+    "type": "topic",
+    "url": "https://github.com/topics/cryptography?o=desc&s=updated",
+    "category": "Privacy & Utilities"
+  },
+  {
+    "id": "topic-mobile-app",
+    "type": "topic",
+    "url": "https://github.com/topics/mobile-app?o=desc&s=updated",
+    "category": "Mobile & Desktop Apps"
+  },
+  {
+    "id": "topic-flutter",
+    "type": "topic",
+    "url": "https://github.com/topics/flutter?o=desc&s=updated",
+    "category": "Mobile & Desktop Apps"
+  },
+  {
+    "id": "topic-android",
+    "type": "topic",
+    "url": "https://github.com/topics/android?o=desc&s=updated",
+    "category": "Mobile & Desktop Apps"
+  },
+  {
+    "id": "topic-ios",
+    "type": "topic",
+    "url": "https://github.com/topics/ios?o=desc&s=updated",
+    "category": "Mobile & Desktop Apps"
+  },
+  {
+    "id": "topic-desktop-app",
+    "type": "topic",
+    "url": "https://github.com/topics/desktop-app?o=desc&s=updated",
+    "category": "Mobile & Desktop Apps"
+  },
+  {
+    "id": "topic-cross-platform",
+    "type": "topic",
+    "url": "https://github.com/topics/cross-platform?o=desc&s=updated",
+    "category": "Mobile & Desktop Apps"
+  },
+  {
+    "id": "topic-terminal-emulator",
+    "type": "topic",
+    "url": "https://github.com/topics/terminal-emulator?o=desc&s=updated",
+    "category": "Dev Tools"
+  },
+  {
+    "id": "topic-shell",
+    "type": "topic",
+    "url": "https://github.com/topics/shell?o=desc&s=updated",
+    "category": "Dev Tools"
+  },
+  {
+    "id": "topic-package-manager",
+    "type": "topic",
+    "url": "https://github.com/topics/package-manager?o=desc&s=updated",
+    "category": "Dev Tools"
+  },
+  {
+    "id": "topic-build-tool",
+    "type": "topic",
+    "url": "https://github.com/topics/build-tool?o=desc&s=updated",
+    "category": "Dev Tools"
+  },
+  {
+    "id": "topic-compiler",
+    "type": "topic",
+    "url": "https://github.com/topics/compiler?o=desc&s=updated",
+    "category": "Programming Languages"
+  },
+  {
+    "id": "topic-language-server",
+    "type": "topic",
+    "url": "https://github.com/topics/language-server?o=desc&s=updated",
+    "category": "Programming Languages"
+  },
+  {
+    "id": "topic-code-editor",
+    "type": "topic",
+    "url": "https://github.com/topics/code-editor?o=desc&s=updated",
+    "category": "Dev Tools"
+  },
+  {
+    "id": "topic-ide",
+    "type": "topic",
+    "url": "https://github.com/topics/ide?o=desc&s=updated",
+    "category": "Dev Tools"
+  },
+  {
+    "id": "topic-gitops",
+    "type": "topic",
+    "url": "https://github.com/topics/gitops?o=desc&s=updated",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "id": "topic-homelab",
+    "type": "topic",
+    "url": "https://github.com/topics/homelab?o=desc&s=updated",
+    "category": "Operating Systems"
+  },
+  {
+    "id": "topic-linux-desktop",
+    "type": "topic",
+    "url": "https://github.com/topics/linux-desktop?o=desc&s=updated",
+    "category": "Operating Systems"
+  },
+  {
+    "id": "topic-window-manager",
+    "type": "topic",
+    "url": "https://github.com/topics/window-manager?o=desc&s=updated",
+    "category": "Operating Systems"
+  },
+  {
+    "id": "topic-dotfiles",
+    "type": "topic",
+    "url": "https://github.com/topics/dotfiles?o=desc&s=updated",
+    "category": "Operating Systems"
+  },
+  {
+    "id": "topic-emulator",
+    "type": "topic",
+    "url": "https://github.com/topics/emulator?o=desc&s=updated",
+    "category": "Reverse Engineering"
+  },
+  {
+    "id": "topic-firmware",
+    "type": "topic",
+    "url": "https://github.com/topics/firmware?o=desc&s=updated",
+    "category": "Hardware & IoT"
+  },
+  {
+    "id": "topic-embedded",
+    "type": "topic",
+    "url": "https://github.com/topics/embedded?o=desc&s=updated",
+    "category": "Hardware & IoT"
+  },
+  {
+    "id": "topic-robotics",
+    "type": "topic",
+    "url": "https://github.com/topics/robotics?o=desc&s=updated",
+    "category": "Hardware & IoT"
+  },
+  {
+    "id": "topic-3d-printing",
+    "type": "topic",
+    "url": "https://github.com/topics/3d-printing?o=desc&s=updated",
+    "category": "Hardware & IoT"
+  },
+  {
+    "id": "topic-electronics",
+    "type": "topic",
+    "url": "https://github.com/topics/electronics?o=desc&s=updated",
+    "category": "Hardware & IoT"
+  },
+  {
+    "id": "topic-digital-audio-workstation",
+    "type": "topic",
+    "url": "https://github.com/topics/digital-audio-workstation?o=desc&s=updated",
+    "category": "Audio & Music"
+  },
+  {
+    "id": "topic-audio-processing",
+    "type": "topic",
+    "url": "https://github.com/topics/audio-processing?o=desc&s=updated",
+    "category": "Audio & Music"
+  },
+  {
+    "id": "topic-podcast",
+    "type": "topic",
+    "url": "https://github.com/topics/podcast?o=desc&s=updated",
+    "category": "Audio & Music"
+  },
+  {
+    "id": "topic-streaming",
+    "type": "topic",
+    "url": "https://github.com/topics/streaming?o=desc&s=updated",
+    "category": "Video Editing & Motion"
+  },
+  {
+    "id": "topic-screen-recorder",
+    "type": "topic",
+    "url": "https://github.com/topics/screen-recorder?o=desc&s=updated",
+    "category": "Video Editing & Motion"
+  },
+  {
+    "id": "topic-animation",
+    "type": "topic",
+    "url": "https://github.com/topics/animation?o=desc&s=updated",
+    "category": "Video Editing & Motion"
+  },
+  {
+    "id": "topic-motion-design",
+    "type": "topic",
+    "url": "https://github.com/topics/motion-design?o=desc&s=updated",
+    "category": "Video Editing & Motion"
+  },
+  {
+    "id": "topic-game-server",
+    "type": "topic",
+    "url": "https://github.com/topics/game-server?o=desc&s=updated",
+    "category": "Game Development"
+  },
+  {
+    "id": "topic-game-mod",
+    "type": "topic",
+    "url": "https://github.com/topics/game-mod?o=desc&s=updated",
+    "category": "Game Development"
+  },
+  {
+    "id": "topic-game-assets",
+    "type": "topic",
+    "url": "https://github.com/topics/game-assets?o=desc&s=updated",
+    "category": "Game Development"
+  },
+  {
+    "id": "topic-learning-management-system",
+    "type": "topic",
+    "url": "https://github.com/topics/learning-management-system?o=desc&s=updated",
+    "category": "Education & Learning"
+  },
+  {
+    "id": "topic-flashcards",
+    "type": "topic",
+    "url": "https://github.com/topics/flashcards?o=desc&s=updated",
+    "category": "Education & Learning"
+  },
+  {
+    "id": "topic-language-learning",
+    "type": "topic",
+    "url": "https://github.com/topics/language-learning?o=desc&s=updated",
+    "category": "Education & Learning"
+  },
+  {
+    "id": "topic-text-to-speech",
+    "type": "topic",
+    "url": "https://github.com/topics/text-to-speech?o=desc&s=updated",
+    "category": "Accessibility"
+  },
+  {
+    "id": "topic-screen-reader",
+    "type": "topic",
+    "url": "https://github.com/topics/screen-reader?o=desc&s=updated",
+    "category": "Accessibility"
+  },
+  {
+    "id": "topic-assistive-technology",
+    "type": "topic",
+    "url": "https://github.com/topics/assistive-technology?o=desc&s=updated",
+    "category": "Accessibility"
+  },
+  {
+    "id": "topic-privacy-tools",
+    "type": "topic",
+    "url": "https://github.com/topics/privacy-tools?o=desc&s=updated",
+    "category": "Privacy & Utilities"
+  },
+  {
+    "id": "topic-ad-blocker",
+    "type": "topic",
+    "url": "https://github.com/topics/ad-blocker?o=desc&s=updated",
+    "category": "Privacy & Utilities"
+  },
+  {
+    "id": "topic-browser",
+    "type": "topic",
+    "url": "https://github.com/topics/browser?o=desc&s=updated",
+    "category": "Open Source Apps"
+  },
+  {
+    "id": "topic-open-source-alternative",
+    "type": "topic",
+    "url": "https://github.com/topics/open-source-alternative?o=desc&s=updated",
+    "category": "Open Source Apps"
+  },
+  {
+    "id": "topic-foss",
+    "type": "topic",
+    "url": "https://github.com/topics/foss?o=desc&s=updated",
+    "category": "Open Source Apps"
+  },
+  {
+    "id": "topic-selfhosted",
+    "type": "topic",
+    "url": "https://github.com/topics/selfhosted?o=desc&s=updated",
+    "category": "Open Source Apps"
+  },
+  {
+    "id": "topic-workflow",
+    "type": "topic",
+    "url": "https://github.com/topics/workflow?o=desc&s=updated",
+    "category": "Automation & No-Code"
+  },
+  {
+    "id": "topic-integrations",
+    "type": "topic",
+    "url": "https://github.com/topics/integrations?o=desc&s=updated",
+    "category": "Automation & No-Code"
+  },
+  {
+    "id": "topic-webhook",
+    "type": "topic",
+    "url": "https://github.com/topics/webhook?o=desc&s=updated",
+    "category": "Automation & No-Code"
+  },
+  {
+    "id": "topic-low-code-platform",
+    "type": "topic",
+    "url": "https://github.com/topics/low-code-platform?o=desc&s=updated",
+    "category": "Automation & No-Code"
+  },
+  {
+    "id": "topic-smart-home",
+    "type": "topic",
+    "url": "https://github.com/topics/smart-home?o=desc&s=updated",
+    "category": "Hardware & IoT"
+  },
+  {
+    "id": "topic-home-lab",
+    "type": "topic",
+    "url": "https://github.com/topics/home-lab?o=desc&s=updated",
+    "category": "Operating Systems"
+  },
+  {
+    "id": "topic-web3",
+    "type": "topic",
+    "url": "https://github.com/topics/web3?o=desc&s=updated",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "id": "topic-smart-contracts",
+    "type": "topic",
+    "url": "https://github.com/topics/smart-contracts?o=desc&s=updated",
+    "category": "Blockchain & Web3"
+  },
+  {
+    "id": "topic-dao",
+    "type": "topic",
+    "url": "https://github.com/topics/dao?o=desc&s=updated",
+    "category": "Blockchain & Web3"
   }
 ]
