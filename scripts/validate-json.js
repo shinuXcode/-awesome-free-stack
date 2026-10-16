@@ -151,7 +151,7 @@ function validateTool(tool, index, ids, names) {
 
   if (tool.sourceVerification !== undefined) {
     const verification = tool.sourceVerification;
-    const verificationFields = new Set(["verifiedAt", "method", "licenseUrl", "pricingUrl"]);
+    const verificationFields = new Set(["verifiedAt", "method", "licenseUrl", "pricingUrl", "officialWebsiteUrl"]);
     if (!verification || typeof verification !== "object" || Array.isArray(verification)) {
       issue(location + ".sourceVerification", "must be an object");
     } else {
