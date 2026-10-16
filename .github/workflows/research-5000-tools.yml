@@ -8,7 +8,7 @@ permissions:
   pull-requests: read
   actions: read
 concurrency:
-  group: research-5000-tools-\${{ github.event.pull_request.number || github.ref }}
+  group: research-5000-tools-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 jobs:
   research:
@@ -18,8 +18,8 @@ jobs:
       - name: Checkout research branch
         uses: actions/checkout@v4
         with:
-          ref: \${{ github.event.pull_request.head.ref || github.ref_name }}
-          token: \${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -29,13 +29,13 @@ jobs:
         run: python -m pip install --disable-pip-version-check requests reportlab
       - name: Research and generate PDF, CSV and JSON
         env:
-          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: \${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/research-5000-tools.py
       - name: Commit the PDF to the research branch
-        if: \${{ success() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        if: ${{ success() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
         env:
-          BRANCH_NAME: \${{ github.event.pull_request.head.ref }}
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
