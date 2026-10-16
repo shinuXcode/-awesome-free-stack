@@ -8,6 +8,7 @@ import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Compass, Github, Layer
 import type { Category, DetailedDevTool } from "../lib/types";
 import { categories } from "../lib/types";
 import ToolCard from "../components/ToolCard";
+import ToolDetailsModal from "../components/ToolDetailsModal";
 import ToolDetailsModal from "./ToolDetailsModal";
 
 const cardVariants = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } };
@@ -70,6 +71,11 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
             <Link className="button-primary hero-button" href="/tools">Explore all tools <ArrowDownRight size={17} /></Link>
             <Link className="button-secondary hero-button" href="/guide"><Compass size={16} /> How it works</Link>
           </motion.div>
+          <motion.form className="home-search-form" onSubmit={submitSearch} variants={cardVariants} role="search" aria-label="Search developer tools">
+            <label htmlFor="home-tool-search"><Search size={18} /><span className="sr-only">Search all developer tools</span></label>
+            <input id="home-tool-search" value={homeSearch} onChange={(event) => setHomeSearch(event.target.value)} placeholder="Search tools, APIs, hosting, AI, open source..." autoComplete="off" />
+            <button className="button-primary" type="submit">Search <ArrowUpRight size={14} /></button>
+          </motion.form>
           <motion.div className="hero-note" variants={cardVariants}><Code2 size={13} /> Built for curious developers and small creators.</motion.div>
         </motion.div>
         <motion.aside className="hero-dashboard" initial={{ opacity: 0, y: 20, rotate: 2 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ delay: 0.25, duration: 0.7, type: "spring", stiffness: 80, damping: 18 }} aria-label="Directory statistics">
@@ -156,5 +162,7 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
       <section className="home-creator-banner"><div><span className="eyebrow">BUILT BY AN INDIE DEVELOPER</span><h2>Made for people building<br /><span>their first big thing.</span></h2><p>Meet Sadab and see the projects behind the directory.</p></div><Link className="button-primary" href="/creator">Meet the creator <ArrowUpRight size={15} /></Link></section>
       <ToolDetailsModal tool={selectedTool} onClose={() => setSelectedTool(null)} />
     </main>
+    <ToolDetailsModal tool={selectedTool} onClose={() => setSelectedTool(null)} />
+    </>
   );
 }
