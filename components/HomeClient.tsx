@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import { motion } from "framer-motion";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Compass, Github, Layers3, Search, ShieldCheck, Sparkles, Star, X } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Code2, Compass, Github, Layers3, LoaderCircle, Search, ShieldCheck, Sparkles, Star, X } from "lucide-react";
 
 import type { Category, DetailedDevTool } from "../lib/types";
 import { categories } from "../lib/types";
@@ -71,11 +71,6 @@ export default function HomeClient({ featured, recentlyAdded, categoryCounts, to
             <Link className="button-primary hero-button" href="/tools">Explore all tools <ArrowDownRight size={17} /></Link>
             <Link className="button-secondary hero-button" href="/guide"><Compass size={16} /> How it works</Link>
           </motion.div>
-          <motion.form className="home-search-form" onSubmit={submitHomeSearch} variants={cardVariants} role="search" aria-label="Search developer tools">
-            <label htmlFor="home-tool-search"><Search size={18} /><span className="sr-only">Search all developer tools</span></label>
-            <input id="home-tool-search" value={homeQuery} onChange={(event) => setHomeQuery(event.target.value)} placeholder="Search tools, APIs, hosting, AI, open source..." autoComplete="off" />
-            <button className="button-primary" type="submit">Search <ArrowUpRight size={14} /></button>
-          </motion.form>
           <motion.div className="hero-note" variants={cardVariants}><Code2 size={13} /> Built for curious developers and small creators.</motion.div>
 
         </motion.div>
