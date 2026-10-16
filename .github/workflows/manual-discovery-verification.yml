@@ -1,14 +1,23 @@
-name: Manual catalog discovery verification
+name: Discovery staging and verification
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scraper/**"
+      - "data/tools.json"
+      - "scripts/validate-json.js"
+      - "scripts/validate-changed-tools.js"
+      - "lib/types.ts"
+      - ".github/workflows/manual-discovery-verification.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: catalog-discovery-verification
-  cancel-in-progress: false
+  group: catalog-discovery-verification-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   verify-discovery:
@@ -44,8 +53,8 @@ jobs:
       - name: Discover and stage candidates locally (never commits or publishes)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SCRAPER_MAX_API_LOOKUPS: "300"
-          SCRAPER_MAX_NEW_TOOLS: "40"
+          SCRAPER_MAX_API_LOOKUPS: "60"
+          SCRAPER_MAX_NEW_TOOLS: "10"
         run: npm run discover --prefix scraper
       - name: Validate the resulting catalog
         run: npm run validate:data
