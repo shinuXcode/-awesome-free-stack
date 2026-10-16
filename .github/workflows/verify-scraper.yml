@@ -7,7 +7,7 @@ on:
       - "scraper/**"
       - "scripts/validate-json.js"
       - "lib/types.ts"
-      - ".github/workflows/verify-scraper.yml"
+      - ".github/workflows/verify-scraper.yml"\n      - ".github/workflows/manual-discovery-verification.yml"
   push:
     branches: [feat/logo-catalog-quality-auto-publish]
     paths:
@@ -41,7 +41,7 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check scraper/discover.mjs
-          node --check scraper/scoring.mjs
+          node --check scraper/scoring.mjs\n          node --check scraper/github-api.mjs\n          node --check scraper/checkpoint.mjs
       - name: Run unit tests
         working-directory: scraper
         run: npm test
