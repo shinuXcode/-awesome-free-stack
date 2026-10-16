@@ -169,7 +169,7 @@ def duplicate(repo,names,urls,domains):
 def excluded_project(repo):
     # Keep the export focused on general-purpose developer software, not circumvention services or gambling.
     text=" ".join([repo.get("name") or "",repo.get("description") or ""]+[str(t) for t in (repo.get("topics") or [])]).lower()
-    blocked=("online casino","sports betting","sportsbook","prediction market","gambling","betting","age gate bypass","age-check bypass","unblocker","unblock","bypass","circumvent","censorship circumvention","vpn","virtual private network","proxy","age verification")
+    blocked=("casino","sports betting","sportsbook","prediction market","prediction-market","polymarket","gambling","betting","wager","poker","lottery","age gate bypass","age-check bypass","unblocker","unblock","bypass","circumvent","censorship circumvention","vpn","virtual private network","wireguard","openvpn","tailscale","zerotier","shadowsocks","v2ray","proxy","age verification")
     return any(term in text for term in blocked)
 def build_pdf(path,rows,stamp,existing_count,requests_done,empty):
     from reportlab.lib import colors
