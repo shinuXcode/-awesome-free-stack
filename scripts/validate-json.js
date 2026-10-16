@@ -126,8 +126,9 @@ function validateTool(tool, index, ids, names) {
   if (typeof tool.creditCardRequiredAtSignup !== "boolean") issue(`${location}.creditCardRequiredAtSignup`, "must be boolean");
   if (typeof tool.noCreditCardRequired === "boolean" &&
       typeof tool.creditCardRequiredAtSignup === "boolean" &&
-      tool.noCreditCardRequired === tool.creditCardRequiredAtSignup) {
-    issue(location, "noCreditCardRequired and creditCardRequiredAtSignup must be opposites");
+      tool.noCreditCardRequired === tool.creditCardRequiredAtSignup &&
+      !(tool.pricingType === "Needs Verification" && tool.noCreditCardRequired === false)) {
+    issue(location, "credit-card flags must be opposites unless pricingType is Needs Verification and both are unknown (false)");
   }
 
   if (typeof tool.userRating !== "number" || !Number.isFinite(tool.userRating) ||
@@ -160,8 +161,8 @@ function validateTool(tool, index, ids, names) {
           Number.isNaN(Date.parse(verification.verifiedAt + "T00:00:00Z"))) {
         issue(location + ".sourceVerification.verifiedAt", "must be a valid YYYY-MM-DD date");
       }
-      if (!["maintainer-review", "github-api"].includes(verification.method)) {
-        issue(location + ".sourceVerification.method", "must be maintainer-review or github-api");
+      if (!["maintainer-review", "github-api", "github-api+homepage"].includes(verification.method)) {
+        issue(location + ".sourceVerification.method", "must be maintainer-review, github-api, or github-api+homepage");
       }
       if (!isHttpsUrl(verification.licenseUrl)) {
         issue(location + ".sourceVerification.licenseUrl", "must be a valid HTTPS source URL");
