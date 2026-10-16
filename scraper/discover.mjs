@@ -435,11 +435,11 @@ async function main() {
   if (!Array.isArray(catalog)) throw new Error("data/tools.json must contain an array.");
   const dryRun = process.argv.includes("--dry-run") || process.env.SCRAPER_DRY_RUN === "1";
   const { candidates: found, pagesProcessed } = await crawlDiscoverySources(sources);
-  const candidates = found.slice(0, MAX_API_LOOKUPS);
+  const candidates = found;
   const fingerprint = createHash("sha256").update(JSON.stringify(candidates.map((c) => [c.fullName, c.sourceId, c.category]))).digest("hex");
   const checkpoint = await readCheckpoint(CHECKPOINT_FILE, fingerprint);
   const completed = new Map(checkpoint.completed.map((item) => [item.candidate.fullName.toLowerCase(), item]));
-  console.log("Discovery: " + pagesProcessed + " pages, " + found.length + " unique repositories; verifying up to " + candidates.length + ".");
+  console.log("Discovery: " + pagesProcessed + " pages, " + found.length + " unique repositories; up to " + MAX_API_LOOKUPS + " new API lookups this run.");
   console.log("Resume checkpoint: " + completed.size + " of " + candidates.length + " candidates already processed.");
 
   let rateLimited = false;
@@ -475,7 +475,7 @@ async function main() {
     return;
   }
 
-  const verified = [...completed.values()].map((item) => item.accepted).filter(Boolean);
+  const hasRemainingCandidates = candidates.some((candidate) => !completed.has(candidate.fullName.toLowerCase()));\n  if (hasRemainingCandidates) {\n    await writeCheckpoint(CHECKPOINT_FILE, fingerprint, [...completed.values()]);\n    console.log("Checkpoint retained: " + (candidates.length - completed.size) + " candidates remain for a later run.");\n  }\n  const verified = [...completed.values()].map((item) => item.accepted).filter(Boolean);
   const websiteMetadata = await crawlOfficialWebsites(
     verified.slice().sort((a, b) => b.score.qualityScore - a.score.qualityScore).slice(0, MAX_OFFICIAL_SITE_CHECKS)
   );
