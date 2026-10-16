@@ -3,13 +3,13 @@ name: Research 5000 Open-Source Project Candidates
 on:
   push:
     branches:
-      - research/5000-open-source-tools
+      - research/5000-open-source-tools-fast
 
 permissions:
   contents: read
 
 concurrency:
-  group: research-5000-open-source-tools
+  group: research-5000-open-source-tools-fast
   cancel-in-progress: false
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
       - name: Check out the research branch and catalog snapshot
         uses: actions/checkout@v4
         with:
-          ref: research/5000-open-source-tools
+          ref: research/5000-open-source-tools-fast
 
       - name: Set up Python
         uses: actions/setup-python@v5
