@@ -1,0 +1,60 @@
+name: Research 5k tool catalog
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/research_tool_catalog.py"
+      - ".github/workflows/research-tool-catalog.yml"
+      - "requirements-research.txt"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: research-tool-catalog-\${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout current main catalog
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: repo-main
+      - name: Checkout report generator
+        uses: actions/checkout@v4
+        with:
+          ref: \${{ github.event.pull_request.head.sha || github.sha }}
+          path: report-source
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: report-source/requirements-research.txt
+      - name: Install research dependencies
+        run: python -m pip install --disable-pip-version-check -r report-source/requirements-research.txt
+      - name: Collect sources and generate PDF, CSV, JSON
+        env:
+          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+          RESEARCH_MINIMUM: "5000"
+          RESEARCH_MAXIMUM: "7500"
+        run: |
+          cp repo-main/data/tools.json report-source/data/tools.json
+          cd report-source
+          python scripts/research_tool_catalog.py
+      - name: Upload report and machine-readable data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zero-cost-dev-stack-tool-research
+          path: |
+            report-source/dist/zero-cost-dev-stack-5000-plus-tool-research-*.pdf
+            report-source/dist/zero-cost-dev-stack-5000-plus-tool-research-*.csv
+            report-source/dist/zero-cost-dev-stack-5000-plus-tool-research-*.json
+          if-no-files-found: warn
+          retention-days: 14
