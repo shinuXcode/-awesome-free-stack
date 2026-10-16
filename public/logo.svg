@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Awesome Free Stack</title><desc id="desc">Neon cyan and violet triangular ribbon with a glowing orbit and four-point star.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#030b1d"/><stop offset="1" stop-color="#05051b"/></linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07efff"/><stop offset=".31" stop-color="#20baff"/><stop offset=".57" stop-color="#174bff"/><stop offset=".79" stop-color="#a800ff"/><stop offset="1" stop-color="#ff58ec"/></linearGradient>
+    <linearGradient id="left" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0af5f6"/><stop offset=".58" stop-color="#16b9ff"/><stop offset="1" stop-color="#80faff"/></linearGradient>
+    <linearGradient id="right" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dcfbff"/><stop offset=".34" stop-color="#b9c9ff"/><stop offset=".65" stop-color="#951eff"/><stop offset="1" stop-color="#ff62e8"/></linearGradient>
+    <linearGradient id="plate" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1df5ff"/><stop offset=".48" stop-color="#075dff"/><stop offset="1" stop-color="#eb35ff"/></linearGradient>
+    <linearGradient id="orbit" x1="0" y1="0" x2="1" y2=".2"><stop stop-color="#21f5ff"/><stop offset=".46" stop-color="#0aa9ff"/><stop offset=".73" stop-color="#315bff"/><stop offset="1" stop-color="#fe45fb"/></linearGradient>
+    <radialGradient id="orb" cx=".23" cy=".18" r=".95"><stop stop-color="#efffff"/><stop offset=".27" stop-color="#51f4ff"/><stop offset=".63" stop-color="#127dff"/><stop offset="1" stop-color="#a42dff"/></radialGradient>
+    <linearGradient id="spark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".42" stop-color="#59f7ff"/><stop offset=".75" stop-color="#766aff"/><stop offset="1" stop-color="#fa3df4"/></linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <ellipse cx="256" cy="284" rx="182" ry="90" fill="#123cff" opacity=".10"/>
+  <path d="M91 300 C91 224 181 170 281 169 C362 168 423 198 436 238" fill="none" stroke="url(#orbit)" stroke-width="10" stroke-linecap="round" opacity=".9"/>
+  <path d="M436 238 C417 303 319 351 220 357 C132 362 72 332 79 290" fill="none" stroke="url(#orbit)" stroke-width="12" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M118 333 L245 266 Q256 260 269 266 L394 330 Q411 339 394 350 L271 414 Q258 421 244 414 L118 351 Q101 342 118 333Z" fill="#051548" opacity=".72"/>
+  <path d="M115 318 L242 253 Q256 246 270 253 L395 316 Q412 325 395 337 L272 401 Q258 409 244 401 L115 337 Q99 328 115 318Z" fill="url(#plate)" stroke="#54efff" stroke-width="3"/>
+  <path d="M115 337 L244 401 Q258 409 272 401 L395 337 L395 352 Q395 359 383 365 L272 425 Q258 433 244 425 L126 366 Q115 360 115 352Z" fill="#071552"/>
+  <path d="M111 282 L204 111 Q229 64 257 64 Q285 64 309 106 L402 270 Q415 293 397 306 Q380 318 360 305 L270 151 Q263 139 255 139 Q245 139 238 152 L153 302 Q141 324 121 311 Q102 299 111 282Z" fill="url(#ribbon)"/>
+  <path d="M111 282 L204 111 Q229 64 257 64 Q274 64 288 83 L222 99 L138 267 Q126 290 111 282Z" fill="url(#left)" opacity=".98"/>
+  <path d="M257 64 Q285 64 309 106 L402 270 Q415 293 397 306 Q380 318 360 305 L270 151 Q291 164 304 187 L354 276 Q365 295 383 285 L287 114 Q272 87 257 64Z" fill="url(#right)" opacity=".98"/>
+  <path d="M256 181 C267 205 284 220 308 230 C284 239 267 254 256 280 C245 254 228 239 204 230 C228 220 245 205 256 181Z" fill="url(#spark)" filter="url(#glow)"/>
+  <path d="M256 181 L256 280 L256 181Z" fill="#fff" opacity=".38"/>
+  <circle cx="436" cy="238" r="24" fill="url(#orb)" stroke="#b9ffff" stroke-width="2.5" filter="url(#glow)"/>
+</svg>

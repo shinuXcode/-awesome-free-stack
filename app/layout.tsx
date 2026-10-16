@@ -10,6 +10,7 @@ const toolCount = (toolsData as unknown[]).length;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: { icon: "/logo.svg", shortcut: "/logo.svg" },
   title: {
     default: "Zero-Cost Dev Stack — Free & Open-Source Tools for Builders",
     template: "%s | Zero-Cost Dev Stack",
@@ -45,6 +46,7 @@ export const metadata: Metadata = {
     siteName: "Zero-Cost Dev Stack",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/logo.svg", alt: "Zero-Cost Dev Stack neon orbit logo" }],
   },
   twitter: {
     card: "summary_large_image",

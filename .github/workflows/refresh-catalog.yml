@@ -28,6 +28,10 @@ jobs:
         with:
           node-version: 20
 
+      - name: Record source catalog revision
+        id: source-base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Discover new licensed projects from GitHub topics
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -51,6 +55,13 @@ jobs:
       - name: Validate catalog schema
         if: steps.catalog-change.outputs.changed == 'true'
         run: npm run validate:data
+
+      - name: Verify source evidence and GitHub repository health
+        if: steps.catalog-change.outputs.changed == 'true'
+        env:
+          BASE_SHA: ${{ steps.source-base.outputs.sha }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run validate:changed-tools -- --base "$BASE_SHA"
 
       - name: Build and verify all routes
         if: steps.catalog-change.outputs.changed == 'true'

@@ -28,6 +28,10 @@ The project is intentionally cautious: **“free” is not a promise of permanen
 
 ## Product highlights
 
+<!-- CATALOG_STATS_START -->
+**Current catalog:** statistics are generated from `data/tools.json` after a catalog PR is merged.
+<!-- CATALOG_STATS_END -->
+
 | Experience | What it does |
 |---|---|
 | Rich tool profiles | Setup notes, official docs, pricing caveats, privacy prompts and permanent profile URLs |
@@ -41,12 +45,12 @@ The project is intentionally cautious: **“free” is not a promise of permanen
 | GitHub health tracker | Fetch cached repository stars, open issue/PR count, latest push date, archived status and license when opening a tool profile |
 | Free-tier warning radar | Highlight expiry, idle-pause, usage/overage and billing wording found in the tool's current catalog note; absence of a warning is not a guarantee |
 | Alternatives search | Discover catalog candidates for paid-tool replacement; users must verify fit, license, pricing and hosting costs |
-| Community submissions | A validated web form generates a pre-filled GitHub issue for human review; it does not create unauthenticated code-changing pull requests |
+| Community submissions | A validated web form generates a pre-filled GitHub issue for human review. New or edited catalog records must include dated source evidence and pass automated link/repository checks before merge |
 | Native sharing | Every tool card can share its canonical profile plus summary, category, pricing label and source links |
 | Search and AI discovery | Canonical metadata, Open Graph/Twitter previews, structured data, robots policy, XML sitemap and `llms.txt` feeds |
-| Automatic catalog updates | A daily GitHub Actions job discovers active, licensed projects from curated topics, de-duplicates them, validates the data and builds the site before committing new entries |
+| Automatic catalog updates | A daily GitHub Actions job discovers active, licensed projects from curated topics, de-duplicates entries, attaches source metadata, validates the catalog and builds the site before publishing new entries |
 | Responsive and accessible | Mobile-first UI, visible keyboard focus, skip-to-content link and reduced-motion support |
-| Community quality gate | Strict schema validation and a Next.js production build run in pull request CI |
+| Community quality gate | Strict schema validation, changed-record provenance checks, HTTPS source reachability, GitHub repository/license checks, and a Next.js production build run in pull request CI |
 
 ## Interactive workbench
 

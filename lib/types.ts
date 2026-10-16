@@ -72,6 +72,12 @@ export interface DetailedDevTool {
   docsUrl: string;
   githubRepoUrl?: string;
   githubStars?: string;
+  sourceVerification?: {
+    verifiedAt: string;
+    method: "maintainer-review" | "github-api";
+    licenseUrl: string;
+    pricingUrl?: string;
+  };
   badge?: ToolBadge;
 }
 

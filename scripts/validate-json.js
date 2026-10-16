@@ -58,7 +58,7 @@ const rootFields = new Set([
   ...requiredStringFields, "category", "howToUseGuide", "pricingType",
   "noCreditCardRequired", "creditCardRequiredAtSignup", "userRating",
   "totalReviewsCount", "safetyRank", "securityDetails", "targetAudience",
-  "githubRepoUrl", "githubStars", "badge",
+  "githubRepoUrl", "githubStars", "badge", "sourceVerification",
 ]);
 const securityFields = new Set(["isOpaqueOrOpenSource", "certifications", "dataPrivacyScore"]);
 let errors = [];
@@ -147,6 +147,29 @@ function validateTool(tool, index, ids, names) {
   if (!Array.isArray(tool.howToUseGuide) || tool.howToUseGuide.length < 3 ||
       !tool.howToUseGuide.every(isNonEmptyString)) {
     issue(`${location}.howToUseGuide`, "must contain at least three non-empty step strings");
+  }
+
+  if (tool.sourceVerification !== undefined) {
+    const verification = tool.sourceVerification;
+    const verificationFields = new Set(["verifiedAt", "method", "licenseUrl", "pricingUrl"]);
+    if (!verification || typeof verification !== "object" || Array.isArray(verification)) {
+      issue(location + ".sourceVerification", "must be an object");
+    } else {
+      checkKnownKeys(verification, verificationFields, location + ".sourceVerification");
+      if (typeof verification.verifiedAt !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(verification.verifiedAt) ||
+          Number.isNaN(Date.parse(verification.verifiedAt + "T00:00:00Z"))) {
+        issue(location + ".sourceVerification.verifiedAt", "must be a valid YYYY-MM-DD date");
+      }
+      if (!["maintainer-review", "github-api"].includes(verification.method)) {
+        issue(location + ".sourceVerification.method", "must be maintainer-review or github-api");
+      }
+      if (!isHttpsUrl(verification.licenseUrl)) {
+        issue(location + ".sourceVerification.licenseUrl", "must be a valid HTTPS source URL");
+      }
+      if (verification.pricingUrl !== undefined && !isHttpsUrl(verification.pricingUrl)) {
+        issue(location + ".sourceVerification.pricingUrl", "must be a valid HTTPS pricing/source URL");
+      }
+    }
   }
 
   const security = tool.securityDetails;

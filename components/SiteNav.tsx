@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Layers3, Menu, X } from "lucide-react";
+import { ArrowUpRight, Github, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
@@ -23,7 +23,7 @@ export default function SiteNav() {
     <header className="site-header">
       <nav className="nav" aria-label="Main navigation">
         <Link className="brand" href="/" aria-label="Zero-Cost Dev Stack home" onClick={() => setMenuOpen(false)}>
-          <span className="brand-mark"><Layers3 size={17} strokeWidth={2.5} /></span>
+          <span className="brand-mark brand-mark-image"><img className="brand-logo" src="/logo.svg" alt="" width="40" height="40" /></span>
           <span>zero<span className="brand-dot">.</span>cost</span>
         </Link>
         <div className="nav-links nav-desktop">

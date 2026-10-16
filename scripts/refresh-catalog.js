@@ -107,6 +107,11 @@ function makeTool(repository, category) {
     docsUrl: officialUrl,
     githubRepoUrl: repository.html_url,
     githubStars: starsLabel(repository.stargazers_count),
+    sourceVerification: {
+      verifiedAt: new Date().toISOString().slice(0, 10),
+      method: "github-api",
+      licenseUrl: "https://api.github.com/repos/" + repository.full_name + "/license",
+    },
   };
 }
 
