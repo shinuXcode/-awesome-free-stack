@@ -435,7 +435,9 @@ async function main() {
   const catalog = JSON.parse(await fs.readFile(DATA_FILE, "utf8"));
   if (!Array.isArray(catalog)) throw new Error("data/tools.json must contain an array.");
   const dryRun = process.argv.includes("--dry-run") || process.env.SCRAPER_DRY_RUN === "1";
-  const { candidates: found, pagesProcessed } = await crawlDiscoverySources(sources);
+  const sourceLimit = boundedInteger(process.env.SCRAPER_MAX_SOURCES, sources.length, 1, 500);
+  const activeSources = sources.slice(0, sourceLimit);
+  const { candidates: found, pagesProcessed } = await crawlDiscoverySources(activeSources);
   const candidates = found;
   const fingerprint = createHash("sha256").update(JSON.stringify(candidates.map((c) => [c.fullName, c.sourceId, c.category]))).digest("hex");
   const checkpoint = await readCheckpoint(CHECKPOINT_FILE, fingerprint);
