@@ -105,6 +105,20 @@ export default function ToolCard({ tool, index, onDetails }: Props) {
       exit={{ opacity: 0, y: 10, scale: 0.97 }}
       transition={{ layout: { type: "spring", stiffness: 320, damping: 32 }, opacity: { duration: 0.22 }, y: { duration: 0.28 }, delay: Math.min(index % 6, 5) * 0.018 }}
       className="tool-card"
+      onClick={(event) => {
+        const target = event.target as HTMLElement;
+        if (target.closest("a, button, input, select, textarea")) return;
+        onDetails(tool);
+      }}
+      onKeyDown={(event) => {
+        if (event.target !== event.currentTarget) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onDetails(tool);
+        }
+      }}
+      tabIndex={0}
+      aria-label={"Open details for " + tool.name}
     >
       <div className="card-topline"><span className="card-id">STACK / {String(index + 1).padStart(2, "0")}</span>
         {tool.badge && <span className={"tool-badge badge-" + tool.badge.toLowerCase().replaceAll(" ", "-")}>{tool.badge}</span>}
