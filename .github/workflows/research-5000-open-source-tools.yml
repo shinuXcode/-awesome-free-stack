@@ -10,7 +10,7 @@ permissions:
 
 concurrency:
   group: research-5000-open-source-tools-fast
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   discover-and-export:
