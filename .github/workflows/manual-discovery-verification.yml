@@ -26,6 +26,9 @@ jobs:
           key: scraper-checkpoint-${{ github.ref_name }}-${{ github.run_id }}
           restore-keys: |
             scraper-checkpoint-${{ github.ref_name }}-
+      - name: Record catalog baseline
+        id: baseline
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Install website dependencies
         run: npm ci
       - name: Install scraper dependencies
@@ -46,6 +49,11 @@ jobs:
         run: npm run discover --prefix scraper
       - name: Validate the resulting catalog
         run: npm run validate:data
+      - name: Verify source evidence and GitHub repository health
+        env:
+          BASE_SHA: ${{ steps.baseline.outputs.sha }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run validate:changed-tools -- --base "$BASE_SHA"
       - name: Build the website with the staged catalog
         run: npm run build
       - name: Save checkpoint if quota prevented completion
