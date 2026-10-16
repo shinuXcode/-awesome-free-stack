@@ -476,7 +476,12 @@ async function main() {
     return;
   }
 
-  const hasRemainingCandidates = candidates.some((candidate) => !completed.has(candidate.fullName.toLowerCase()));\n  if (hasRemainingCandidates) {\n    await writeCheckpoint(CHECKPOINT_FILE, fingerprint, [...completed.values()]);\n    console.log("Checkpoint retained: " + (candidates.length - completed.size) + " candidates remain for a later run.");\n  }\n  const verified = [...completed.values()].map((item) => item.accepted).filter(Boolean);
+  const hasRemainingCandidates = candidates.some((candidate) => !completed.has(candidate.fullName.toLowerCase()));
+  if (hasRemainingCandidates) {
+    await writeCheckpoint(CHECKPOINT_FILE, fingerprint, [...completed.values()]);
+    console.log("Checkpoint retained: " + (candidates.length - completed.size) + " candidates remain for a later run.");
+  }
+  const verified = [...completed.values()].map((item) => item.accepted).filter(Boolean);
   const websiteMetadata = await crawlOfficialWebsites(
     verified.slice().sort((a, b) => b.score.qualityScore - a.score.qualityScore).slice(0, MAX_OFFICIAL_SITE_CHECKS)
   );
