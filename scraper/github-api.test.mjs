@@ -63,3 +63,14 @@ test("does not retry ordinary not-found responses", async () => {
   assert.equal(calls, 1);
   assert.equal(result.skipped, true);
 });
+
+test("detects secondary rate limits from GitHub error messages", async () => {
+  const result = await githubJson("https://api.github.com/repos/a/b", {
+    maxRetries: 0,
+    fetchImpl: async () => ({
+      ...response(403),
+      clone: () => ({ json: async () => ({ message: "You have exceeded a secondary rate limit." }) }),
+    }),
+  });
+  assert.equal(result.rateLimited, true);
+});
