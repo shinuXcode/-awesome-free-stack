@@ -53,10 +53,10 @@ jobs:
       - name: Discover and stage candidates locally (never commits or publishes)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SCRAPER_MAX_SOURCES: "60"
+          SCRAPER_MAX_SOURCES: ${{ github.event_name == 'pull_request' && '20' || '60' }}
           SCRAPER_MAX_API_LOOKUPS: "60"
           SCRAPER_MAX_NEW_TOOLS: "10"
-          SCRAPER_MAX_OFFICIAL_SITE_CHECKS: "10"
+          SCRAPER_MAX_OFFICIAL_SITE_CHECKS: "5"
         run: npm run discover --prefix scraper
       - name: Validate the resulting catalog
         run: npm run validate:data
