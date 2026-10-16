@@ -54,8 +54,10 @@ export async function githubJson(url, { token, fetchImpl = fetch, maxRetries = M
         /rate limit/i.test(response.headers.get("x-ratelimit-resource") || "");
       if (!rateLimited) return { skipped: true, reason: "forbidden" };
       const waitMs = retryDelay(response, attempt);
-      if (attempt === maxRetries) {
-        return { rateLimited: true, waitMs, resetAt: response.headers.get("x-ratelimit-reset") || null };
+      const resetAt = response.headers.get("x-ratelimit-reset") || null;
+      // Do not burn an Actions runner waiting for a long quota reset. Save a checkpoint and resume later.
+      if (attempt === maxRetries || waitMs > 60_000) {
+        return { rateLimited: true, waitMs, resetAt };
       }
       console.warn("GitHub API throttled; waiting " + Math.ceil(waitMs / 1000) + "s before retry " + (attempt + 1) + ".");
       await sleep(waitMs);
